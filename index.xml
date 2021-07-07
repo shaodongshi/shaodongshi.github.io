@@ -6,7 +6,56 @@
     <description>Recent content on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Jul 2021 15:12:32 +0800</lastBuildDate><atom:link href="https://shaodongshi.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Jul 2021 18:14:33 +0800</lastBuildDate><atom:link href="https://shaodongshi.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>攻防世界WP</title>
+      <link>https://shaodongshi.github.io/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/</link>
+      <pubDate>Wed, 07 Jul 2021 18:14:33 +0800</pubDate>
+      
+      <guid>https://shaodongshi.github.io/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/</guid>
+      <description>攻防世界WP 新手区 题目 get shell 题目描述： 运行就能拿到shell呢，真的
+题目分析： nc链接，运行，拿到shell
+解题： 1.nc链接IP（端口是空格）
+2.ls查看文件，cat flag 获得flag
+题目 CGfsb 题目描述： 菜鸡面对着pringf发愁，他不知道prinf除了输出还有什么作用
+题目分析： 1.从题目描述来看，解题的关键是prinf
+2.查看文件格式，保护设置，运行一下
+发现是一个32位的文件，开启了NX、Stack保护
+这是程序的流程
+3.结合分析，应该和格式化字符串漏洞有关，放到IDA中具体看一下
+这是一个高危漏洞！！！具体用法先放着，往下看。
+看到这边有一个system函数，里面的内容是“cat flag”，这就是答案！！！
+而想要运行这行代码需要一个条件 pwnme==8，这时候想到前面有一个漏洞。
+4.格式化字符串漏洞的简单运用
+%n：将%n之前printf已经打印的字符个数赋值给偏移处指针所指向的地址位置，如%100×10$n表	示将0x64写入偏移10处保存的指针所指向的地址
+解题： 1.已经知道了存在格式化字符串漏洞，开始利用，查看偏移量
+输入aaaa，发现0x61616161（aaaa）偏移量为10
+2.编写脚本
+payload解释：将pwnme的地址转换为一个4字节的数，因为前面输出8个字符，通过%10$n，可以将8写入第10个偏移量对应的地址（pwenme的地址）里
+3.运行
+拿到falg
+4.注：
+还可以这样写payload=‘aaaa’+p32（0x0804A068）+&#39;%11$n&#39;
+题目 when_did_you_born 题目描述： 只要知道你的年龄就能获得flag，但菜鸡发现无论如何输入都不正确，怎么办
+题目分析： 1.从描述来看，关键在于“年龄”
+2.查看文件格式，保护设置，运行一下
+64位，开启了stack、NX保护。
+这是程序基本流程。
+3.扔到IDA中看一下
+答案就在这！！！
+整体看一下
+所以思路很明显了，想办法去执行system就可以了。但问题是两个if不能一起执行。此时注意到前面有一个
+漏洞……
+查看一下
+v4下面正好是v5，那就可以直接覆盖了
+解题： 解决。
+题目 hello_pwn 题目描述： pwn！，segment fault! 菜鸡陷入了深思
+题目分析： 1.题目描述貌似没啥用，不管了
+2.查看文件，保护，运行一下
+64位，开启了NX保护
+就一句话……</description>
+    </item>
+    
     <item>
       <title>My First Post</title>
       <link>https://shaodongshi.github.io/posts/my-first-post/</link>
