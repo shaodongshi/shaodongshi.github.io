@@ -3,6 +3,4 @@ languageCode = "en-us"
 title = "My New Hugo Site"
 theme = "beautifulhugo"
 
-[Params]
-    useHLJS = true
 
