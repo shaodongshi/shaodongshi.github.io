@@ -1,5 +1,8 @@
 baseURL = "https://shaodongshi.github.io/"
 languageCode = "en-us"
 title = "My New Hugo Site"
-theme = "mini"
+theme = "beautifulhugo"
+
+[Params]
+    useHLJS = true
 
