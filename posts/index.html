@@ -52,6 +52,14 @@
                                     
                                 
                             
+                                
+                                    
+                                        <li>
+                                            <a href="#ugx05lioz290">Plt与got</a>
+                                        </li>
+                                    
+                                
+                            
                         </ul>
                     </nav>
                 </header>
@@ -59,6 +67,43 @@
             
                 <div id="main">
 
+                    
+                        
+                            
+                                <article id="ugx05lioz290">
+                                    <h2 class="major">Plt与got</h2>
+                                    <span class="image main"><img src="" alt="" /></span>
+                                    <h1 id="plt与got理解">plt与got理解</h1>
+<h2 id="0x1-基础知识">0x1 基础知识</h2>
+<h3 id="got">.got</h3>
+<p>GOT(Global Offset Table)全局偏移表。这是「链接器」为「外部符号」填充的实际偏移表。</p>
+<h3 id="plt">.plt</h3>
+<p>PLT（Procedure Linkage Table）程序链接表。它有两个功能，要么在 <code>.got.plt</code> 节中拿到地址，并跳转。要么当 <code>.got.plt</code> 没有所需地址的时，触发「链接器」去找到所需地址。</p>
+<h3 id="gotplt">.got.plt</h3>
+<p>这个是 GOT 专门为 PLT 专门准备的节。说白了，<strong>.got.plt 中的值是 GOT 的一部分</strong>。它包含上述 PLT 表所需地址（已经找到的和需要去触发的）。</p>
+<h3 id="pltgot">.plt.got</h3>
+<p>貌似没啥用。</p>
+<h2 id="0x2--理解">0x2  理解</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"><span style="color:#960050;background-color:#1e0010">#</span>include &lt;stdio.h&gt;
+<span style="color:#960050;background-color:#1e0010">#</span>include &lt;stdlib.h&gt;
+
+<span style="color:#66d9ef">int</span> main(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> **argv)
+{
+    puts(<span style="color:#e6db74">&#34;Hello world!&#34;</span>);
+    puts(<span style="color:#e6db74">&#34;Hello CTF!&#34;</span>)
+    exit(<span style="color:#ae81ff">0</span>);
+}
+</code></pre></div><p>当调用第一次puts时，流程如下</p>
+<p><img src="/images1/one.png" alt="one"></p>
+<p>第二次调用puts时，流程如下</p>
+<p><img src="/images1/two.png" alt="two"></p>
+<h2 id="0x3-总结">0x3 总结</h2>
+<p>.plt 的作用简而言之就是先去 .got.plt 里面找地址，如果找的到，就去执行函数，如果是下一条指令的地址，说明没有，就会去触发链接器找到地址。</p>
+<p>.got.plt 显而易见用来存储地址，.got.plt 确实是 GOT 的一部分。</p>
+
+                                </article>
+                            
+                        
                     
                         
                             
