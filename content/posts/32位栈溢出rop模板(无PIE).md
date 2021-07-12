@@ -4,7 +4,7 @@ date: 2021-07-11T17:26:35+08:00
 draft: false
 ---
 
-# 		32位栈溢出rop模板
+# 		32位栈溢出rop模板（无PIE）
 
 ```python
 #!usr/bin/env python
