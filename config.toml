@@ -1,4 +1,4 @@
 baseURL = "https://shaodongshi.github.io/"
 languageCode = "en-us"
 title = "Ssd's Blog"
-theme = "beautifulhugo"
+theme = "anubis"

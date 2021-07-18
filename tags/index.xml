@@ -3,8 +3,12 @@
   <channel>
     <title>Tags on Ssd&#39;s Blog</title>
     <link>https://shaodongshi.github.io/tags/</link>
-    <description>Recent content in Tags on Ssd&#39;s Blog</description>
+    <description>Ssd&#39;s Blog (Tags)</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://shaodongshi.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    
+    <atom:link href="https://shaodongshi.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
   </channel>
 </rss>
