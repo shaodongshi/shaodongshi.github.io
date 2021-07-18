@@ -2,7 +2,7 @@
 # ---- General Settings --------------- #
 # ------------------------------------- #
 baseURL = "https://shaodongshi.github.io/"
-title = "Den"
+title = "Done"
 theme = "den"
 #enableRobotsTXT = true       # generate robots.txt
 enableEmoji = true           # use emoji support
@@ -58,9 +58,9 @@ defaultContentLanguageInSubdir = true
   # site info (optional)
   keywords = ["Hugo", "theme","den"]
   description = "A simple theme for Hugo"
-  logoTitle = "Den" # shown on top-left, default: title
+  logoTitle = "Done" # shown on top-left, default: title
   siteLogoImage = "images/globe.svg"     # shown besides logoTitle
-  # headerTitle = "Den"                   # default: title
+  # headerTitle = "Done"                   # default: title
   headerImage = "images/background.jpg"
   showAuthorCard = true # Whether to show author information below the article
 
