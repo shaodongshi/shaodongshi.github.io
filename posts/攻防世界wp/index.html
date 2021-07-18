@@ -1,23 +1,105 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>攻防世界WP</title>
-    <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.85.0" />
 
+  <title>攻防世界WP &middot; Ssd&#39;s Blog</title>
 
-<link rel="stylesheet" href="/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="/css/layouts/main.css"/>
-<link rel="stylesheet" href="/css/navigators/navbar.css"/>
-<link rel="stylesheet" href="/css/plyr.css"/>
-<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+  <meta name="description" content="" />
 
+  
 
-<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+<meta itemprop="name" content="攻防世界WP">
+<meta itemprop="description" content="攻防世界WP 新手区 题目 get shell 题目描述： 运行就能拿到shell呢，真的
+题目分析： nc链接，运行，拿到shell
+解题： 1.nc链接IP（端口是空格）
+2.ls查看文件，cat flag 获得flag
+题目 CGfsb 题目描述： 菜鸡面对着pringf发愁，他不知道prinf除了输出还有什么作用
+题目分析： 1.从题目描述来看，解题的关键是prinf
+2.查看文件格式，保护设置，运行一下
+发现是一个32位的文件，开启了NX、Stack保护
+这是程序的流程
+3.结合分析，应该和格式化字符串漏洞有关，放到IDA中具体看一下
+这是一个高危漏洞！！！具体用法先放着，往下看。
+看到这边有一个system函数，里面的内容是“cat flag”，这就是答案！！！
+而想要运行这行代码需要一个条件 pwnme==8，这时候想到前面有一个漏洞。
+4.格式化字符串漏洞的简单运用
+%n：将%n之前printf已经打印的字符个数赋值给偏移处指针所指向的地址位置，如%100×10$n表	示将0x64写入偏移10处保存的指针所指向的地址
+解题： 1.已经知道了存在格式化字符串漏洞，开始利用，查看偏移量
+输入aaaa，发现0x61616161（aaaa）偏移量为10
+2.编写脚本
+payload解释：将pwnme的地址转换为一个4字节的数，因为前面输出8个字符，通过%10$n，可以将8写入第10个偏移量对应的地址（pwenme的地址）里
+3.运行
+拿到falg
+4.注：
+还可以这样写payload=‘aaaa’&#43;p32（0x0804A068）&#43;&#39;%11$n&#39;
+题目 when_did_you_born 题目描述： 只要知道你的年龄就能获得flag，但菜鸡发现无论如何输入都不正确，怎么办
+题目分析： 1.从描述来看，关键在于“年龄”
+2.查看文件格式，保护设置，运行一下
+64位，开启了stack、NX保护。
+这是程序基本流程。
+3.扔到IDA中看一下
+答案就在这！！！
+整体看一下
+所以思路很明显了，想办法去执行system就可以了。但问题是两个if不能一起执行。此时注意到前面有一个
+漏洞……
+查看一下
+v4下面正好是v5，那就可以直接覆盖了
+解题： 解决。
+题目 hello_pwn 题目描述： pwn！，segment fault! 菜鸡陷入了深思
+题目分析： 1.题目描述貌似没啥用，不管了
+2.查看文件，保护，运行一下
+64位，开启了NX保护
+就一句话……"><meta itemprop="datePublished" content="2021-07-07T18:14:33+08:00" />
+<meta itemprop="dateModified" content="2021-07-07T18:14:33+08:00" />
+<meta itemprop="wordCount" content="155">
+<meta itemprop="keywords" content="" />
 
-
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="攻防世界WP"/>
+<meta name="twitter:description" content="攻防世界WP 新手区 题目 get shell 题目描述： 运行就能拿到shell呢，真的
+题目分析： nc链接，运行，拿到shell
+解题： 1.nc链接IP（端口是空格）
+2.ls查看文件，cat flag 获得flag
+题目 CGfsb 题目描述： 菜鸡面对着pringf发愁，他不知道prinf除了输出还有什么作用
+题目分析： 1.从题目描述来看，解题的关键是prinf
+2.查看文件格式，保护设置，运行一下
+发现是一个32位的文件，开启了NX、Stack保护
+这是程序的流程
+3.结合分析，应该和格式化字符串漏洞有关，放到IDA中具体看一下
+这是一个高危漏洞！！！具体用法先放着，往下看。
+看到这边有一个system函数，里面的内容是“cat flag”，这就是答案！！！
+而想要运行这行代码需要一个条件 pwnme==8，这时候想到前面有一个漏洞。
+4.格式化字符串漏洞的简单运用
+%n：将%n之前printf已经打印的字符个数赋值给偏移处指针所指向的地址位置，如%100×10$n表	示将0x64写入偏移10处保存的指针所指向的地址
+解题： 1.已经知道了存在格式化字符串漏洞，开始利用，查看偏移量
+输入aaaa，发现0x61616161（aaaa）偏移量为10
+2.编写脚本
+payload解释：将pwnme的地址转换为一个4字节的数，因为前面输出8个字符，通过%10$n，可以将8写入第10个偏移量对应的地址（pwenme的地址）里
+3.运行
+拿到falg
+4.注：
+还可以这样写payload=‘aaaa’&#43;p32（0x0804A068）&#43;&#39;%11$n&#39;
+题目 when_did_you_born 题目描述： 只要知道你的年龄就能获得flag，但菜鸡发现无论如何输入都不正确，怎么办
+题目分析： 1.从描述来看，关键在于“年龄”
+2.查看文件格式，保护设置，运行一下
+64位，开启了stack、NX保护。
+这是程序基本流程。
+3.扔到IDA中看一下
+答案就在这！！！
+整体看一下
+所以思路很明显了，想办法去执行system就可以了。但问题是两个if不能一起执行。此时注意到前面有一个
+漏洞……
+查看一下
+v4下面正好是v5，那就可以直接覆盖了
+解题： 解决。
+题目 hello_pwn 题目描述： pwn！，segment fault! 菜鸡陷入了深思
+题目分析： 1.题目描述貌似没啥用，不管了
+2.查看文件，保护，运行一下
+64位，开启了NX保护
+就一句话……"/>
 
 
 <meta property="og:title" content="攻防世界WP" />
@@ -69,110 +151,170 @@ v4下面正好是v5，那就可以直接覆盖了
 
 
 
-    
-    
-<meta name="description" content="攻防世界WP" />
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
-/>
-<link rel="stylesheet" href="/css/layouts/single.css"/>
-<link rel="stylesheet" href="/css/navigators/sidebar.css">
 
-<link rel="stylesheet" href="/css/style.css"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://shaodongshi.github.io/#author",
+      "name":  null ,
+      "image": {
+        "@type":"ImageObject",
+        
+        
+      },
+      "description":  null 
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://shaodongshi.github.io/#website",
+      "url": "https://shaodongshi.github.io/",
+      "name": "Ssd's Blog",
+      "description":  null ,
+      "publisher": {
+        "@id": "https://shaodongshi.github.io/#author"
+      },
+      "inLanguage": "en-us"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://shaodongshi.github.io/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/#webpage",
+      "url": "https://shaodongshi.github.io/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/",
+      "name": "攻防世界WP",
+      "isPartOf": {
+        "@id": "https://shaodongshi.github.io/#website"
+      },
+      "about": {
+         "@id": "https://shaodongshi.github.io/#author"
+      },
+      "datePublished": "2021-07-07T18:14:33+08:00",
+      "dateModified": "2021-07-07T18:14:33+08:00",
+      "description": "攻防世界WP 新手区 题目 get shell 题目描述： 运行就能拿到shell呢，真的\n题目分析： nc链接，运行，拿到shell\n解题： 1.nc链接IP（端口是空格）\n2.ls查看文件，cat flag 获得flag\n题目 CGfsb 题目描述： 菜鸡面对着pringf发愁，他不知道prinf除了输出还有什么作用\n题目分析： 1.从题目描述来看，解题的关键是prinf\n2.查看文件格式，保护设置，运行一下\n发现是一个32位的文件，开启了NX、Stack保护\n这是程序的流程\n3.结合分析，应该和格式化字符串漏洞有关，放到IDA中具体看一下\n这是一个高危漏洞！！！具体用法先放着，往下看。\n看到这边有一个system函数，里面的内容是“cat flag”，这就是答案！！！\n而想要运行这行代码需要一个条件 pwnme==8，这时候想到前面有一个漏洞。\n4.格式化字符串漏洞的简单运用\n%n：将%n之前printf已经打印的字符个数赋值给偏移处指针所指向的地址位置，如%100×10$n表\t示将0x64写入偏移10处保存的指针所指向的地址\n解题： 1.已经知道了存在格式化字符串漏洞，开始利用，查看偏移量\n输入aaaa，发现0x61616161（aaaa）偏移量为10\n2.编写脚本\npayload解释：将pwnme的地址转换为一个4字节的数，因为前面输出8个字符，通过%10$n，可以将8写入第10个偏移量对应的地址（pwenme的地址）里\n3.运行\n拿到falg\n4.注：\n还可以这样写payload=‘aaaa’+p32（0x0804A068）+'%11$n'\n题目 when_did_you_born 题目描述： 只要知道你的年龄就能获得flag，但菜鸡发现无论如何输入都不正确，怎么办\n题目分析： 1.从描述来看，关键在于“年龄”\n2.查看文件格式，保护设置，运行一下\n64位，开启了stack、NX保护。\n这是程序基本流程。\n3.扔到IDA中看一下\n答案就在这！！！\n整体看一下\n所以思路很明显了，想办法去执行system就可以了。但问题是两个if不能一起执行。此时注意到前面有一个\n漏洞……\n查看一下\nv4下面正好是v5，那就可以直接覆盖了\n解题： 解决。\n题目 hello_pwn 题目描述： pwn！，segment fault! 菜鸡陷入了深思\n题目分析： 1.题目描述貌似没啥用，不管了\n2.查看文件，保护，运行一下\n64位，开启了NX保护\n就一句话……",
+      "inLanguage": "en-us",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://shaodongshi.github.io/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://shaodongshi.github.io/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://shaodongshi.github.io/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/#webpage"
+      },
+      "headline": "攻防世界WP",
+      "datePublished": "2021-07-07T18:14:33+08:00",
+      "dateModified": "2021-07-07T18:14:33+08:00",
+      "publisher": {
+        "@id": "https://shaodongshi.github.io/#author"
+      },
+      "keywords": [
+      ],
+      "articleSection": [
+      ],
+      "inLanguage": "en-us",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://shaodongshi.github.io/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
 
 
 
-    
-    
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
   </head>
-
-  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
-    <div class="container-fluid bg-dimmed wrapper">
-      
-      
-    
-
-
-
-
-
-
-
-
-
-
-
-
-<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+<body>
+  <aside class="sidebar">
   <div class="container">
-      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="/">
-      Ssd&#39;s Blog</a>
-    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
-      <ul class="navbar-nav ml-auto">
+    <div class="sidebar-about">
       
+        
+      
+
+      <h1>Ssd&#39;s Blog</h1>
+
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://shaodongshi.github.io/">Home</a>
+        </li>
+        
       </ul>
-    </div>
+    </nav>
+
+    <section class="social-icons">
+      
+    </section>
   </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">攻防世界WP</h1>
   
-  
-  
-</nav>
 
+  <div class="post-date">
+    <time datetime="2021-07-07T18:14:33&#43;0800">Jul 7, 2021</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
 
-
-      
-      
-  <section class="sidebar-section" id="sidebar-section">
-    <div class="sidebar-holder">
-      <div class="sidebar" id="sidebar">
-        <form class="mx-auto" method="get" action="/search">
-          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
-        </form>
-        <div class="sidebar-tree">
-          <ul class="tree" id="tree">
-            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
-            <div class="subtree">
-                
-
-            </div>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-      
-      
-<section class="content-section" id="content-section">
-  <div class="content">
-    <div class="container p-0 read-area">
-      
-      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://shaodongshi.github.io/images/default-hero.jpg);'>
-      </div>
-
-      
-      <div class="page-content">
-        <div class="author-profile ml-auto align-self-lg-center">
-          <img class="rounded-circle" src='/images/default-avatar_hud3032af26cae4ad3a900356053a829cd_96315_120x120_fit_box_2.png' alt="Author Image">
-          <h5 class="author-name"></h5>
-          <p>July 7, 2021</p>
-        </div>
-
-        <div class="title">
-          <h1>攻防世界WP</h1>
-        </div>
-
-        <div class="post-content" id="post-content">
-          <h1 id="攻防世界wp">攻防世界WP</h1>
+  <div>
+  <h1 id="攻防世界wp">攻防世界WP</h1>
 <h2 id="新手区">新手区</h2>
 <h3 id="题目-get--shell">题目 get  shell</h3>
 <h4 id="题目描述">题目描述：</h4>
@@ -375,201 +517,71 @@ v4下面正好是v5，那就可以直接覆盖了
 <p><img src="/images/image-20210111205518341.png" alt="image-20210111205518341"></p>
 <p>完成。</p>
 
-        </div>
+  </div>
 
-        
-        
-          <div class="btn-improve-page">
-              <a href="https://github.com/hugo-toha/hugo-toha.github.io/edit/main/content/posts%5c%e6%94%bb%e9%98%b2%e4%b8%96%e7%95%8cWP.md" title="Improve this page" target="_blank" rel="noopener">
-                <i class="fas fa-code-branch"></i>
-                Improve this page
-              </a>
-          </div>
-        
-
-        
-      <hr />
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="row next-prev-navigator">
   
-  
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://shaodongshi.github.io/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/"
+     data-text="攻防世界WP"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://shaodongshi.github.io/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/"
+     data-text="攻防世界WP"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://shaodongshi.github.io/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/"
+     data-text="攻防世界WP"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://shaodongshi.github.io/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/"
+     data-text="攻防世界WP"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://shaodongshi.github.io/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/"
+     data-text="攻防世界WP"><i class="fab fa-pinterest"></i></a>
 </div>
 
-      <hr />
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy;  2021
+
       
+
       
-      </div>
-    </div>
+    </p>
   </div>
-  
-  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
-  
-</section>
+</footer>
 
 
-      
-      
-  <section class="toc-section" id="toc-section">
-    
-    <div class="toc-holder">
-      <h5 class="text-center pl-3">Table of Contents</h5>
-      <hr>
-      <div class="toc">
-        <nav id="TableOfContents">
-  <ul>
-    <li><a href="#新手区">新手区</a>
-      <ul>
-        <li><a href="#题目-get--shell">题目 get  shell</a></li>
-        <li><a href="#题目-cgfsb">题目 CGfsb</a></li>
-        <li><a href="#题目-when_did_you_born">题目 when_did_you_born</a></li>
-        <li><a href="#题目-hello_pwn">题目 hello_pwn</a></li>
-        <li><a href="#题目-level0">题目 level0</a></li>
-        <li><a href="#题目-level2">题目 level2</a></li>
-        <li><a href="#题目-string">题目 string</a></li>
-        <li><a href="#题目-int_overflow">题目 int_overflow</a></li>
-        <li><a href="#题目-cgpwn2">题目 cgpwn2</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-      </div>
-    </div>
-    
-  </section>
-
-    </div>
-
-    
-    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
 
 
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
 
-
-
-
-
-
-
-  
-    
-  
-
-
-
-  
   
 
   
-  
-
-  
-  
-
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-    
-  
-  
-
-  
-  
-  
-
-  <footer class="container-fluid text-center align-content-center footer pb-2">
-    <div class="container pt-5">
-      <div class="row text-left">
-        
-        <div class="col-md-4 col-sm-12">
-          <h5>Navigation</h5>
-          
-        </div>
-        
-        
-        
-        
-          
-          <div class="col-md-4 col-sm-12">
-            <p>Stay up to date with email notification</p>
-            
-             
-              <form>
-                <div class="form-group">
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
-                  <small id="emailHelp" class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small>
-                </div>
-                <button type="submit" class="btn btn-info">Submit</button>
-              </form>
-            
-          </div>
-        
-      </div>
-    </div>
-    
-    
-    <hr />
-    <div class="container">
-      <div class="row text-left">
-        <div class="col-md-4">
-          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
-            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_2.png" alt="Toha Theme Logo">
-            Toha
-          </a>
-        </div>
-        <div class="col-md-4 text-center">© 2021 Copyright.</div>
-        <div class="col-md-4 text-right">
-          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
-          <img
-            src="/images/hugo-logo.svg"
-            alt="Hugo Logo"
-            height="18"
-          />
-          </a>
-        </div>
-      </div>
-    </div>
-    
-  </footer>
-
-
-    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="/js/popper.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-
-<script type="text/javascript" src="/js/navbar.js"></script>
-<script type="text/javascript" src="/js/plyr.js"></script>
-<script type="text/javascript" src="/js/main.js"></script>
-
-
-    
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
-<script src="/js/single.js"></script>
-<script>
-  hljs.initHighlightingOnLoad();
-</script>
-
-
-  </body>
+</body>
 </html>

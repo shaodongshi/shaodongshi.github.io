@@ -1,23 +1,39 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Plt与got</title>
-    <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.85.0" />
 
+  <title>Plt与got &middot; Ssd&#39;s Blog</title>
 
-<link rel="stylesheet" href="/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="/css/layouts/main.css"/>
-<link rel="stylesheet" href="/css/navigators/navbar.css"/>
-<link rel="stylesheet" href="/css/plyr.css"/>
-<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+  <meta name="description" content="" />
 
+  
 
-<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+<meta itemprop="name" content="Plt与got">
+<meta itemprop="description" content="plt与got理解 0x1 基础知识 .got GOT(Global Offset Table)全局偏移表。这是「链接器」为「外部符号」填充的实际偏移表。
+.plt PLT（Procedure Linkage Table）程序链接表。它有两个功能，要么在 .got.plt 节中拿到地址，并跳转。要么当 .got.plt 没有所需地址的时，触发「链接器」去找到所需地址。
+.got.plt 这个是 GOT 专门为 PLT 专门准备的节。说白了，.got.plt 中的值是 GOT 的一部分。它包含上述 PLT 表所需地址（已经找到的和需要去触发的）。
+.plt.got 貌似没啥用。
+0x2 理解 #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; int main(int argc, char **argv) { puts(&#34;Hello world!&#34;); puts(&#34;Hello CTF!&#34;) exit(0); } 当调用第一次puts时，流程如下
+第二次调用puts时，流程如下
+0x3 总结 .plt 的作用简而言之就是先去 .got.plt 里面找地址，如果找的到，就去执行函数，如果是下一条指令的地址，说明没有，就会去触发链接器找到地址。
+.got.plt 显而易见用来存储地址，.got.plt 确实是 GOT 的一部分。"><meta itemprop="datePublished" content="2021-07-11T15:07:02+08:00" />
+<meta itemprop="dateModified" content="2021-07-11T15:07:02+08:00" />
+<meta itemprop="wordCount" content="59">
+<meta itemprop="keywords" content="" />
 
-
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Plt与got"/>
+<meta name="twitter:description" content="plt与got理解 0x1 基础知识 .got GOT(Global Offset Table)全局偏移表。这是「链接器」为「外部符号」填充的实际偏移表。
+.plt PLT（Procedure Linkage Table）程序链接表。它有两个功能，要么在 .got.plt 节中拿到地址，并跳转。要么当 .got.plt 没有所需地址的时，触发「链接器」去找到所需地址。
+.got.plt 这个是 GOT 专门为 PLT 专门准备的节。说白了，.got.plt 中的值是 GOT 的一部分。它包含上述 PLT 表所需地址（已经找到的和需要去触发的）。
+.plt.got 貌似没啥用。
+0x2 理解 #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; int main(int argc, char **argv) { puts(&#34;Hello world!&#34;); puts(&#34;Hello CTF!&#34;) exit(0); } 当调用第一次puts时，流程如下
+第二次调用puts时，流程如下
+0x3 总结 .plt 的作用简而言之就是先去 .got.plt 里面找地址，如果找的到，就去执行函数，如果是下一条指令的地址，说明没有，就会去触发链接器找到地址。
+.got.plt 显而易见用来存储地址，.got.plt 确实是 GOT 的一部分。"/>
 
 
 <meta property="og:title" content="Plt与got" />
@@ -36,110 +52,170 @@
 
 
 
-    
-    
-<meta name="description" content="Plt与got" />
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
-/>
-<link rel="stylesheet" href="/css/layouts/single.css"/>
-<link rel="stylesheet" href="/css/navigators/sidebar.css">
 
-<link rel="stylesheet" href="/css/style.css"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://shaodongshi.github.io/#author",
+      "name":  null ,
+      "image": {
+        "@type":"ImageObject",
+        
+        
+      },
+      "description":  null 
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://shaodongshi.github.io/#website",
+      "url": "https://shaodongshi.github.io/",
+      "name": "Ssd's Blog",
+      "description":  null ,
+      "publisher": {
+        "@id": "https://shaodongshi.github.io/#author"
+      },
+      "inLanguage": "en-us"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://shaodongshi.github.io/posts/plt%E4%B8%8Egot/#webpage",
+      "url": "https://shaodongshi.github.io/posts/plt%E4%B8%8Egot/",
+      "name": "Plt与got",
+      "isPartOf": {
+        "@id": "https://shaodongshi.github.io/#website"
+      },
+      "about": {
+         "@id": "https://shaodongshi.github.io/#author"
+      },
+      "datePublished": "2021-07-11T15:07:02+08:00",
+      "dateModified": "2021-07-11T15:07:02+08:00",
+      "description": "plt与got理解 0x1 基础知识 .got GOT(Global Offset Table)全局偏移表。这是「链接器」为「外部符号」填充的实际偏移表。\n.plt PLT（Procedure Linkage Table）程序链接表。它有两个功能，要么在 .got.plt 节中拿到地址，并跳转。要么当 .got.plt 没有所需地址的时，触发「链接器」去找到所需地址。\n.got.plt 这个是 GOT 专门为 PLT 专门准备的节。说白了，.got.plt 中的值是 GOT 的一部分。它包含上述 PLT 表所需地址（已经找到的和需要去触发的）。\n.plt.got 貌似没啥用。\n0x2 理解 #include \u0026lt;stdio.h\u0026gt; #include \u0026lt;stdlib.h\u0026gt; int main(int argc, char **argv) { puts(\u0026#34;Hello world!\u0026#34;); puts(\u0026#34;Hello CTF!\u0026#34;) exit(0); } 当调用第一次puts时，流程如下\n第二次调用puts时，流程如下\n0x3 总结 .plt 的作用简而言之就是先去 .got.plt 里面找地址，如果找的到，就去执行函数，如果是下一条指令的地址，说明没有，就会去触发链接器找到地址。\n.got.plt 显而易见用来存储地址，.got.plt 确实是 GOT 的一部分。",
+      "inLanguage": "en-us",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://shaodongshi.github.io/posts/plt%E4%B8%8Egot/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://shaodongshi.github.io/posts/plt%E4%B8%8Egot/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://shaodongshi.github.io/posts/plt%E4%B8%8Egot/#webpage"
+      },
+      "headline": "Plt与got",
+      "datePublished": "2021-07-11T15:07:02+08:00",
+      "dateModified": "2021-07-11T15:07:02+08:00",
+      "publisher": {
+        "@id": "https://shaodongshi.github.io/#author"
+      },
+      "keywords": [
+      ],
+      "articleSection": [
+      ],
+      "inLanguage": "en-us",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://shaodongshi.github.io/posts/plt%E4%B8%8Egot/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
 
 
 
-    
-    
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
   </head>
-
-  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
-    <div class="container-fluid bg-dimmed wrapper">
-      
-      
-    
-
-
-
-
-
-
-
-
-
-
-
-
-<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+<body>
+  <aside class="sidebar">
   <div class="container">
-      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="/">
-      Ssd&#39;s Blog</a>
-    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
-      <ul class="navbar-nav ml-auto">
+    <div class="sidebar-about">
       
+        
+      
+
+      <h1>Ssd&#39;s Blog</h1>
+
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://shaodongshi.github.io/">Home</a>
+        </li>
+        
       </ul>
-    </div>
+    </nav>
+
+    <section class="social-icons">
+      
+    </section>
   </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">Plt与got</h1>
   
-  
-  
-</nav>
 
+  <div class="post-date">
+    <time datetime="2021-07-11T15:07:02&#43;0800">Jul 11, 2021</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
 
-
-      
-      
-  <section class="sidebar-section" id="sidebar-section">
-    <div class="sidebar-holder">
-      <div class="sidebar" id="sidebar">
-        <form class="mx-auto" method="get" action="/search">
-          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
-        </form>
-        <div class="sidebar-tree">
-          <ul class="tree" id="tree">
-            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
-            <div class="subtree">
-                
-
-            </div>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-      
-      
-<section class="content-section" id="content-section">
-  <div class="content">
-    <div class="container p-0 read-area">
-      
-      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://shaodongshi.github.io/images/default-hero.jpg);'>
-      </div>
-
-      
-      <div class="page-content">
-        <div class="author-profile ml-auto align-self-lg-center">
-          <img class="rounded-circle" src='/images/default-avatar_hud3032af26cae4ad3a900356053a829cd_96315_120x120_fit_box_2.png' alt="Author Image">
-          <h5 class="author-name"></h5>
-          <p>July 11, 2021</p>
-        </div>
-
-        <div class="title">
-          <h1>Plt与got</h1>
-        </div>
-
-        <div class="post-content" id="post-content">
-          <h1 id="plt与got理解">plt与got理解</h1>
+  <div>
+  <h1 id="plt与got理解">plt与got理解</h1>
 <h2 id="0x1-基础知识">0x1 基础知识</h2>
 <h3 id="got">.got</h3>
 <p>GOT(Global Offset Table)全局偏移表。这是「链接器」为「外部符号」填充的实际偏移表。</p>
@@ -167,198 +243,71 @@
 <p>.plt 的作用简而言之就是先去 .got.plt 里面找地址，如果找的到，就去执行函数，如果是下一条指令的地址，说明没有，就会去触发链接器找到地址。</p>
 <p>.got.plt 显而易见用来存储地址，.got.plt 确实是 GOT 的一部分。</p>
 
-        </div>
+  </div>
 
-        
-        
-          <div class="btn-improve-page">
-              <a href="https://github.com/hugo-toha/hugo-toha.github.io/edit/main/content/posts%5cplt%e4%b8%8egot.md" title="Improve this page" target="_blank" rel="noopener">
-                <i class="fas fa-code-branch"></i>
-                Improve this page
-              </a>
-          </div>
-        
-
-        
-      <hr />
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="row next-prev-navigator">
   
-  
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://shaodongshi.github.io/posts/plt%E4%B8%8Egot/"
+     data-text="Plt与got"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://shaodongshi.github.io/posts/plt%E4%B8%8Egot/"
+     data-text="Plt与got"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://shaodongshi.github.io/posts/plt%E4%B8%8Egot/"
+     data-text="Plt与got"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://shaodongshi.github.io/posts/plt%E4%B8%8Egot/"
+     data-text="Plt与got"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://shaodongshi.github.io/posts/plt%E4%B8%8Egot/"
+     data-text="Plt与got"><i class="fab fa-pinterest"></i></a>
 </div>
 
-      <hr />
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy;  2021
+
       
+
       
-      </div>
-    </div>
+    </p>
   </div>
-  
-  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
-  
-</section>
+</footer>
 
 
-      
-      
-  <section class="toc-section" id="toc-section">
-    
-    <div class="toc-holder">
-      <h5 class="text-center pl-3">Table of Contents</h5>
-      <hr>
-      <div class="toc">
-        <nav id="TableOfContents">
-  <ul>
-    <li><a href="#0x1-基础知识">0x1 基础知识</a>
-      <ul>
-        <li><a href="#got">.got</a></li>
-        <li><a href="#plt">.plt</a></li>
-        <li><a href="#gotplt">.got.plt</a></li>
-        <li><a href="#pltgot">.plt.got</a></li>
-      </ul>
-    </li>
-    <li><a href="#0x2--理解">0x2  理解</a></li>
-    <li><a href="#0x3-总结">0x3 总结</a></li>
-  </ul>
-</nav>
-      </div>
-    </div>
-    
-  </section>
-
-    </div>
-
-    
-    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
 
 
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
 
-
-
-
-
-
-
-  
-    
-  
-
-
-
-  
   
 
   
-  
-
-  
-  
-
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-    
-  
-  
-
-  
-  
-  
-
-  <footer class="container-fluid text-center align-content-center footer pb-2">
-    <div class="container pt-5">
-      <div class="row text-left">
-        
-        <div class="col-md-4 col-sm-12">
-          <h5>Navigation</h5>
-          
-        </div>
-        
-        
-        
-        
-          
-          <div class="col-md-4 col-sm-12">
-            <p>Stay up to date with email notification</p>
-            
-             
-              <form>
-                <div class="form-group">
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
-                  <small id="emailHelp" class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small>
-                </div>
-                <button type="submit" class="btn btn-info">Submit</button>
-              </form>
-            
-          </div>
-        
-      </div>
-    </div>
-    
-    
-    <hr />
-    <div class="container">
-      <div class="row text-left">
-        <div class="col-md-4">
-          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
-            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_2.png" alt="Toha Theme Logo">
-            Toha
-          </a>
-        </div>
-        <div class="col-md-4 text-center">© 2021 Copyright.</div>
-        <div class="col-md-4 text-right">
-          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
-          <img
-            src="/images/hugo-logo.svg"
-            alt="Hugo Logo"
-            height="18"
-          />
-          </a>
-        </div>
-      </div>
-    </div>
-    
-  </footer>
-
-
-    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="/js/popper.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-
-<script type="text/javascript" src="/js/navbar.js"></script>
-<script type="text/javascript" src="/js/plyr.js"></script>
-<script type="text/javascript" src="/js/main.js"></script>
-
-
-    
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
-<script src="/js/single.js"></script>
-<script>
-  hljs.initHighlightingOnLoad();
-</script>
-
-
-  </body>
+</body>
 </html>

