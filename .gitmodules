@@ -31,3 +31,6 @@
 [submodule "themes/soho"]
 	path = themes/soho
 	url = https://github.com/alexandrevicenzi/soho.git
+[submodule "themes/themes/pulp"]
+	path = themes/themes/pulp
+	url = https://github.com/koirand/pulp.git
