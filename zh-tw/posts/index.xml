@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Den</title>
+    <link>https://shaodongshi.github.io/zh-tw/posts/</link>
+    <description>Recent content in Posts on Den</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 18 Jul 2021 18:45:55 +0800</lastBuildDate><atom:link href="https://shaodongshi.github.io/zh-tw/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>栈迁移原理</title>
+      <link>https://shaodongshi.github.io/zh-tw/2021/07/18/%E6%A0%88%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Sun, 18 Jul 2021 18:45:55 +0800</pubDate>
+      
+      <guid>https://shaodongshi.github.io/zh-tw/2021/07/18/%E6%A0%88%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%90%86/</guid>
+      <description>栈迁移原理 0x1利用前提 1.存在栈溢出 2.栈溢出可利用空间过小，无法写入较长的ROP链 0x2主要利用点 leave; ret; #其中leave -&amp;gt;&amp;gt; mov esp,ebp; # pop ebp; #其中</description>
+    </item>
+    
+    <item>
+      <title>64位栈溢出rop模板(无PIE)</title>
+      <link>https://shaodongshi.github.io/zh-tw/2021/07/12/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/</link>
+      <pubDate>Mon, 12 Jul 2021 17:35:19 +0800</pubDate>
+      
+      <guid>https://shaodongshi.github.io/zh-tw/2021/07/12/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/</guid>
+      <description>64位栈溢出rop模板（无PIE） exp模板 #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &amp;#39;debug&amp;#39; #p = process(&amp;#34;./&amp;#34;) p = remote(&amp;#34;&amp;#34;,) elf = ELF(&amp;#34;./&amp;#34;) read_got = elf.got[&amp;#39;read&amp;#39;] puts_plt = elf.plt[&amp;#39;puts&amp;#39;] main_addr = pop_rdi = #************泄露</description>
+    </item>
+    
+    <item>
+      <title>32位栈溢出rop模板</title>
+      <link>https://shaodongshi.github.io/zh-tw/2021/07/11/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF/</link>
+      <pubDate>Sun, 11 Jul 2021 17:26:35 +0800</pubDate>
+      
+      <guid>https://shaodongshi.github.io/zh-tw/2021/07/11/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF/</guid>
+      <description>32位栈溢出rop模板（无PIE） #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &amp;#39;debug&amp;#39; process_name = &amp;#39;./&amp;#39; #p = process([process_name], env={&amp;#39;LD_LIBRARY_PATH&amp;#39;:&amp;#39;./&amp;#39;}) p = remote(&amp;#39;&amp;#39;, ) elf = ELF(process_name) #**************泄露got并寻找li</description>
+    </item>
+    
+    <item>
+      <title>Plt与got</title>
+      <link>https://shaodongshi.github.io/zh-tw/2021/07/11/plt%E4%B8%8Egot/</link>
+      <pubDate>Sun, 11 Jul 2021 15:07:02 +0800</pubDate>
+      
+      <guid>https://shaodongshi.github.io/zh-tw/2021/07/11/plt%E4%B8%8Egot/</guid>
+      <description>plt与got理解 0x1 基础知识 .got GOT(Global Offset Table)全局偏移表。这是「链接器」为「外部符号」填充的实际偏移表。 .plt PLT（Procedure Linkage Tab</description>
+    </item>
+    
+    <item>
+      <title>攻防世界WP</title>
+      <link>https://shaodongshi.github.io/zh-tw/2021/07/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/</link>
+      <pubDate>Wed, 07 Jul 2021 18:14:33 +0800</pubDate>
+      
+      <guid>https://shaodongshi.github.io/zh-tw/2021/07/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/</guid>
+      <description>攻防世界WP 新手区 题目 get shell 题目描述： 运行就能拿到shell呢，真的 题目分析： nc链接，运行，拿到shell 解题： 1.nc链接IP（端口是空格</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -2,13 +2,56 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://shaodongshi.github.io/en/categories/</loc>
+    <loc>https://shaodongshi.github.io/en/</loc>
+    <lastmod>2021-07-18T18:45:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://shaodongshi.github.io/en/</loc>
+    <loc>https://shaodongshi.github.io/en/posts/</loc>
+    <lastmod>2021-07-18T18:45:55+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://shaodongshi.github.io/en/2021/07/18/%E6%A0%88%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%90%86/</loc>
+    <lastmod>2021-07-18T18:45:55+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://shaodongshi.github.io/en/2021/07/12/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/</loc>
+    <lastmod>2021-07-12T17:35:19+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://shaodongshi.github.io/en/2021/07/11/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF/</loc>
+    <lastmod>2021-07-11T17:26:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://shaodongshi.github.io/en/2021/07/11/plt%E4%B8%8Egot/</loc>
+    <lastmod>2021-07-11T15:07:02+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://shaodongshi.github.io/en/2021/07/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/</loc>
+    <lastmod>2021-07-07T18:14:33+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://shaodongshi.github.io/en/categories/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-tw" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta name="generator" content="Hugo 0.85.0" />
+  <meta charset="utf-8">
+  <title>攻防世界WP · Den</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="攻防世界WP 新手区 题目 get shell 题目描述： 运行就能拿到shell呢，真的 题目分析： nc链接，运行，拿到shell 解题： 1.nc链接IP（端口是空格" />
+
+  <meta name="keywords" content="Hugo, theme, den" />
+
+<link rel="canonical" href="https://shaodongshi.github.io/zh-tw/2021/07/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/" />
+<link rel="alternate" href="https://shaodongshi.github.io/en/2021/07/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/" hreflang="en">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://shaodongshi.github.io/css/den.css">
+
+
+
+
+<meta property="og:title" content="攻防世界WP" />
+<meta property="og:description" content="攻防世界WP 新手区 题目 get shell 题目描述： 运行就能拿到shell呢，真的 题目分析： nc链接，运行，拿到shell 解题： 1.nc链接IP（端口是空格" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shaodongshi.github.io/zh-tw/2021/07/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-07T18:14:33+08:00" />
+<meta property="article:modified_time" content="2021-07-07T18:14:33+08:00" />
+
+<meta itemprop="name" content="攻防世界WP">
+<meta itemprop="description" content="攻防世界WP 新手区 题目 get shell 题目描述： 运行就能拿到shell呢，真的 题目分析： nc链接，运行，拿到shell 解题： 1.nc链接IP（端口是空格"><meta itemprop="datePublished" content="2021-07-07T18:14:33+08:00" />
+<meta itemprop="dateModified" content="2021-07-07T18:14:33+08:00" />
+<meta itemprop="wordCount" content="1950">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="攻防世界WP"/>
+<meta name="twitter:description" content="攻防世界WP 新手区 题目 get shell 题目描述： 运行就能拿到shell呢，真的 题目分析： nc链接，运行，拿到shell 解题： 1.nc链接IP（端口是空格"/>
+</head>
+<body>
+  
+  <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://shaodongshi.github.io/images/background.jpg'); background-position: center; background-size: cover;">
+  <div class="container">
+  <nav class="header-nav navbar navbar-expand-md navbar-dark light-dark">
+    <div class="header-logo navbar-brand">
+      
+        <a class="float-left" href="https://shaodongshi.github.io/zh-tw/">
+      
+        
+        <img class="mr20 header-logo-image" src="https://shaodongshi.github.io/images/globe.svg" alt="logo">
+        
+        
+          Den
+         
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="nav-menu collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://shaodongshi.github.io/zh-tw/category/notes/">筆記</a>
+              
+            
+          </li>
+        
+          <li class="nav-item">
+            
+              
+                <a class="nav-link" href="https://shaodongshi.github.io/zh-tw/category/demos/">展示</a>
+              
+            
+          </li>
+        
+        
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://shaodongshi.github.io/en/"><i class="fas fa-globe"></i> English</a>
+            </li>
+          
+          
+          
+          
+        
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container header-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="header-content">
+        <h1 class="header-title">攻防世界WP</h1>
+        <p class="header-date">
+        2021-07-07
+        <div class="header-underline"></div>
+        
+        <div class="clearfix"></div>
+<p class="float-right translations">
+    <i class="fas fa-language" aria-hidden="true"></i>
+    翻譯： 
+    <a href="https://shaodongshi.github.io/en/2021/07/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/">EN</a>
+</p>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+  <main>
+<div class="container content">
+  <article>
+  <h1 id="攻防世界wp">攻防世界WP</h1>
+<h2 id="新手区">新手区</h2>
+<h3 id="题目-get--shell">题目 get  shell</h3>
+<h4 id="题目描述">题目描述：</h4>
+<p>运行就能拿到shell呢，真的</p>
+<h4 id="题目分析">题目分析：</h4>
+<p>nc链接，运行，拿到shell</p>
+<h4 id="解题">解题：</h4>
+<p>1.nc链接IP（端口是空格）</p>
+<p><img src="/images/image-20201230121218856.png" alt="image-20201230121218856"></p>
+<p>2.ls查看文件，cat flag  获得flag</p>
+<p><img src="/images/image-20201230121305114.png" alt="image-20201230121305114"></p>
+<h3 id="题目-cgfsb">题目 CGfsb</h3>
+<h4 id="题目描述-1">题目描述：</h4>
+<p>菜鸡面对着pringf发愁，他不知道prinf除了输出还有什么作用</p>
+<h4 id="题目分析-1">题目分析：</h4>
+<p>1.从题目描述来看，解题的关键是prinf</p>
+<p>2.查看文件格式，保护设置，运行一下</p>
+<p><img src="/images/image-20201230150149289.png" alt="image-20201230150149289"></p>
+<p><img src="/images/image-20201230150235986.png" alt="image-20201230150235986"></p>
+<p><img src="/images/image-20201230150336918.png" alt="image-20201230150336918"></p>
+<p>发现是一个32位的文件，开启了NX、Stack保护</p>
+<p><img src="/images/image-20201230150606994.png" alt="image-20201230150606994"></p>
+<p>这是程序的流程</p>
+<p>3.结合分析，应该和格式化字符串漏洞有关，放到IDA中具体看一下</p>
+<p><img src="/images/image-20201230151140410.png" alt="image-20201230151140410"></p>
+<p>这是一个高危漏洞！！！具体用法先放着，往下看。</p>
+<p><img src="/images/image-20201230150911401.png" alt="image-20201230150911401"></p>
+<p>看到这边有一个system函数，里面的内容是“cat flag”，这就是答案！！！</p>
+<p>而想要运行这行代码需要一个条件 pwnme==8，这时候想到前面有一个漏洞。</p>
+<p>4.格式化字符串漏洞的简单运用</p>
+<p>%n：将%n之前printf已经打印的字符个数赋值给偏移处指针所指向的地址位置，如%100×10$n表		示将0x64写入偏移10处保存的指针所指向的地址</p>
+<h4 id="解题-1">解题：</h4>
+<p>1.已经知道了存在格式化字符串漏洞，开始利用，查看偏移量</p>
+<p><img src="/images/image-20201230152812609.png" alt="image-20201230152812609"></p>
+<p>输入aaaa，发现0x61616161（aaaa）偏移量为10</p>
+<p>2.编写脚本</p>
+<p><img src="/images/image-20201230153908170.png" alt="image-20201230153908170"></p>
+<p>payload解释：将pwnme的地址转换为一个4字节的数，因为前面输出8个字符，通过%10$n，可以将8写入第10个偏移量对应的地址（pwenme的地址）里</p>
+<p>3.运行</p>
+<p><img src="/images/image-20201230154418227.png" alt="image-20201230154418227"></p>
+<p>拿到falg</p>
+<p>4.注：</p>
+<p>还可以这样写payload=‘aaaa’+p32（0x0804A068）+'%11$n'</p>
+<h3 id="题目-when_did_you_born">题目 when_did_you_born</h3>
+<h4 id="题目描述-2">题目描述：</h4>
+<p>只要知道你的年龄就能获得flag，但菜鸡发现无论如何输入都不正确，怎么办</p>
+<h4 id="题目分析-2">题目分析：</h4>
+<p>1.从描述来看，关键在于“年龄”</p>
+<p>2.查看文件格式，保护设置，运行一下</p>
+<p><img src="/images/image-20210106192203024.png" alt="image-20210106192203024"></p>
+<p>64位，开启了stack、NX保护。</p>
+<p><img src="/images/image-20210106192325605.png" alt="image-20210106192325605"></p>
+<p>这是程序基本流程。</p>
+<p>3.扔到IDA中看一下</p>
+<p><img src="/images/image-20210106192634693.png" alt="image-20210106192634693"></p>
+<p>答案就在这！！！</p>
+<p>整体看一下</p>
+<p><img src="/images/image-20210106192907254.png" alt="image-20210106192907254"></p>
+<p>所以思路很明显了，想办法去执行system就可以了。但问题是两个if不能一起执行。此时注意到前面有一个</p>
+<p><img src="/images/image-20210106193436330.png" alt="image-20210106193436330"></p>
+<p>漏洞……</p>
+<p>查看一下</p>
+<p><img src="/images/image-20210106195023052.png" alt="image-20210106195023052"></p>
+<p>v4下面正好是v5，那就可以直接覆盖了</p>
+<h4 id="解题-2">解题：</h4>
+<p><img src="/images/image-20210106195107572.png" alt="image-20210106195107572"></p>
+<p><img src="/images/image-20210106195145601.png" alt="image-20210106195145601"></p>
+<p>解决。</p>
+<h3 id="题目-hello_pwn">题目 hello_pwn</h3>
+<h4 id="题目描述-3">题目描述：</h4>
+<p>pwn！，segment fault! 菜鸡陷入了深思</p>
+<h4 id="题目分析-3">题目分析：</h4>
+<p>1.题目描述貌似没啥用，不管了</p>
+<p>2.查看文件，保护，运行一下</p>
+<p><img src="/images/image-20210107164704510.png" alt="image-20210107164704510"></p>
+<p>64位，开启了NX保护</p>
+<p><img src="/images/image-20210107164749946.png" alt="image-20210107164749946"></p>
+<p>就一句话……</p>
+<p>3.扔到IDA中看一下</p>
+<p><img src="/images/image-20210107165025779.png" alt="image-20210107165025779"></p>
+<p>可以看到只要运行这个函数就可以拿到flag</p>
+<p><img src="/images/image-20210107165102382.png" alt="image-20210107165102382"></p>
+<p>这是条件。</p>
+<p>这时候发现一个漏洞</p>
+<p><img src="/images/image-20210107165136562.png" alt="image-20210107165136562"></p>
+<p><img src="/images/image-20210107165150398.png" alt="image-20210107165150398"></p>
+<p>好了，可以直接利用溢出完成题目了</p>
+<h4 id="解题-3">解题：</h4>
+<p><img src="/images/image-20210107165552530.png" alt="image-20210107165552530"></p>
+<p><img src="/images/image-20210107165618691.png" alt="image-20210107165618691"></p>
+<p>完成。</p>
+<h3 id="题目-level0">题目 level0</h3>
+<h4 id="题目描述-4">题目描述：</h4>
+<p>菜鸡了解了什么是溢出，他相信自己能得到shell</p>
+<h4 id="题目分析-4">题目分析：</h4>
+<p>1.从分析来看，解题关键是拿到shell</p>
+<p>2.查看文件，保护，运行</p>
+<p><img src="/images/image-20210107212219583.png" alt="image-20210107212219583"></p>
+<p>64位，NX保护。</p>
+<p><img src="/images/image-20210107212327276.png" alt="image-20210107212327276"></p>
+<p>嗯，就一句话，没啥用。</p>
+<p>3.扔进IDA里面看一下</p>
+<p><img src="/images/image-20210107212507099.png" alt="image-20210107212507099"></p>
+<p>发现这个函数，那么只要让它执行这个函数，就可以拿到shell了。</p>
+<p><img src="/images/image-20210107212619490.png" alt="image-20210107212619490"></p>
+<p>发现这边有一个溢出。开始编写脚本。</p>
+<h4 id="解题-4">解题：</h4>
+<p>编写脚本</p>
+<h4 id="image-20210107213418120imagesimage-20210107213418120png"><img src="/images/image-20210107213418120.png" alt="image-20210107213418120"></h4>
+<p>利用一个溢出将callsystem函数的地址编写进去</p>
+<p><img src="/images/image-20210107213611957.png" alt="image-20210107213611957"></p>
+<p>完成。</p>
+<h3 id="题目-level2">题目 level2</h3>
+<h4 id="题目描述-5">题目描述：</h4>
+<p>菜鸡请教大神如何获得flag，大神告诉他‘使用’面向返回的编程（ROP）就可以了</p>
+<h4 id="题目分析-5">题目分析：</h4>
+<p>1.从题目描述可知，要用到ROP技术。</p>
+<p>2.查看文件格式，保护，运行。</p>
+<p><img src="/images/image-20210107215132075.png" alt="image-20210107215132075"></p>
+<p>32位，NX保护</p>
+<p><img src="/images/image-20210107215211149.png" alt="image-20210107215211149"></p>
+<p>程序流程。</p>
+<p>3.扔进IDA里看一下。</p>
+<p><img src="/images/image-20210107215433049.png" alt="image-20210107215433049"></p>
+<p>存在system函数，可以将‘/bin/sh’，写入，获得shell</p>
+<p><img src="/images/image-20210107215534512.png" alt="image-20210107215534512"></p>
+<p>存在溢出漏洞。可以开始编写脚本了</p>
+<h4 id="解题-5">解题：</h4>
+<p><img src="/images/image-20210107223902494.png" alt="image-20210107223902494"></p>
+<p>构建system（/bin/sh），获得shell</p>
+<p><img src="/images/image-20210107223948673.png" alt="image-20210107223948673"></p>
+<p>完成。</p>
+<h3 id="题目-string">题目 string</h3>
+<h4 id="题目描述-6">题目描述：</h4>
+<p>菜鸡遇到了Dragon,有一位巫师可以帮助他逃离危险，但似乎需要一些要求</p>
+<h4 id="题目分析-6">题目分析：</h4>
+<p>1.从题目描述来看，解题的关键在“巫师”</p>
+<p>2.查看文件格式，保护。</p>
+<p><img src="/images/image-20210108094737987.png" alt="image-20210108094737987"></p>
+<p>64位，保护除了PIE都开了。</p>
+<p>3.扔到IDA里面看一下。（400CA6）</p>
+<p><img src="/images/image-20210108095248994.png" alt="image-20210108095248994"></p>
+<p>ok，找到巫师了，不过，需要条件*a1==a1[1]。</p>
+<p><img src="/images/image-20210108095535279.png" alt="image-20210108095535279"></p>
+<p>观察一下，可以发现*a1==a1[1],即要满足 *v3==v3[1]。</p>
+<p><img src="/images/image-20210108095741998.png" alt="image-20210108095741998"></p>
+<p>这时候发现这边存在一个输出漏洞。（printf(&amp;……，&amp;……)）</p>
+<p>想到使用%n来修改值。</p>
+<p>查看一下偏移量。</p>
+<p><img src="/images/image-20210108100559729.png" alt="image-20210108100559729"></p>
+<p>偏移量是7。</p>
+<p>再来找一下地址。</p>
+<p><img src="/images/image-20210109191620499.png" alt="image-20210109191620499"></p>
+<p>这边泄露了v4地址，即v3</p>
+<p><img src="/images/image-20210108104853416.png" alt="image-20210108104853416"></p>
+<p>并且出现了可以将v1变成一个函数来执行外部命令的语句。</p>
+<h4 id="解题-6">解题：</h4>
+<p><img src="/images/image-20210109191719627.png" alt="image-20210109191719627"></p>
+<p><img src="/images/image-20210109191845878.png" alt="image-20210109191845878"></p>
+<p><img src="/images/image-20210109191915466.png" alt="image-20210109191915466"></p>
+<p>完成。</p>
+<h3 id="题目-int_overflow">题目 int_overflow</h3>
+<h4 id="题目描述-7">题目描述：</h4>
+<p>菜鸡感觉这题似乎没有办法溢出，真的么？</p>
+<h4 id="题目分析-7">题目分析：</h4>
+<p>1.从题目来看，这题解题关键在于“int_overflow”</p>
+<p>2.查看文件，保护，运行</p>
+<p><img src="/images/image-20210111200827431.png" alt="image-20210111200827431"></p>
+<p><img src="/images/image-20210111201002073.png" alt="image-20210111201002073"></p>
+<p>3.扔进IDA里面看一下</p>
+<p><img src="/images/image-20210111201440496.png" alt="image-20210111201440496"></p>
+<p>一个溢出漏洞</p>
+<p><img src="/images/image-20210111201508483.png" alt="image-20210111201508483"></p>
+<p>条件</p>
+<p>这时候联想到题目的提示int_overflow</p>
+<p><img src="/images/image-20210111201549472.png" alt="image-20210111201549472"></p>
+<p>无符号int型，最大256，257开始长度变为1</p>
+<p><img src="/images/image-20210111202408010.png" alt="image-20210111202408010"></p>
+<p>又发现这个……</p>
+<h4 id="解题-7">解题：</h4>
+<p><img src="/images/image-20210111202818786.png" alt="image-20210111202818786"></p>
+<p><img src="/images/image-20210111202909100.png" alt="image-20210111202909100"></p>
+<p><img src="/images/image-20210111202841356.png" alt="image-20210111202841356"></p>
+<p>完成。</p>
+<h3 id="题目-cgpwn2">题目 cgpwn2</h3>
+<h4 id="题目描述-8">题目描述：</h4>
+<p>菜鸡认为自己需要一个字符串</p>
+<h4 id="题目分析-8">题目分析：</h4>
+<p>1.查看文件，保护，运行。</p>
+<p><img src="/images/image-20210111203448731.png" alt="image-20210111203448731"></p>
+<p><img src="/images/image-20210111203523675.png" alt="image-20210111203523675"></p>
+<p>2.扔进IDA里面看一下</p>
+<p><img src="/images/image-20210111203716307.png" alt="image-20210111203716307"></p>
+<p>很明显的一个漏洞</p>
+<p><img src="/images/image-20210111203739487.png" alt="image-20210111203739487"></p>
+<p>调用了system函数，但是打印“hehehe”。去找了一下有没有“/bin/sh”，没找到。只能自己输入了</p>
+<h4 id="解题-8">解题：</h4>
+<p><img src="/images/image-20210111205429073.png" alt="image-20210111205429073"></p>
+<p><img src="/images/image-20210111205457550.png" alt="image-20210111205457550"></p>
+<p><img src="/images/image-20210111205518341.png" alt="image-20210111205518341"></p>
+<p>完成。</p>
+
+  </article>
+
+  
+  
+    
+  
+  
+
+
+</div>
+
+  </main><div class="footer gradient-2">
+  <div class="container footer-container ">
+    <div class="row">
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        <div class="footer-title">網站地圖</div>
+        <ul class="list-unstyled">
+            
+              
+                <li><a href="https://shaodongshi.github.io/zh-tw/tags/">標籤</a></li>
+              
+              
+                <li><a href="https://shaodongshi.github.io/zh-tw/categories/">分類</a></li>
+              
+            
+            
+            
+            <li><a rel="alternate" type="application/rss&#43;xml" href="https://shaodongshi.github.io/zh-tw/index.xml"><i class="fas fa-rss-square"></i> RSS 訂閱</a></li>
+            
+            
+            
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">社群</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/shaform/hugo-theme-den/" rel="noopener" target="_blank">GitHub</a></li>
+          
+        </ul>
+        
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+        
+        <div class="footer-title">連結</div>
+        <ul class="list-unstyled">
+          
+          <li><a href="https://github.com/shaform/hugo-theme-den/" rel="noopener" target="_blank">關於我</a></li>
+          
+        </ul>
+        
+      </div> 
+      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <p class="pull-right text-right">
+          <small><em>Proudly powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a></em></small><br/>
+          <small><em>Theme - <a href="https://github.com/shaform/hugo-theme-den" rel="noopener" target="_blank">Den</a></em></small><br/>
+          <small>
+            &copy; 
+            Jane Doe
+            
+              2017 -
+            2021
+          </small>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+</html>
