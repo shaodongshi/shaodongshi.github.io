@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Done</title>
+    <title>Posts on Dong</title>
     <link>https://shaodongshi.github.io/zh-tw/posts/</link>
-    <description>Recent content in Posts on Done</description>
+    <description>Recent content in Posts on Dong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <lastBuildDate>Sun, 18 Jul 2021 18:45:55 +0800</lastBuildDate><atom:link href="https://shaodongshi.github.io/zh-tw/posts/index.xml" rel="self" type="application/rss+xml" />
