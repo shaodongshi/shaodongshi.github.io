@@ -1,85 +1,86 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+><head>
+  <title>
     
-    <title>栈迁移原理 | Ssd&#39;s Blog</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="栈迁移原理 0x1利用前提 1.存在栈溢出
-2.栈溢出可利用空间过小，无法写入较长的ROP链
-0x2主要利用点 leave; ret; #其中leave -&gt;&gt; mov esp,ebp; #	pop ebp; #其中ret -&gt;&gt; pop eip; 0x3利用过程 假设，我们有一个程序，存在栈溢出漏洞，我们把内容覆盖成了下面这样子，当然此时 bss 段或者 data 段还没有内容，待会会通过 read 函数输入：
-其中leave_ret为代码leave;ret;地址。
-而实际上在程序调用完成 call 返回的时候，就会有这样的 mov esp,ebp pop ebp ret 指令
-当我们挨个去执行的时候会出现这样的情况
-首先是 mov esp,ebp 执行完以后变成了这个样子：
-然后 pop ebp 执行完后就是
-别忘了，pop 指令是把栈顶的值弹到 指定的寄存器，也就是说 esp 会自动的下移一个单位
-这时候就到 ret 了，我们可以通过 read 函数来把内容输入到 ebp1_addr 的地址处
-构造的内容主要是把ebp1 _addr处写成 ebp2_addr 的地址
-其中
-为read的参数
-read 函数执行完成以后程序返回到了 leave_ret，这样就会在执行一遍上面说的那样
-首先是 mov esp,ebp 执行完成后效果如下：">
-    <meta name="generator" content="Hugo 0.85.0" />
-    
-    
-      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
-    
-
-    
-<link rel="stylesheet" href="/ananke/css/main.min.css" >
-
-
+      |
+      栈迁移原理
 
 
     
+
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.85.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta
+    name="description"
+    content="
       
 
-    
 
-    
-    
-    <meta property="og:title" content="栈迁移原理" />
-<meta property="og:description" content="栈迁移原理 0x1利用前提 1.存在栈溢出
-2.栈溢出可利用空间过小，无法写入较长的ROP链
-0x2主要利用点 leave; ret; #其中leave -&gt;&gt; mov esp,ebp; #	pop ebp; #其中ret -&gt;&gt; pop eip; 0x3利用过程 假设，我们有一个程序，存在栈溢出漏洞，我们把内容覆盖成了下面这样子，当然此时 bss 段或者 data 段还没有内容，待会会通过 read 函数输入：
-其中leave_ret为代码leave;ret;地址。
-而实际上在程序调用完成 call 返回的时候，就会有这样的 mov esp,ebp pop ebp ret 指令
-当我们挨个去执行的时候会出现这样的情况
-首先是 mov esp,ebp 执行完以后变成了这个样子：
-然后 pop ebp 执行完后就是
-别忘了，pop 指令是把栈顶的值弹到 指定的寄存器，也就是说 esp 会自动的下移一个单位
-这时候就到 ret 了，我们可以通过 read 函数来把内容输入到 ebp1_addr 的地址处
-构造的内容主要是把ebp1 _addr处写成 ebp2_addr 的地址
-其中
-为read的参数
-read 函数执行完成以后程序返回到了 leave_ret，这样就会在执行一遍上面说的那样
-首先是 mov esp,ebp 执行完成后效果如下：" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://shaodongshi.github.io/posts/%E6%A0%88%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%90%86/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-07-18T18:45:55+08:00" />
-<meta property="article:modified_time" content="2021-07-18T18:45:55+08:00" />
+    "
+  />
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="/css/main.min.51423ad97099a08f3a20e16d238c13adae76db7dd5e1913789bdc81143ff4cc6.css"
+    integrity="sha256-UUI62XCZoI86IOFtI4wTra52233V4ZE3ib3IEUP/TMY="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.f798cbda9aaa38f89eb38be6414bd082cfd71a6780375cbf67b6d2fb2b96491e.css"
+    integrity="sha256-95jL2pqqOPies4vmQUvQgs/XGmeAN1y/Z7bS&#43;yuWSR4="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous"
+  />
+  
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
-<meta itemprop="name" content="栈迁移原理">
-<meta itemprop="description" content="栈迁移原理 0x1利用前提 1.存在栈溢出
-2.栈溢出可利用空间过小，无法写入较长的ROP链
-0x2主要利用点 leave; ret; #其中leave -&gt;&gt; mov esp,ebp; #	pop ebp; #其中ret -&gt;&gt; pop eip; 0x3利用过程 假设，我们有一个程序，存在栈溢出漏洞，我们把内容覆盖成了下面这样子，当然此时 bss 段或者 data 段还没有内容，待会会通过 read 函数输入：
-其中leave_ret为代码leave;ret;地址。
-而实际上在程序调用完成 call 返回的时候，就会有这样的 mov esp,ebp pop ebp ret 指令
-当我们挨个去执行的时候会出现这样的情况
-首先是 mov esp,ebp 执行完以后变成了这个样子：
-然后 pop ebp 执行完后就是
-别忘了，pop 指令是把栈顶的值弹到 指定的寄存器，也就是说 esp 会自动的下移一个单位
-这时候就到 ret 了，我们可以通过 read 函数来把内容输入到 ebp1_addr 的地址处
-构造的内容主要是把ebp1 _addr处写成 ebp2_addr 的地址
-其中
-为read的参数
-read 函数执行完成以后程序返回到了 leave_ret，这样就会在执行一遍上面说的那样
-首先是 mov esp,ebp 执行完成后效果如下："><meta itemprop="datePublished" content="2021-07-18T18:45:55+08:00" />
-<meta itemprop="dateModified" content="2021-07-18T18:45:55+08:00" />
-<meta itemprop="wordCount" content="85">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+  <link rel="canonical" href="/posts/%E6%A0%88%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%90%86/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.2a2cd9614b7d007dfbb75e8da19e3a0fa872ceab53c6d000c00b7a0c89b85bfc.js"
+    integrity="sha256-KizZYUt9AH37t16NoZ46D6hyzqtTxtAAwAt6DIm4W/w="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.7fd87181cdd7e8413aa64b6867bb32f3a8dc242e684fc7d5bbb9f600dbc2b6eb.js"
+      integrity="sha256-f9hxgc3X6EE6pktoZ7sy86jcJC5oT8fVu7n2ANvCtus="
+      crossorigin="anonymous"
+    ></script>
+
+  
+  <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="栈迁移原理"/>
 <meta name="twitter:description" content="栈迁移原理 0x1利用前提 1.存在栈溢出
 2.栈溢出可利用空间过小，无法写入较长的ROP链
@@ -97,101 +98,100 @@ read 函数执行完成以后程序返回到了 leave_ret，这样就会在执�
 read 函数执行完成以后程序返回到了 leave_ret，这样就会在执行一遍上面说的那样
 首先是 mov esp,ebp 执行完成后效果如下："/>
 
-	
-  </head>
 
-  <body class="ma0 avenir bg-near-white">
 
-    
-   
   
+</head>
+<body>
+    <header><div
+  class="page-top 
+    animated fadeInDown
 
-  <header>
-    <div class="bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l justify-between items-center center">
-    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
-      
-        Ssd&#39;s Blog
-      
-    </a>
-    <div class="flex-l items-center">
-      
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+  <nav>
+    <ul class="nav__list" id="navMenu">
+      <div class="nav__links">
+        
+        
+        
+      </div>
+      <li>
+        
+          <a class="theme-switch" title="Switch Theme">
+            <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+          </a>
 
-      
-      
+        
+      </li>
+    </ul>
+  </nav>
+</div>
+</header>
+    <div class="wrapper">
+      <aside><div
+  class="sidebar
+    animated fadeInDown
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  "
+>
+  <div class="sidebar__content">
+    <div class="logo-title">
+      <div class="title">
+        <img src="/" alt="profile picture" />
+        <h3 title=""><a href="/"></a></h3>
+        <div class="description">
+          <p></p>
+        </div>
+      </div>
     </div>
-  </div>
-</nav>
-
-    </div>
-  </header>
-
-
-
-    <main class="pb7" role="main">
+    <ul class="social-links">
       
-  
-  <article class="flex-l flex-wrap justify-between mw8 center ph3">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked">
+    </ul>
+  </div><footer class="footer footer--sidebar">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
           
-        POSTS
-      </aside>
+          2021
+
+
+        
+      </li>
       
-
-
-
-
-  <div id="sharing" class="mt3">
-
-    
-    <a href="https://www.facebook.com/sharer.php?u=https://shaodongshi.github.io/posts/%E6%A0%88%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%90%86/" class="facebook no-underline" aria-label="share on Facebook">
-      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
-
-    </a>
-
-    
-    
-    <a href="https://twitter.com/share?url=https://shaodongshi.github.io/posts/%E6%A0%88%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%90%86/&amp;text=%e6%a0%88%e8%bf%81%e7%a7%bb%e5%8e%9f%e7%90%86" class="twitter no-underline" aria-label="share on Twitter">
-      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
-
-    </a>
-
-    
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://shaodongshi.github.io/posts/%E6%A0%88%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%90%86/&amp;title=%e6%a0%88%e8%bf%81%e7%a7%bb%e5%8e%9f%e7%90%86" class="linkedin no-underline" aria-label="share on LinkedIn">
-      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
-</svg>
-
-    </a>
+    </ul>
   </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script></div>
+</aside>
+      <main>
+        <div class="autopagerize_page_element">
+          <div class="content">
+  <div
+    class="post 
+      animated fadeInDown
 
-
-      <h1 class="f1 athelas mt3 mb1">栈迁移原理</h1>
+    "
+  >
+    <div class="post-content">
       
-      
-      <time class="f6 mv4 dib tracked" datetime="2021-07-18T18:45:55+08:00">July 18, 2021</time>
-
-      
-      
-    </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><h1 id="栈迁移原理">栈迁移原理</h1>
+      <div class="post-title">
+        <h1>栈迁移原理</h1>
+        
+      </div><h1 id="栈迁移原理">栈迁移原理</h1>
 <h2 id="0x1利用前提">0x1利用前提</h2>
 <p>1.存在栈溢出</p>
 <p>2.栈溢出可利用空间过小，无法写入较长的ROP链</p>
@@ -230,48 +230,43 @@ ret;
 <h2 id="0x4总结">0x4总结</h2>
 <p>栈迁移主要体现在对ebp和esp的控制(通过leave；ret；实现)在bss或data段来开辟一个可执行空间（伪造的栈），</p>
 <p>并在此执行ROP。</p>
-<ul class="pa0">
-  
-</ul>
-<div class="mt6 instapaper_ignoref">
-      
-      
+</div>
+    <div class="post-footer">
+      <div class="info">
+        
+
+        
       </div>
     </div>
 
-    <aside class="w-30-l mt6-l">
+    
+  </div>
 
 
+          </div>
+        </div>
+      </main>
+    </div><footer class="footer footer--base">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          
+          2021
 
 
-</aside>
-
-  </article>
-
-    </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://shaodongshi.github.io/" >
-    &copy;  Ssd's Blog 2021 
-  </a>
-    <div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
+        
+      </li>
+      
+    </ul>
   </div>
 </footer>
-
-  </body>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script></body>
 </html>
