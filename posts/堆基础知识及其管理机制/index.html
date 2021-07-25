@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>堆基础知识及其管理机制</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+
+
+<meta property="og:title" content="堆基础知识及其管理机制" />
+<meta property="og:description" content="堆基础知识及其管理机制 0x1 堆基础知识 1.前言 堆是程序用于分配动态内存的一段内存区域。它独立地存在内存中，介于程序内存基地址和libc地址之间，从低地址向高地址生长（与栈相反）。与用户打交道最多。
+在libc中，我们可以通过maloc(size)来给用户分配一段长度为size的内存，通过free(ptr)来释放这段内存区域。
+数据被存放在了堆中，维护这些数据运行的机制在glibc中，称之为ptmalloc。
+在内存中堆是以一个个堆块存在的，称之为chunk。
+2.chunk 结构体： struct malloc_chunk { INTERNAL_SIZE_T prev_size; /* Size of previous chunk (if free). */ INTERNAL_SIZE_T size; /* Size in bytes, including overhead. */ struct malloc_chunk* fd; /* double links -- used only if free. */ struct malloc_chunk* bk; /* Only used for large blocks: pointer to next larger size. */ struct malloc_chunk* fd_nextsize; /* double links -- used only if free. */ struct malloc_chunk* bk_nextsize; }; 使用中（分配后）： chunk start：chunk的起始地址" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shaodongshi.github.io/posts/%E5%A0%86%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%8F%8A%E5%85%B6%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-25T16:22:25+08:00" />
+<meta property="article:modified_time" content="2021-07-25T16:22:25+08:00" />
+
+
+
+    
+    
+<meta name="description" content="堆基础知识及其管理机制" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      Dong</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+  
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://shaodongshi.github.io/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/default-avatar_hud3032af26cae4ad3a900356053a829cd_96315_120x120_fit_box_2.png' alt="Author Image">
+          <h5 class="author-name">Dong</h5>
+          <p>July 25, 2021</p>
+        </div>
+
+        <div class="title">
+          <h1>堆基础知识及其管理机制</h1>
+        </div>
+
+        <div class="post-content" id="post-content">
+          <h1 id="堆基础知识及其管理机制">堆基础知识及其管理机制</h1>
+<h2 id="0x1-堆基础知识">0x1 堆基础知识</h2>
+<h3 id="1前言">1.前言</h3>
+<p>堆是程序用于分配动态内存的一段内存区域。它独立地存在内存中，介于程序内存基地址和libc地址之间，从低地址向高地址生长（与栈相反）。与用户打交道最多。</p>
+<p>在libc中，我们可以通过maloc(size)来给用户分配一段长度为size的内存，通过free(ptr)来释放这段内存区域。</p>
+<p>数据被存放在了堆中，维护这些数据运行的机制在glibc中，称之为ptmalloc。</p>
+<p>在内存中堆是以一个个堆块存在的，称之为chunk。</p>
+<h3 id="2chunk">2.chunk</h3>
+<h4 id="结构体">结构体：</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> malloc_chunk {
+    INTERNAL_SIZE_T prev_size; <span style="color:#75715e">/* Size of previous chunk (if free). */</span>
+    INTERNAL_SIZE_T size; <span style="color:#75715e">/* Size in bytes, including overhead. */</span>
+    
+    <span style="color:#66d9ef">struct</span> malloc_chunk<span style="color:#f92672">*</span> fd; <span style="color:#75715e">/* double links -- used only if free. */</span>
+    <span style="color:#66d9ef">struct</span> malloc_chunk<span style="color:#f92672">*</span> bk;
+    
+    <span style="color:#75715e">/* Only used for large blocks: pointer to next larger size. */</span>
+    <span style="color:#66d9ef">struct</span> malloc_chunk<span style="color:#f92672">*</span> fd_nextsize; <span style="color:#75715e">/* double links -- used only if free. */</span>
+    <span style="color:#66d9ef">struct</span> malloc_chunk<span style="color:#f92672">*</span> bk_nextsize;
+};
+</code></pre></div><h4 id="使用中分配后">使用中（分配后）：</h4>
+<p><img src="/images1/image-20210725165104163.png" alt="image-20210725165104163"></p>
+<p><code>chunk start</code>：chunk的起始地址</p>
+<p><code>previous size</code>：</p>
+<ol>
+<li><strong>上一个chunk的大小</strong>，32位占4字节，64位占8字节</li>
+<li>只有当<strong>上一个chunk处于空闲状态</strong>时才有效，否则作为上一个chunk的user data</li>
+</ol>
+<p><code>size</code>：</p>
+<p>​			1.当前chunk的大小，32位占4字节，64位占8字节
+​					2.后三个比特位为A|M|P标志位，分别代表不同含义
+​						A：为0表示该chunk属于主分配区，为1表示该chunk属于非主分配区。non-main-arena。
+​						M：表示当前chunk是从哪个内存区域获得的虚拟内存。为1表示该chunk是从mmap映射区域分配的，否则								是从heap区域分配的。is-mmap。
+​						P：为1表示前一个chunk正在使用中，当前chunk的prev_size无效，不能对前一个chunk进行任何操作。第一								块heap总是将P设为1，以防止程序引用到不存在的区域。prev-inuse。</p>
+<p><code>memory</code>：malloc等函数返回给用户的<strong>chunk数据区指针</strong></p>
+<h4 id="空闲中释放后">空闲中（释放后）：</h4>
+<p><strong>描述</strong>：</p>
+<ol>
+<li>
+<p>空闲中的chunk不存在M状态，只有A|P状态</p>
+</li>
+<li>
+<p>user data头部被分配出两个成员，fd和bk</p>
+<p><img src="/images1/image-20210725183734165.png" alt="image-20210725183734165"></p>
+<p><code>fd</code>：指向<strong>前一个空闲（非物理相邻）chunk</strong>的起始地址，32位占4字节，64位占8字节
+<code>bk</code>：指向<strong>后一个空闲（非物理相邻）chunk</strong>的起始地址，32位占4字节，64位占8字节</p>
+<p><strong>注意</strong>：事实上，释放后的<strong>large chunk</strong>中还存在另外两个成员：<strong>fd_nextsize</strong>和<strong>bk_nextsize</strong></p>
+</li>
+</ol>
+<h4 id="堆块大小">堆块大小：</h4>
+<p><strong>32位程序</strong>：</p>
+<p>用户分配到的最小堆块大小为17B：prev_size(4B) + size(4B) + fd(4B) + bk(4B) + next_chunk-&gt;p(1B)
+若用户申请的大小超过最小堆块大小，会与8B进行对齐</p>
+<p><strong>64位程序</strong>：</p>
+<p>用户分配到的最小堆块大小为33B：prev_size(8B) + size(8B) + fd(8B) + bk(8B) + next_chunk-&gt;p(1B)
+若用户申请的大小超过最小堆块大小，会与16B进行对齐</p>
+<h4 id="空间复用">空间复用：</h4>
+<p><strong>当一个 chunk 处于使用状态时，它的下一个 chunk 的 prev_size 无效</strong>。所以下一个 chunk 的 prev_size 也可以被当前 chunk 使用，这就是 chunk 的空间复用。</p>
+<h2 id="0x2堆块的管理">0x2堆块的管理</h2>
+<h3 id="1bin">1.bin:</h3>
+<p>为了保证程序的快速运行，而且方便系统内存管理，所以ptmalloc将释放后的堆块根据其大小分成不同的bin。</p>
+<h4 id="fastbin"><strong>fastbin</strong>:</h4>
+<p>大小范围从0x20~0x80(64位)，0x10~0x40（32位）。以0x10递增，最多可以有10个。单链表结构只有fd。</p>
+<p>大小属于fastbin的chunk被free掉时不会改变nextchunk的previnuse位，也就是说不会被合并。<strong>LIFO型。</strong></p>
+<p><img src="/images1/image-20210725194425791.png" alt="image-20210725194425791"></p>
+<h4 id="smallbin"><strong>smallbin</strong>：</h4>
+<p>大小范围从0x90~0x400(64位)。双链表结构，有fd、bk。大小以0x10递增。结构和unsortedbin差不多。</p>
+<h4 id="large-bin"><strong>large bin</strong>：</h4>
+<p>0x410以上（64位）。双链表，fd、bk都有，除此之外还有fd nextsize、bk nextsize。同一个双向链表的大小可以不一样，但是在一定范围内，bins从小到大排列。</p>
+<p><img src="/images1/image-20210725200001794.png" alt="image-20210725200001794"></p>
+<h4 id="unsorted-bin"><strong>unsorted bin</strong>:</h4>
+<p>未被归类的bin，临时存储用，存放的堆块不一定多大。双链表结构，有fd、bk。管理unsorted bin的只有一个双向链表。所有大小大于fastbin的chunk都会先被暂时放入unsorted bin中，链表中的chunk大小不一。<strong>FIFO型。</strong></p>
+<p><img src="/images1/image-20210725194848011.png" alt="image-20210725194848011"></p>
+<h3 id="2堆块的合并">2.堆块的合并</h3>
+<h4 id="向前合并">向前合并：</h4>
+<p>检查当前chunk的previnuse位，如果为0，则根据当前的chunk的prev size找到prev chunk的头，两个堆块合并。</p>
+<h4 id="向后合并">向后合并：</h4>
+<p>检查当前chunk的next nextchunk的previnuse位（用size找），如果为0，则根据当前的chunk的size，进行合并。</p>
+<h3 id="3管理">3.管理</h3>
+<h4 id="arena">arena：</h4>
+<p>是一块结构体，用于管理bins。主线程创建的叫main_arena。其它的叫threadarena。</p>
+<p><img src="/images1/image-20210725194234880.png" alt="image-20210725194234880"></p>
+<h4 id="malloc">malloc：</h4>
+<p>当调用malloc时，</p>
+<p>计算真正的堆块大小（加上头部长度，对齐）</p>
+<p>判断是否在fastbin内。</p>
+<p>​		<strong>是</strong>，检查对应bin链表中有没有chunk</p>
+<p>​				<strong>有</strong>，分配给用户，完成</p>
+<p>如果不在fastbin链表内，或者没有chunk可用。</p>
+<p>判断是否在smallbin范围内</p>
+<p>​		<strong>是</strong>，检查对应大小的bin链表内有没有chunk。</p>
+<p>​				<strong>有</strong>，取出来给程序，完成</p>
+<p>如果不在smallbin范围内，或者smallbin里面也没有</p>
+<p>判断unsorted bin中有没有chunk</p>
+<p>​			<strong>有</strong>，从尾部取出第一个chunk，看看大小是否满足需求</p>
+<p>​				<strong>满足</strong>，切分后大小是否大于minsize？</p>
+<p>​							<strong>大于</strong>，切分后返回给用户，剩下的块放进unsortedbin</p>
+<p>​							<strong>小于或等于</strong>，直接返回给用户，完成。</p>
+<p>​				<strong>不满足</strong>，把这个chunk放入smallbin或者largebin中，继续遍历下一个chunk
+​        如果 unsortedbin中所有的chunk也不能满足</p>
+<p>判断大小是否在largebin范围内</p>
+<p>​		 	<strong>是</strong>，检查对应的bin链表中有没有符合的chunk</p>
+<p>​					<strong>有</strong>，找到满足需求的最小的chunk，切分块返回，剩下的放进unsortedbin中。</p>
+<p>largebin也没有。再次遍历smallbin和largebin找best fit的chunk</p>
+<p>还是没有，那就从topchunk中切割。</p>
+<p>topchunk也不够，mmap系统调用。</p>
+<h4 id="free">free：</h4>
+<p>free的大小属于fastbin吗</p>
+<p>​	<strong>是</strong>，放进fastbin，完成</p>
+<p>是mmap分配的吗</p>
+<p>​	<strong>是</strong>，调用munmap回收，完成。</p>
+<p>前一个chunk空闲吗</p>
+<p>​	<strong>是</strong>，向前合并</p>
+<p>后一个chunk是topchunk吗</p>
+<p>​	<strong>是</strong>，和topchunk合并，完成。</p>
+<p>后一个chunk是free的吗</p>
+<p>​	<strong>是</strong>，向后合并。</p>
+<p>放进unsortedbin，完成。</p>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/hugo-toha/hugo-toha.github.io/edit/main/content/posts%5c%e5%a0%86%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e5%8f%8a%e5%85%b6%e7%ae%a1%e7%90%86%e6%9c%ba%e5%88%b6.md" title="Improve this page" target="_blank" rel="noopener">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row next-prev-navigator">
+  
+  
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#0x1-堆基础知识">0x1 堆基础知识</a>
+      <ul>
+        <li><a href="#1前言">1.前言</a></li>
+        <li><a href="#2chunk">2.chunk</a>
+          <ul>
+            <li><a href="#结构体">结构体：</a></li>
+            <li><a href="#使用中分配后">使用中（分配后）：</a></li>
+            <li><a href="#空闲中释放后">空闲中（释放后）：</a></li>
+            <li><a href="#堆块大小">堆块大小：</a></li>
+            <li><a href="#空间复用">空间复用：</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#0x2堆块的管理">0x2堆块的管理</a>
+      <ul>
+        <li><a href="#1bin">1.bin:</a>
+          <ul>
+            <li><a href="#fastbin"><strong>fastbin</strong>:</a></li>
+            <li><a href="#smallbin"><strong>smallbin</strong>：</a></li>
+            <li><a href="#large-bin"><strong>large bin</strong>：</a></li>
+            <li><a href="#unsorted-bin"><strong>unsorted bin</strong>:</a></li>
+          </ul>
+        </li>
+        <li><a href="#2堆块的合并">2.堆块的合并</a>
+          <ul>
+            <li><a href="#向前合并">向前合并：</a></li>
+            <li><a href="#向后合并">向后合并：</a></li>
+          </ul>
+        </li>
+        <li><a href="#3管理">3.管理</a>
+          <ul>
+            <li><a href="#arena">arena：</a></li>
+            <li><a href="#malloc">malloc：</a></li>
+            <li><a href="#free">free：</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+            <li><span>Email: </span> <span>3204950477@qq.com</span></li>
+            
+            <li><span>Phone: </span> <span>&#43;86 15759877039</span></li>
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+            
+             
+              <form>
+                <div class="form-group">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+                  <small id="emailHelp" class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small>
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_2.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>
