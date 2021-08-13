@@ -116,6 +116,35 @@
       
         
           <div class="post-card">
+  <a href="/posts/%E9%80%9A%E7%94%A8ropgadget/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">通用ROPgadget</h5>
+        <p class="card-text post-summary">通用ROPgadget 原理 在64位程序中，函数的前六个参数是通过寄存器传递的，但是大多时候，我们很难找到每一个寄存器对应的gadgets，这时候，我们可以利用x64下的**__libc_csu_init**中的gadgets。这个函数是用来对libc进行初始化操作，而一般的程序都会调用libc函数，所以这个函数一定会存在。
+第一个gadget
+pop rbx pop rbp pop r12 pop r13 pop r14 pop r15 retn 可以看到，通过这段gadget可以控制rbx、rbp、r12、r13、r14、r15，6个寄存器，而恰好64位程序就是通过寄存器来传递参数的。
+第二个gadget
+mov rdx,r13 mov rsi,r14 mov edi,r15 call qword ptr [r12+rbx*8] add rbx,1 cmp rbx,rbp jnz short loc_400580 可以看到，在这里rdx的值由r13决定，rsi的值由r14决定，值得特别注意的是，r15只能决定edi的值，而不能完全控制rdi。而随后的call，可以看到只要rbx=0，那么call便由r12所决定了。之后只要rbx+1等于rbp就不会跳转。所以可让rbp等于1。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 13, 2021</span>
+        <a
+        href="/posts/%E9%80%9A%E7%94%A8ropgadget/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
   <a href="/posts/%E5%A0%86%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%8F%8A%E5%85%B6%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -230,7 +259,7 @@ read 函数执行完成以后程序返回到了 leave_ret，这样就会在执�
       </div>
       <div class="card-body">
         <h5 class="card-title">64位栈溢出rop模板(无PIE)</h5>
-        <p class="card-text post-summary">64位栈溢出rop模板（无PIE） exp模板 #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &#39;debug&#39; #p = process(&#34;./&#34;) p = remote(&#34;&#34;,) elf = ELF(&#34;./&#34;) read_got = elf.got[&#39;read&#39;] printf_plt = elf.plt[&#39;printf&#39;] main_addr = elf.sym[&#39;main&#39;] pop_rdi = #pop_rsi =  #s_addr =  #************泄露got********* payload = b&#39;a&#39;*() + p64(pop_rdi) + p64(read_got) payload+= p64(puts_plt) + p64(main_addr) #puts-read #payload = b&#39;a&#39;*(0x20+8) + p64(pop_rdi) + p64(s_addr) + p64(pop_rsi) + p64(read_got) #payload+= p64(0) + p64(printf_plt) + p64(main_addr) --printf-read p.</p>
+        <p class="card-text post-summary">64位栈溢出rop模板（无PIE） exp模板 #!usr/bin/env python #coding=utf-8 from pwn import * from LibcSearcher import * context.log_level = &#39;debug&#39; #p = process(&#34;./&#34;) p = remote(&#34;&#34;,) elf = ELF(&#34;./&#34;) read_got = elf.got[&#39;read&#39;] printf_plt = elf.plt[&#39;printf&#39;] main_addr = elf.sym[&#39;main&#39;] pop_rdi = #pop_rsi =  #s_addr =  #************泄露got********* payload = b&#39;a&#39;*() + p64(pop_rdi) + p64(read_got) payload+= p64(puts_plt) + p64(main_addr) #puts-read #payload = b&#39;a&#39;*() + p64(pop_rdi) + p64(s_addr) + p64(pop_rsi) + p64(read_got) #payload+= p64(0) + p64(printf_plt) + p64(main_addr) --printf-read p.</p>
       </div>
       <div class="card-footer">
         <span class="float-left">July 12, 2021</span>
